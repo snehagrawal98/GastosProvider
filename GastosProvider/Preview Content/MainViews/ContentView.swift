@@ -2,15 +2,14 @@
 //  ContentView.swift
 //  GastosProvider
 //
-//  Created by mnameit on 12/01/22.
+//  Created by Sai Kumar Kasireddi's MacBook on 18/01/22.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
