@@ -26,3 +26,79 @@ struct AddImagesView_Previews: PreviewProvider {
         AddImagesView()
     }
 }
+
+// Image with Delete and Edit
+struct ImageWithEditAndDelete: View {
+    var body: some View {
+      ZStack {
+        Image("detailShop")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 0.34 * UIScreen.screenWidth, height: 0.095 * UIScreen.screenHeight, alignment: .center)
+          .cornerRadius(12)
+
+        // Delete Button
+        VStack {
+          HStack {
+            Spacer()
+
+            Button(action: {
+              // delete
+            }, label: {
+              Image(systemName: "trash")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 12, height: 12, alignment: .center)
+                .foregroundColor(.white)
+                .padding(8)
+                .background(Color("textGreen"))
+                .cornerRadius(5)
+            }) //: BUTTON
+          }
+
+          Spacer()
+
+          HStack {
+            Spacer()
+
+            Button(action: {
+              // edit
+            }, label: {
+              Image(systemName: "pencil")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 12, height: 12, alignment: .center)
+                .foregroundColor(.white)
+                .padding(8)
+                .background(Color("textGreen"))
+                .cornerRadius(5)
+            }) //: BUTTON
+          } //: HSTACK
+        } //: VSTACK
+        .frame(width: 0.40 * UIScreen.screenWidth, height: 0.1 * UIScreen.screenHeight, alignment: .center)
+
+      } //: ZSTACK
+    }
+}
+
+// Add Image Button
+struct AddImageButton: View {
+    var body: some View {
+      ZStack {
+        Rectangle()
+          .frame(width: 0.38 * UIScreen.screenWidth, height: 0.1 * UIScreen.screenHeight, alignment: .center)
+          .foregroundColor(Color("addImageButtonColor"))
+          .cornerRadius(12)
+
+        Image(systemName: "plus")
+          .resizable()
+          .scaledToFit()
+          .frame(width: 23, height: 23, alignment: .center)
+          .padding()
+          .background(Color("textGreen"))
+          .cornerRadius(10)
+          .foregroundColor(.white)
+      }
+    }
+}
+
