@@ -45,6 +45,7 @@ struct ManageShop: View {
           Text("Shop Cover Photo")
             .font(.caption.weight(.medium))
             .foregroundColor(Color.gray)
+            .frame(width: 0.80 * UIScreen.screenWidth, alignment: .leading)
 
           ImageWithEdit()
         } //: VSTACK
@@ -55,6 +56,7 @@ struct ManageShop: View {
           Text("Add images related to your Business")
             .font(.caption.weight(.medium))
             .foregroundColor(Color.gray)
+            .frame(width: 0.80 * UIScreen.screenWidth, alignment: .leading)
             .padding(.leading, 24)
 
           AddImagesView()
@@ -255,5 +257,15 @@ struct ManageShop: View {
 struct ManageShop_Previews: PreviewProvider {
     static var previews: some View {
         ManageShop()
+    }
+}
+
+// Settings Title View
+struct SettingsTitleView: View {
+  @State var title: String
+    var body: some View {
+        Text(title)
+        .font(.title.weight(.semibold))
+        .foregroundColor(Color("deepGreen"))
     }
 }
