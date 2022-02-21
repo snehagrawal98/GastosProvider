@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+  @AppStorage("log_Status") var status = false
+ // @State private var showOnboardingScreen = true
+  @StateObject var loginViewModel = LoginViewModel()
+  @StateObject var currentUser = CurrentUser()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
+            SetDiscount()
+          } else if status && loginViewModel.didSetPin {
+            BasicDetails()
+          } else if status {
+            SetPin()
+          } else {
+            EnterMobileNumber()
+          }
+        }
+        .environmentObject(loginViewModel)
+        .environmentObject(currentUser)
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+      ContentView()
     }
 }

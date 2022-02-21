@@ -8,77 +8,111 @@
 import SwiftUI
 
 struct OTPPin: View {
-  @State private var otp1 = ""
-  @State private var otp2 = ""
-  @State private var otp3 = ""
-  @State private var otp4 = ""
-  @State private var otp5 = ""
-  @State private var otp6 = ""
   @State var nextPin = false
+  @EnvironmentObject var loginViewModel: LoginViewModel
+  @EnvironmentObject var currentUser: CurrentUser
+  @Environment(\.dismiss) var dismiss
+  @State var otp = ["","","","","",""]
 
   var body: some View {
+    NavigationView {
       ZStack{
-          Image("Layer3").offset(x: 95.0, y: -300.0)
-          VStack{
-              Text("Verify").foregroundColor(Color("5")).font(.system(size: 25)).fontWeight(.medium).padding(.vertical, 30)
-              Text("We have sent an otp on ").foregroundColor(Color("5")).font(.system(size: 18)).fontWeight(.medium)
-              Text("your mobile number").foregroundColor(Color("5")).font(.system(size: 18)).fontWeight(.medium).padding(.bottom, 100)
-              HStack{
+        Image("Layer3").offset(x: 95.0, y: -300.0)
+        VStack{
+          // Navigation bar
+          HStack {
+            Button(action: { dismiss() }, label: {
+              Image(systemName: "arrow.left")
+                .resizable()
+                .frame(width: 25, height: 15)
+                .foregroundColor(Color("deepGreen"))
+                .padding()
+            })
 
-                  TextField("", text: $otp1).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
-                  TextField("", text:$otp2).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
-                  TextField("", text:$otp3).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
-                  TextField("", text:$otp4).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
-                  TextField("", text:$otp5).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
-                  TextField("", text:$otp6).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+            Spacer()
+            Text("Verify").foregroundColor(Color("deepGreen")).font(.system(size: 25)).fontWeight(.medium).padding(.vertical, 30)
+            Spacer()
+            Spacer()
+          }
 
-              }.padding().background(
-                  RoundedRectangle(cornerRadius: 40)
-                      .shadow(color: Color("gray"), radius: 43, x: 0.0, y: 10.0).foregroundColor(.white)
-              )
-              HStack{
-                  Spacer()
-                  Button(action: {
+          Text("We have sent an OTP on your ").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium)
+          Text("number \(loginViewModel.phoneNumber)").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium).padding(.bottom, 100)
 
-                  }, label: {
-                  Text("Resend OTP").foregroundColor(.gray).fontWeight(.medium).font(.system(size: 13))
-              }).padding(.horizontal).background(
-                  Capsule().stroke(Color.gray)
-                      .shadow(color: Color("gray"), radius: 43, x: 0.0, y: 10.0).foregroundColor(.white)
-              ).padding(9)
-              }
+          HStack{
+            TextField("Enter OTP", text: $loginViewModel.code).textFieldStyle(MyTextFieldStyle())
+
+//            TextField("", text: $otp[0]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+//            TextField("", text:$otp[1]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+//            TextField("", text:$otp[2]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+//
+//            Text("-")
+//              .scaleEffect(2)
+//              .foregroundColor(Color("deepGreen"))
+//
+//            TextField("", text:$otp[3]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+//            TextField("", text:$otp[4]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+//            TextField("", text:$otp[5]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
+
+            }.padding().background(
+                RoundedRectangle(cornerRadius: 40)
+                    .shadow(color: Color("gray"), radius: 43, x: 0.0, y: 10.0).foregroundColor(.white)
+            )
+            HStack{
+                Spacer()
+                Button(action: {
+                  loginViewModel.requestCode()
+                }, label: {
+                Text("Resend OTP").foregroundColor(.gray).fontWeight(.medium).font(.system(size: 13))
+            }).padding(.horizontal).background(
+                Capsule().stroke(Color.gray)
+                    .shadow(color: Color("gray"), radius: 43, x: 0.0, y: 10.0).foregroundColor(.white)
+            ).padding(9)
+            }
+            Spacer()
+
+            HStack{
               Spacer()
 
-              HStack{
-                  Spacer()
+//              NavigationLink(destination: SetPin()
+//                        .navigationBarHidden(true)
+//                        .navigationBarBackButtonHidden(true), isActive: $loginViewModel.status) {
+//                Text("")
+//                  .hidden()
+//              }
 
-                  Button(action: {
-                      self.nextPin.toggle()
-                  }, label: {
-                  Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-              }).padding(3).background(Color("7")).clipShape(Circle()).padding().fullScreenCover(isPresented: $nextPin, content: {
-                  EnterPin()
-              })
-              }
-          }
+              Button(action: {
+                //loginViewModel.code = self.otp.joined()
+                loginViewModel.verifyCode()
+              }, label: {
+                Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: .center)
+            }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding()
+            }
+        }
       }
+      .navigationBarHidden(true)
+      .navigationBarBackButtonHidden(true)
+        .alert(isPresented: $loginViewModel.error) {
+          Alert(title: Text("Message"), message: Text(loginViewModel.errorMsg), dismissButton: .default(Text("Ok")))
+      }
+    }
   }
 }
 
 struct OTPPin_Previews: PreviewProvider {
-  static var previews: some View {
+    static var previews: some View {
       OTPPin()
-  }
+        .environmentObject(LoginViewModel())
+        .environmentObject(CurrentUser())
+
+    }
 }
-
-
 
 extension View {
   func underlineTextField() -> some View {
       self
           .padding(.vertical, 10)
           .overlay(Rectangle().frame(height: 2).padding(.top, 35))
-          .foregroundColor(Color("5"))
+          .foregroundColor(Color("deepGreen"))
           .padding(5)
   }
 }

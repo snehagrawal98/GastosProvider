@@ -8,70 +8,79 @@
 import SwiftUI
 
 struct EnterMobileNumber: View {
-  @State var nextScreen = false
-  @State private var mNo = ""
-  @State private var countryPin = ""
 
+  @State var nextScreen = false
+  @EnvironmentObject var loginViewModel: LoginViewModel
+  @EnvironmentObject var currentUser: CurrentUser
+  @State var countryCode = "+91"
 
   var body: some View {
-
+    NavigationView {
       ZStack{
-
           Image("Layer").offset(x: 100.0, y: -250.0)
-      VStack{
-
-          HStack{
-              Text("Welcome to").fontWeight(.semibold).font(.system(size: 25)).foregroundColor(Color("5")).padding(.horizontal)
+          VStack{
+            HStack{
+              Text("Welcome to").fontWeight(.semibold).font(.system(size: 25)).foregroundColor(Color("5"))
+                .padding(.horizontal)
               Spacer()
-          }
+            }
 
-          HStack{
-              Text("Gastos").fontWeight(.bold).font(.system(size: 40)).foregroundColor(Color("5")).padding(.horizontal)
+            HStack{
+              Text("Gastos").fontWeight(.bold).font(.system(size: 40)).foregroundColor(Color("5"))
+                .padding(.horizontal)
               Spacer()
-          }
+            }.padding(.bottom, 30)
 
-        HStack{
-            Text("Provider").fontWeight(.bold).font(.system(size: 40)).foregroundColor(Color("5")).padding(.horizontal)
-            Spacer()
-        }.padding(.bottom, 30)
-
-          HStack{
+            HStack{
               Text("Enter Mobile Number").fontWeight(.regular).font(.system(size: 25)).foregroundColor(Color("5")).padding(.horizontal)
               Spacer()
-          }
+            }
 
-          HStack(spacing:0){
-              TextField("+91", text: $countryPin).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle())
-              TextField("Mobile Number", text: $mNo).textFieldStyle(MyTextFieldStyle())
+            HStack(spacing:0){
+              TextField("+91", text: $countryCode).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle())
+              TextField("Mobile Number", text: $loginViewModel.phoneNumber).textFieldStyle(MyTextFieldStyle())
 
-          }.padding(.horizontal)
+            }.padding(.horizontal)
 
-        //  TextField("")
-          Spacer()
+            Spacer()
 
-          HStack{
+            HStack{
 
-              Spacer()
+            Spacer()
+
+            NavigationLink(destination: OTPPin()
+                          .navigationBarHidden(true)
+                          .navigationBarBackButtonHidden(true), isActive: $loginViewModel.gotoVerify) {
+                Text("")
+                  .hidden()
+              }
+
               Button(action: {
-                  self.nextScreen.toggle()
+                currentUser.phone = loginViewModel.phoneNumber
+                loginViewModel.sendCode()
               }, label: {
                 Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: .center)
-              }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding().fullScreenCover(isPresented: $nextScreen){
-                  OTPPin()
-              }
-          }
-      }.padding(.vertical, 50)
+              }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding()
+                .disabled(loginViewModel.phoneNumber == "" ? true : false)
+            }
+          }.padding(.vertical, 50)
+        }
+      .navigationBarHidden(true)
+      .navigationBarBackButtonHidden(true)
+        .alert(isPresented: $loginViewModel.error) {
+          Alert(title: Text("Message"), message: Text(loginViewModel.errorMsg), dismissButton: .default(Text("Ok")))
       }
+    }
   }
 }
 
 struct EnterMobileNumber_Previews: PreviewProvider {
   static var previews: some View {
       EnterMobileNumber()
+      .environmentObject(LoginViewModel())
+      .environmentObject(CurrentUser())
   }
 }
-
-
 
 extension View {
   func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {

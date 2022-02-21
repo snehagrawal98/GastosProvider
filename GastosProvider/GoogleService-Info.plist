@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>828672159733-l8clhjmusorhtd66p2gsrsa0hqriigq9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.828672159733-l8clhjmusorhtd66p2gsrsa0hqriigq9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>828672159733-3jrcai1u31bs747e9ekt45crulo4d6i4.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCaD5Kx76ZvDMhToaZ7IwG2wGjL_gd73kI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>828672159733</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.project.GastosProvider</string>
+	<key>PROJECT_ID</key>
+	<string>gastosprovidermvp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>gastosprovidermvp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:828672159733:ios:226b91ae325233a521babc</string>
+	<key>DATABASE_URL</key>
+	<string>https://gastosprovidermvp-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>
