@@ -22,7 +22,7 @@ struct SetDiscount: View {
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
-                .frame(width: 14, height: 14, alignment: .leading)
+                .frame(width: 20, height: 20, alignment: .leading)
                 .foregroundColor(.primary)
             })
 
@@ -82,9 +82,20 @@ struct SetDiscount: View {
           .padding(.top)
         } //: SCROLL
         .overlay(
-          BasicScreensBottom(buttonText: "Confirm", firstLine: "Discount Margn on all Bills", secondLine: "20%")
-            .frame(height: UIScreen.screenHeight, alignment: .bottom)
-        )
+          ZStack {
+            BasicScreensBottomBackground()
+            HStack {
+              BasicScreensBottomLeftText(firstLine: "Discount Margin on all Bills", secondLine: "20%")
+                .padding(.leading)
+              Spacer()
+
+              Button(action: { }, label: {
+                BasicScreensBottomRighttText(buttonText: "Next")
+              })
+            }
+          }
+          .frame(height: UIScreen.screenHeight, alignment: .bottom)
+        ) //: OVERLAY
     }
 
   // Set Your Discount View

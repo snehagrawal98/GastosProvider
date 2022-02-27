@@ -26,7 +26,7 @@ struct BasicDetails: View {
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
-                .frame(width: 14, height: 14, alignment: .leading)
+                .frame(width: 20, height: 20, alignment: .leading)
                 .foregroundColor(.primary)
             })
 
@@ -208,18 +208,27 @@ struct BasicDetails: View {
         .navigationBarBackButtonHidden(true)
       }
       .overlay(
-        Button(action: { self.didEnterAllData() }, label: {
-          BasicScreensBottom(buttonText: "Next", firstLine: "Welcome to", secondLine: "Gastos Provider Club")
-            .frame(height: UIScreen.screenHeight, alignment: .bottom)
-        })
-      )
+        ZStack {
+          BasicScreensBottomBackground()
+          HStack {
+            BasicScreensBottomLeftText(firstLine: "Welcome to ", secondLine: "Gastos Provider Club")
+              .padding(.leading)
+            Spacer()
+
+            Button(action: { self.didEnterAllData() }, label: {
+              BasicScreensBottomRighttText(buttonText: "Next")
+            })
+          }
+        }
+      .frame(height: UIScreen.screenHeight, alignment: .bottom)
+      ) //: OVERLAY
     }
 
   func didEnterAllData() {
 
     if (!loginViewModel.ownerName.isEmpty && !loginViewModel.emailAddress.isEmpty && !loginViewModel.shopName.isEmpty && !loginViewModel.shopAddress.isEmpty && !loginViewModel.shopCity.isEmpty ) {
 
-      print("ran till 202 in profile page")
+      loginViewModel.shopCategory = self.shopCategory
 
       loginViewModel.registerMerchantDetails()
     }
@@ -244,46 +253,42 @@ struct BasicScreensTitle: View {
 }
 
 // Bottom Part
-struct BasicScreensBottom: View {
-  var buttonText: String
-  var firstLine: String
-  var secondLine: String
+struct BasicScreensBottomBackground: View {
   var body: some View {
-    ZStack {
       Rectangle()
         .frame(width: UIScreen.screenWidth, height: 0.17 * UIScreen.screenHeight)
         .foregroundColor(Color("deepGreen"))
         .cornerRadius(30, corners: [.topLeft, .topRight])
         .ignoresSafeArea(.all)
+  }
+}
 
-      HStack {
-        // Text
-        VStack(alignment: .leading, spacing: 5) {
-          Text(firstLine)
-            .font(.subheadline.weight(.regular))
-            .foregroundColor(Color.white.opacity(0.6))
+struct BasicScreensBottomLeftText: View {
+  var firstLine: String
+  var secondLine: String
+  var body: some View {
+    VStack(alignment: .leading, spacing: 5) {
+      Text(firstLine)
+        .font(.subheadline.weight(.regular))
+        .foregroundColor(Color.white.opacity(0.6))
 
-          Text(secondLine)
-            .font(.title3.weight(.semibold))
-            .foregroundColor(.white)
-        }
-        .padding(.leading)
-
-        Spacer()
-
-        Button(action: {
-
-        }, label: {
-          Text(buttonText)
-            .font(.body.weight(.bold))
-            .foregroundColor(Color("textGreen"))
-            .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-            .background(Color.white)
-            .cornerRadius(15)
-            .padding(.trailing)
-        })
-      }
+      Text(secondLine)
+        .font(.title3.weight(.semibold))
+        .foregroundColor(.white)
     }
+  }
+}
+
+struct BasicScreensBottomRighttText: View {
+  var buttonText: String
+  var body: some View {
+    Text(buttonText)
+      .font(.body.weight(.bold))
+      .foregroundColor(Color("textGreen"))
+      .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
+      .background(Color.white)
+      .cornerRadius(15)
+      .padding(.trailing)
   }
 }
 
@@ -301,6 +306,5 @@ struct BasicDetailsTextFieldStyle: TextFieldStyle {
           RoundedRectangle(cornerRadius: 10)
             .stroke(Color("textGreen").opacity(0.2), lineWidth: 2)
       )
-
     }
 }

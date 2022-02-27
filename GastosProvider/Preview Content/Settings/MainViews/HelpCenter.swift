@@ -8,64 +8,68 @@
 import SwiftUI
 
 struct HelpCenter: View {
+  @Environment(\.dismiss) var dismiss
     var body: some View {
-      VStack {
-
-        // Navigation Bar
-        HStack {
-          Button(action: {
-            // back
-          }, label: {
-            Image(systemName: "arrow.left")
-              .resizable()
-              .frame(width: 24, height: 24)
-              .foregroundColor(.primary)
-          })
-
-          Spacer()
-
-          SettingsTitleView(title: "Help Center")
-
-          Spacer()
-        } //: HSTACK
-        .padding()
-
+      NavigationView {
         VStack {
-          Text("Hi, How can we")
+          // Navigation Bar
+          HStack {
+            Button(action: {
+              dismiss()
+            }, label: {
+              Image(systemName: "arrow.left")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(.primary)
+            })
 
-          Text("help?")
-        }
-        .font(.title2.weight(.regular))
-        .foregroundColor(Color("helpCenterText"))
+            Spacer()
 
-        ZStack {
-          Image("HelpCenterImage")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 0.7 * UIScreen.screenWidth, height: 0.24 * UIScreen.screenHeight)
+            SettingsTitleView(title: "Help Center")
+
+            Spacer()
+          } //: HSTACK
+          .padding()
 
           VStack {
-            Spacer()
-            HStack {
-              Spacer()
+            Text("Hi, How can we")
 
-              Image(systemName: "magnifyingglass")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 20, height: 20, alignment: .center)
-                .foregroundColor(Color.gray)
-                .padding()
-            }
-            .frame(width: 0.9 * UIScreen.screenWidth, height: 55, alignment: .center)
-            .background(
-              RoundedRectangle(cornerRadius: 12)
-                .stroke(Color("textGreen").opacity(0.5), lineWidth: 1)
-                .background(Color.white)
-          )
+            Text("help?")
           }
-          .frame(height: 0.3 * UIScreen.screenHeight)
+          .font(.title2.weight(.regular))
+          .foregroundColor(Color("helpCenterText"))
+
+          ZStack {
+            Image("HelpCenterImage")
+              .resizable()
+              .scaledToFit()
+              .frame(width: 0.7 * UIScreen.screenWidth, height: 0.24 * UIScreen.screenHeight)
+
+            VStack {
+              Spacer()
+              HStack {
+                Spacer()
+
+                Image(systemName: "magnifyingglass")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 20, height: 20, alignment: .center)
+                  .foregroundColor(Color.gray)
+                  .padding()
+              }
+              .frame(width: 0.9 * UIScreen.screenWidth, height: 55, alignment: .center)
+              .background(
+                RoundedRectangle(cornerRadius: 12)
+                  .stroke(Color("textGreen").opacity(0.5), lineWidth: 1)
+                  .background(Color.white)
+            )
+            }
+            .frame(height: 0.3 * UIScreen.screenHeight)
+          }
+          Spacer()
         }
-        Spacer()
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
       }
     }
 }
