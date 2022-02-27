@@ -17,16 +17,20 @@ struct AddQRs: View {
       return Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     }
     @StateObject var qrCodes = QrCodes()
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
       NavigationView {
         VStack {
-          // Navigation bar
+          // Navigation bar 
           HStack {
-            Image(systemName: "arrow.left")
-              .resizable()
-              .frame(width: 20, height: 20)
-              .padding()
+            Button(action: { dismiss() }, label: {
+              Image(systemName: "arrow.left")
+                .resizable()
+                .frame(width: 20, height: 20)
+                .padding()
+                .foregroundColor(.black)
+            })
             Spacer()
             BasicScreensTitle(title: "Add QRs")
             Spacer()
