@@ -24,7 +24,7 @@ class LoginViewModel: ObservableObject {
   @AppStorage("log_Status") var status = false
   @AppStorage("didSetPin") var didSetPin = false
   @AppStorage("didEnterMerchantDetails") var didEnterMerchantDetails = false
- // @AppStorage("didShowVerifiedScreenOnce") var didShowVerifiedScreenOnce = false
+  @AppStorage("didSetPaymentInfo") var didSetPaymentInfo = false
   //@AppStorage("didShowMainViewOnce") var didShowMainViewOnce = 0
   // Loading view
   @Published var loading = false
@@ -86,14 +86,14 @@ class LoginViewModel: ObservableObject {
   var ref: DatabaseReference?
   private var db = Database.database()
 
+  // Account Info
   @Published var uid = ""
-  //@Published var dob = ""
-  //@Published var gender = ""
   @Published var pin = ""
   @Published var ownerName = ""
   @Published var phoneNumber = ""
   @Published var emailAddress = ""
 
+  // Shop Info
   @Published var shopName = ""
   @Published var shopAddress = ""
   @Published var deliveryEnabled = true
@@ -101,6 +101,9 @@ class LoginViewModel: ObservableObject {
   @Published var shopCity = ""
   @Published var shopLocation = ""
   @Published var shopCategory = ""
+
+  // Payment Info
+  @Published var qrCodes = [QrCode]()
 
   // functions
   func registerMerchant() {
@@ -135,6 +138,21 @@ class LoginViewModel: ObservableObject {
     didEnterMerchantDetails = true
   }
 
+  func registerMerchantPaymentInfo() {
+    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
+
+    let qrRange = 0..<qrCodes.count
+    for qrCode in qrRange {
+      let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
+
+      ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
+      ref2.child("primary").setValue("\(qrCodes[qrCode].isPrimary)")
+      ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
+      ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
+    }
+    didSetPaymentInfo = true
+  }
+
   // for reading current user from realtime database
 //  func readCurrentUser() {
 //    let ref = db.reference().child("Users/\(uid)")
@@ -165,4 +183,10 @@ class CurrentUser: ObservableObject {
   @Published var phone = " "
 }
 
-
+// data model for qr codes
+struct QrCode: Hashable {
+  var qrName: String
+  var upiAdress: String
+  var merchantId: String
+  var isPrimary: Bool
+}
