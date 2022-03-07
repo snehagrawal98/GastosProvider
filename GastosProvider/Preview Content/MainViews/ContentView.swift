@@ -15,8 +15,10 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
+          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo {
             SetDiscount()
+          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
+            AddQRs()
           } else if status && loginViewModel.didSetPin {
             BasicDetails()
           } else if status {

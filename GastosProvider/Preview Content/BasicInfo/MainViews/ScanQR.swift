@@ -13,7 +13,7 @@ struct ScanQR: View {
   @State var qrName = ""
   @State var upiAdress = ""
   @State var merchantId = ""
-  @EnvironmentObject var qrCodes: QrCodes
+  @EnvironmentObject var loginViewModel: LoginViewModel
   let context = CIContext()
   let filter = CIFilter.qrCodeGenerator()
 
@@ -75,7 +75,7 @@ struct ScanQR: View {
   func didEnterAllData() {
     if !qrName.isEmpty && !upiAdress.isEmpty && !merchantId.isEmpty {
       let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, merchantId: merchantId, isPrimary: false)
-      qrCodes.qrCodes.append(qrCode)
+      loginViewModel.qrCodes.append(qrCode)
       dismiss()
     }
   }
@@ -84,7 +84,7 @@ struct ScanQR: View {
 struct ScanQR_Previews: PreviewProvider {
     static var previews: some View {
         ScanQR()
-        .environmentObject(QrCodes())
+        .environmentObject(LoginViewModel())
     }
 }
 

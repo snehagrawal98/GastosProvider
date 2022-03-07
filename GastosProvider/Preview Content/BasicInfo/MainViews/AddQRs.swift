@@ -11,12 +11,13 @@ import CoreImage.CIFilterBuiltins
 struct AddQRs: View {
     @State var numberOfQrs: Int = 1
     @State var isShowingSetPrimary = false
-    @State var isQrSheetTapped = false
+    @State var isShowingSetDiscount = false
     @State var primaryQr = 0
+    @State var primaryQrName = ""
     var gridLayout: [GridItem] {
       return Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     }
-    @StateObject var qrCodes = QrCodes()
+    @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -46,21 +47,41 @@ struct AddQRs: View {
           })
 
           // showing all QRs
-          if qrCodes.qrCodes.count == 0 {
+          if loginViewModel.qrCodes.count == 0 {
             Spacer()
             Text("No QR Added")
               .foregroundColor(.gray)
             Spacer()
           } else {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10, content: {
-              ForEach(0..<qrCodes.qrCodes.count, id: \.self) { qrCode in
-                QrSheet(qrName: qrCodes.qrCodes[qrCode].qrName, isPrimary: qrCodes.qrCodes[qrCode].isPrimary, merchantId: qrCodes.qrCodes[qrCode].merchantId, upiAddress: qrCodes.qrCodes[qrCode].upiAdress)
-                  .onTapGesture {
-                    primaryQr = qrCode
-                  }
+              ForEach(0..<loginViewModel.qrCodes.count, id: \.self) { qrCode in
+                if loginViewModel.qrCodes[qrCode].isPrimary {
+                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                    .onTapGesture {
+                      primaryQr = qrCode
+                      isShowingSetPrimary = true
+                    }
+                } else {
+                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                    .onTapGesture {
+                      primaryQr = qrCode
+                      isShowingSetPrimary = true
+                    }
+                }
               }
             })
           }
+
+          // To show SetAQrPrimary view
+          NavigationLink(isActive: $isShowingSetPrimary, destination: {
+            SetAQrPrimary(primaryQr: primaryQr)
+              .navigationBarHidden(true)
+              .navigationBarBackButtonHidden(true)
+          }, label: {
+            Text("")
+              .hidden()
+          })
+
           Spacer()
         } //: VSTACK
         .overlay(
@@ -71,30 +92,39 @@ struct AddQRs: View {
                 BasicScreensBottomLeftText(firstLine: "", secondLine: "Add QR")
                   .padding(.leading)
               } else {
-                BasicScreensBottomLeftText(firstLine: "Primary QR", secondLine: "PhonePe")
+                BasicScreensBottomLeftText(firstLine: "Primary QR", secondLine: primaryQrName)
                   .padding(.leading)
               }
               Spacer()
-              Button(action: { isShowingSetPrimary.toggle() }, label: {
+              Button(action: {
+                loginViewModel.registerMerchantPaymentInfo()
+                isShowingSetDiscount.toggle()
+              }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")
               })
+                .disabled(loginViewModel.qrCodes.isEmpty)
             }
           }
         .frame(height: UIScreen.screenHeight, alignment: .bottom)
         ) //: OVERLAY
-        .fullScreenCover(isPresented: $isShowingSetPrimary, content: {
-          SetAQrPrimary(primaryQr: primaryQr)
-        })
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
+          let qrRange = 0..<loginViewModel.qrCodes.count
+          for qrCode in qrRange {
+            if loginViewModel.qrCodes[qrCode].isPrimary {
+              primaryQrName = loginViewModel.qrCodes[qrCode].qrName
+            }
+          }
+        })
       } //: NAV
-      .environmentObject(qrCodes)
     }
 }
 
 struct AddQRs_Previews: PreviewProvider {
     static var previews: some View {
         AddQRs()
+        .environmentObject(LoginViewModel())
     }
 }
 
@@ -190,62 +220,4 @@ struct QrSheet: View {
     }
     return UIImage(systemName: "xmark.circle") ?? UIImage()
   }
-}
-
-// Set a QR Primary
-struct SetAQrPrimary: View {
-  @Environment(\.dismiss) var dismiss
-  let primaryQr: Int
-  @EnvironmentObject var qrCodes: QrCodes
-  var body: some View {
-    NavigationView {
-      VStack {
-        Spacer()
-        QrSheet(qrName: qrCodes.qrCodes[primaryQr].qrName, isPrimary: true, merchantId: qrCodes.qrCodes[primaryQr].merchantId, upiAddress: qrCodes.qrCodes[primaryQr].upiAdress)
-        Spacer()
-
-        Text("you’ll be receiving all of your payments on the bank account linked with this QR.")
-          .font(.headline.weight(.medium))
-          .multilineTextAlignment(.center)
-
-        Spacer()
-        Button(action: {
-          qrCodes.qrCodes[primaryQr].qrName = "PhonePe"
-          print(qrCodes.qrCodes[primaryQr].isPrimary)
-          dismiss()
-        }, label: {
-          Text("Set Primary")
-            .font(.headline.weight(.semibold))
-            .padding(8)
-            .foregroundColor(.white)
-            .frame(width: 0.47 * UIScreen.screenWidth, height: 0.045 * UIScreen.screenHeight)
-            .background(
-              RoundedRectangle(cornerRadius: 13)
-                .foregroundColor(Color("textGreen"))
-            )
-        })
-        Spacer()
-      }
-      .navigationBarHidden(true)
-      .navigationBarBackButtonHidden(true)
-      .frame(width: 0.677 * UIScreen.screenWidth, height: 0.474 * UIScreen.screenHeight)
-      .background(Color.white)
-      .cornerRadius(30)
-      .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
-      .background(.ultraThinMaterial)
-      .ignoresSafeArea(.all)
-    }
-  }
-}
-
-// data model for qr codes
-struct QrCode: Hashable {
-  var qrName: String
-  var upiAdress: String
-  var merchantId: String
-  var isPrimary: Bool
-}
-
-class QrCodes: ObservableObject {
-  @Published var qrCodes = [QrCode]()
 }

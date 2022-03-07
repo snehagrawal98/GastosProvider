@@ -225,7 +225,6 @@ struct BasicDetails: View {
     }
 
   func didEnterAllData() {
-
     if (!loginViewModel.ownerName.isEmpty && !loginViewModel.emailAddress.isEmpty && !loginViewModel.shopName.isEmpty && !loginViewModel.shopAddress.isEmpty && !loginViewModel.shopCity.isEmpty ) {
 
       loginViewModel.shopCategory = self.shopCategory

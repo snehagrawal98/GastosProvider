@@ -11,14 +11,17 @@ struct SetDiscount: View {
   @State var discount = 20.0
   @State var minAmount = ""
   @State var numberOfDiscounts = 1
+  @EnvironmentObject var loginViewModel: LoginViewModel
+  @Environment(\.dismiss) var dismiss
 
     var body: some View {
+      NavigationView {
         ScrollView(.vertical) {
 
           // Navigation Bar
           HStack {
             Button(action: {
-              // back
+              dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
@@ -81,6 +84,8 @@ struct SetDiscount: View {
           }
           .padding(.top)
         } //: SCROLL
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
         .overlay(
           ZStack {
             BasicScreensBottomBackground()
@@ -96,6 +101,7 @@ struct SetDiscount: View {
           }
           .frame(height: UIScreen.screenHeight, alignment: .bottom)
         ) //: OVERLAY
+      }
     }
 
   // Set Your Discount View
@@ -153,5 +159,6 @@ struct SetDiscount: View {
 struct SetDiscount_Previews: PreviewProvider {
     static var previews: some View {
         SetDiscount()
+        .environmentObject(LoginViewModel())
     }
 }
