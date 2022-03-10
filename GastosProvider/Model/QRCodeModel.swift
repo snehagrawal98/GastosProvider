@@ -1,0 +1,17 @@
+//
+//  QRCodeModel.swift
+//  GastosProvider
+//
+//  Created by Sneha Agrawal on 10/03/22.
+//
+
+import Foundation
+import SwiftUI
+
+// data model for qr codes
+struct QrCode: Hashable {
+  var qrName: String
+  var upiAdress: String
+  var merchantId: String
+  var isPrimary: Bool
+}
