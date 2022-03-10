@@ -175,3 +175,14 @@ class LoginViewModel: ObservableObject {
 
 
 
+
+// class to store current user data
+class CurrentUser: ObservableObject {
+  @Published var uid = " "
+  @Published var dob = " "
+  @Published var email = " "
+  @Published var gender = " "
+  @Published var pin = " "
+  @Published var name = " "
+  @Published var phone = " "
+}
