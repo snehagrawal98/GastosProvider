@@ -15,6 +15,7 @@
 		691286B32797087400232975 /* ManageAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691286B22797087400232975 /* ManageAccount.swift */; };
 		691286B527970CA400232975 /* UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691286B427970CA400232975 /* UIScreen.swift */; };
 		691B699827CB20DA000F43D9 /* RecentPayments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691B699727CB20DA000F43D9 /* RecentPayments.swift */; };
+		691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691D0AB327DCF23A00E43235 /* UserAgreementModel.swift */; };
 		691D663627972A0A00056EA0 /* ManageShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691D663527972A0A00056EA0 /* ManageShop.swift */; };
 		692996D527CA7058001D9F59 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692996D427CA7058001D9F59 /* HomeScreen.swift */; };
 		692996D727CA92EC001D9F59 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692996D627CA92EC001D9F59 /* Settings.swift */; };
@@ -53,6 +54,7 @@
 		691286B22797087400232975 /* ManageAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAccount.swift; sourceTree = "<group>"; };
 		691286B427970CA400232975 /* UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreen.swift; sourceTree = "<group>"; };
 		691B699727CB20DA000F43D9 /* RecentPayments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPayments.swift; sourceTree = "<group>"; };
+		691D0AB327DCF23A00E43235 /* UserAgreementModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreementModel.swift; sourceTree = "<group>"; };
 		691D663527972A0A00056EA0 /* ManageShop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageShop.swift; sourceTree = "<group>"; };
 		692996D427CA7058001D9F59 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		692996D627CA92EC001D9F59 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
@@ -154,9 +156,19 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		691D0AB227DCF1F500E43235 /* UserAgreement */ = {
+			isa = PBXGroup;
+			children = (
+				697AD550279D14A7009042C8 /* UserAgreement.swift */,
+				691D0AB327DCF23A00E43235 /* UserAgreementModel.swift */,
+			);
+			path = UserAgreement;
+			sourceTree = "<group>";
+		};
 		6E4CA4C927D9D896006AC87D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				691D0AB227DCF1F500E43235 /* UserAgreement */,
 				691286AB279707BF00232975 /* ContentView.swift */,
 				6EC23ACE27DA722D009381DD /* MobileLogin */,
 				693D6C3E2799AE3E00DF62C4 /* SetPin.swift */,
@@ -169,7 +181,6 @@
 				6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */,
 				693E599527D475AE0086C25C /* SetAQrPrimary.swift */,
 				69C237C0279C476C00A9627A /* SetDiscount.swift */,
-				697AD550279D14A7009042C8 /* UserAgreement.swift */,
 				692996D427CA7058001D9F59 /* HomeScreen.swift */,
 				6EB07E9827DA09C600A10A85 /* ManageQR.swift */,
 				691B699727CB20DA000F43D9 /* RecentPayments.swift */,
@@ -274,6 +285,7 @@
 				697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
+				691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */,
 				691286B32797087400232975 /* ManageAccount.swift in Sources */,
 				692996D527CA7058001D9F59 /* HomeScreen.swift in Sources */,
 				693D6C452799AF5E00DF62C4 /* OTPPin.swift in Sources */,
