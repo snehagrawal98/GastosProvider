@@ -29,6 +29,7 @@
 		693E599627D475AE0086C25C /* SetAQrPrimary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693E599527D475AE0086C25C /* SetAQrPrimary.swift */; };
 		695B871527C60984009C7C40 /* AddQRs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695B871427C60984009C7C40 /* AddQRs.swift */; };
 		695B871727C61380009C7C40 /* ScanQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695B871627C6137F009C7C40 /* ScanQR.swift */; };
+		6965B3D827DDD858005B5D77 /* SetDiscountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965B3D727DDD858005B5D77 /* SetDiscountViewModel.swift */; };
 		69674403279BEB79009FBBC3 /* BasicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69674402279BEB79009FBBC3 /* BasicDetails.swift */; };
 		69674407279BF189009FBBC3 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69674406279BF189009FBBC3 /* ImagePicker.swift */; };
 		697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697AD550279D14A7009042C8 /* UserAgreement.swift */; };
@@ -68,6 +69,7 @@
 		693E599527D475AE0086C25C /* SetAQrPrimary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAQrPrimary.swift; sourceTree = "<group>"; };
 		695B871427C60984009C7C40 /* AddQRs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQRs.swift; sourceTree = "<group>"; };
 		695B871627C6137F009C7C40 /* ScanQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQR.swift; sourceTree = "<group>"; };
+		6965B3D727DDD858005B5D77 /* SetDiscountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDiscountViewModel.swift; sourceTree = "<group>"; };
 		69674402279BEB79009FBBC3 /* BasicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetails.swift; sourceTree = "<group>"; };
 		69674406279BF189009FBBC3 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		697AD550279D14A7009042C8 /* UserAgreement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAgreement.swift; sourceTree = "<group>"; };
@@ -165,13 +167,22 @@
 			path = UserAgreement;
 			sourceTree = "<group>";
 		};
+		6965B3D627DDD844005B5D77 /* SetDiscount */ = {
+			isa = PBXGroup;
+			children = (
+				69C237C0279C476C00A9627A /* SetDiscount.swift */,
+				6965B3D727DDD858005B5D77 /* SetDiscountViewModel.swift */,
+			);
+			path = SetDiscount;
+			sourceTree = "<group>";
+		};
 		6E4CA4C927D9D896006AC87D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				691D0AB227DCF1F500E43235 /* UserAgreement */,
 				691286AB279707BF00232975 /* ContentView.swift */,
 				6EC23ACE27DA722D009381DD /* MobileLogin */,
 				693D6C3E2799AE3E00DF62C4 /* SetPin.swift */,
+				691D0AB227DCF1F500E43235 /* UserAgreement */,
 				693D6C402799AE6600DF62C4 /* KeyBoard.swift */,
 				693D6C422799AF1700DF62C4 /* EnterPin.swift */,
 				693D6C442799AF5E00DF62C4 /* OTPPin.swift */,
@@ -180,7 +191,7 @@
 				695B871627C6137F009C7C40 /* ScanQR.swift */,
 				6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */,
 				693E599527D475AE0086C25C /* SetAQrPrimary.swift */,
-				69C237C0279C476C00A9627A /* SetDiscount.swift */,
+				6965B3D627DDD844005B5D77 /* SetDiscount */,
 				692996D427CA7058001D9F59 /* HomeScreen.swift */,
 				6EB07E9827DA09C600A10A85 /* ManageQR.swift */,
 				691B699727CB20DA000F43D9 /* RecentPayments.swift */,
@@ -286,6 +297,7 @@
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
 				691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */,
+				6965B3D827DDD858005B5D77 /* SetDiscountViewModel.swift in Sources */,
 				691286B32797087400232975 /* ManageAccount.swift in Sources */,
 				692996D527CA7058001D9F59 /* HomeScreen.swift in Sources */,
 				693D6C452799AF5E00DF62C4 /* OTPPin.swift in Sources */,

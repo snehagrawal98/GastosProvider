@@ -5,7 +5,6 @@
 //  Created by Sneha Agrawal on 10/03/22.
 //
 
-import Foundation
 import SwiftUI
 
 // data model for qr codes

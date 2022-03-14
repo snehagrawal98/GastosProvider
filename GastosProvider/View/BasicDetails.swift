@@ -10,7 +10,7 @@ import SwiftUI
 struct BasicDetails: View {
     @State var isShowingImagePicker = false
     @State var image: UIImage?
-    @State var shopCategory = "Select Shop Category"
+    @State var shopCategory = ""
   var shopCategories = ["Food & Beverages", "Fashion", "Salon & Spa", "Stores", "Medical", "Others"]
   var shopCategoriesDiscountRange = ["   5-40", "   5-50", "   5-50", "   0-30", "   1-30", "   5-50"]
   @State var showingCategories = false
@@ -118,17 +118,17 @@ struct BasicDetails: View {
                 showingCategories.toggle()
               }, label: {
                 HStack {
-                  if shopCategory.isEmpty {
-                    Text("Select Shop Category")
-                      .font(.headline.weight(.regular))
-                      .foregroundColor(Color("basicDetailsText"))
-                  } else {
-                    Text(shopCategory)
-                      .font(.headline.weight(.regular))
-                      .foregroundColor(Color("basicDetailsText"))
-                      .padding(.leading, 17)
-                      .padding(.vertical, 10)
+                  Group {
+                    if shopCategory.isEmpty {
+                      Text("Select Shop Category")
+                    } else {
+                      Text(shopCategory)
+                    }
                   }
+                  .font(.headline.weight(.regular))
+                  .foregroundColor(Color("basicDetailsText"))
+                  .padding(.leading, 17)
+                  .padding(.vertical, 10)
 
                   Spacer()
 
