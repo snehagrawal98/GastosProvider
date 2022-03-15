@@ -11,7 +11,9 @@ struct Settings: View {
   @Environment(\.dismiss) var dismiss
     var body: some View {
       NavigationView {
+          ScrollView{
         VStack {
+            
           //Navigation Bar
           HStack {
             Button(action: { dismiss() }, label: {
@@ -75,12 +77,34 @@ struct Settings: View {
                 }
                 .foregroundColor(.black)
               })
+                
+                Spacer()
+                Divider()
+                Spacer()
+
+                NavigationLink(destination: ManageShop()
+                                .navigationBarHidden(true)
+                                .navigationBarBackButtonHidden(true), label: {
+                  HStack {
+                    Image(systemName: "wallet.pass")
+                      .resizable()
+                      .frame(width: 20, height: 20)
+                      .padding(.trailing)
+
+                    Text("Provider Wallet")
+                      .font(.body)
+
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                  }
+                  .foregroundColor(.black)
+                })
             }
-            .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
+            .frame(width: 0.8 * UIScreen.screenWidth, height: 0.15 * UIScreen.screenHeight)
             .padding()
             .background(
               RoundedRectangle(cornerRadius: 16)
-                .frame(width: 0.9 * UIScreen.screenWidth, height: 0.135 * UIScreen.screenHeight)
+                .frame(width: 0.9 * UIScreen.screenWidth, height: 0.191 * UIScreen.screenHeight)
                 .foregroundColor(.white)
                 .shadow(color: .gray.opacity(0.5), radius: 5)
             )
@@ -95,7 +119,7 @@ struct Settings: View {
 
             VStack {
               HStack {
-                Image(systemName: "chart.bar")
+                Image(systemName: "plus.square")
                   .resizable()
                   .frame(width: 20, height: 20)
                   .padding(.trailing)
@@ -109,18 +133,25 @@ struct Settings: View {
               Spacer()
               Divider()
               Spacer()
+                
+                NavigationLink(destination: ManageAds()
+                                .navigationBarHidden(true)
+                                .navigationBarBackButtonHidden(true), label: {
               HStack {
-                Image(systemName: "star")
+                Image(systemName: "chart.bar.doc.horizontal")
                   .resizable()
-                  .frame(width: 20, height: 20)
-                  .padding(.trailing)
+                  .frame(width: 20, height: 20).rotationEffect(.degrees(-90))
+                  .padding(.trailing).foregroundColor(.black)
 
                 Text("Manage Ads")
-                  .font(.body)
+                      .font(.body).foregroundColor(.black)
 
                 Spacer()
-                Image(systemName: "chevron.right")
+                  Image(systemName: "chevron.right").foregroundColor(.black)
               }
+                
+                })
+                
             }
             .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
             .padding()
@@ -132,7 +163,96 @@ struct Settings: View {
             )
           }
           .padding(.bottom, 8)
+            
+        //Branding
+            VStack(alignment: .leading) {
+              Text("BRANDING")
+                .font(.body.weight(.semibold))
+                .foregroundColor(Color("deepGreen"))
 
+              VStack {
+                HStack {
+                  Image(systemName: "square.and.arrow.down")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.trailing)
+
+                  Text("Request Design")
+                    .font(.body)
+
+                  Spacer()
+                  Image(systemName: "chevron.right")
+                }
+                Spacer()
+                Divider()
+                Spacer()
+                HStack {
+                  Image(systemName: "folder")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.trailing)
+
+                  Text("Manage Design")
+                    .font(.body)
+
+                  Spacer()
+                  Image(systemName: "chevron.right")
+                }
+              }
+              .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
+              .padding()
+              .background(
+                RoundedRectangle(cornerRadius: 16)
+                  .frame(width: 0.9 * UIScreen.screenWidth, height: 0.135 * UIScreen.screenHeight)
+                  .foregroundColor(.white)
+                  .shadow(color: .gray.opacity(0.5), radius: 5)
+              )
+            }
+            .padding(.bottom, 8)
+            
+            
+            
+            //Refer
+            VStack(alignment: .leading) {
+              Text("REFER AND EARN")
+                .font(.body.weight(.semibold))
+                .foregroundColor(Color("deepGreen"))
+
+              VStack {
+                  NavigationLink(destination: ReferAndEarn()
+                                  .navigationBarHidden(true)
+                                  .navigationBarBackButtonHidden(true), label: {
+                HStack {
+                    HStack(spacing: -20){
+                  Image(systemName: "person")
+                    .resizable()
+                    .frame(width: 20, height: 20)
+                    .padding(.trailing).foregroundColor(.black)
+                Image(systemName: "plus")
+                          .resizable()
+                          .frame(width: 8, height: 8)
+                          .padding(.trailing).foregroundColor(.black).offset(y:-5)
+                    }
+                  Text("Invite Your Friend")
+                        .font(.body).foregroundColor(.black).offset(x: -5)
+
+                  Spacer()
+                  Image(systemName: "chevron.right")
+                
+                }
+                  })
+              }
+              .frame(width: 0.8 * UIScreen.screenWidth, height: 0.05 * UIScreen.screenHeight)
+              .padding()
+              .background(
+                RoundedRectangle(cornerRadius: 16)
+                  .frame(width: 0.9 * UIScreen.screenWidth, height: 0.07 * UIScreen.screenHeight)
+                  .foregroundColor(.white)
+                  .shadow(color: .gray.opacity(0.5), radius: 5)
+              )
+            }
+            .padding(.bottom, 8)
+            
           //Support
           VStack(alignment: .leading) {
             Text("SUPPORT")
@@ -140,11 +260,9 @@ struct Settings: View {
               .foregroundColor(Color("deepGreen"))
 
             VStack {
-              NavigationLink(destination: ReportAProblem()
-                              .navigationBarHidden(true)
-                              .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://www.apple.com")!) {
                 HStack {
-                  Image(systemName: "square.and.pencil")
+                  Image(systemName: "highlighter")
                     .resizable()
                     .frame(width: 20, height: 20)
                     .padding(.trailing)
@@ -156,7 +274,7 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
 
               Spacer()
               Divider()
@@ -203,16 +321,12 @@ struct Settings: View {
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true), label: {
                 HStack {
-                  HStack(spacing: -24) {
-                    Image(systemName: "circle")
+                    Image(systemName: "i.square")
                       .resizable()
-                      .frame(width: 15, height: 15)
+                      .frame(width: 18, height: 18)
                       .padding(.trailing)
-                    Image(systemName: "circle")
-                      .resizable()
-                      .frame(width: 15, height: 15)
-                      .padding(.trailing)
-                  }
+                    
+                  
 
                   Text("About Us")
                     .font(.body)
@@ -231,7 +345,7 @@ struct Settings: View {
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true), label: {
                 HStack {
-                  Image(systemName: "book.closed")
+                  Image(systemName: "doc.plaintext")
                     .resizable()
                     .frame(width: 16, height: 20)
                     .padding(.trailing)
@@ -253,7 +367,7 @@ struct Settings: View {
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true), label: {
                 HStack {
-                  Image(systemName: "doc")
+                  Image(systemName: "doc.text")
                     .resizable()
                     .frame(width: 16, height: 20)
                     .padding(.trailing)
@@ -285,6 +399,7 @@ struct Settings: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+      }
       }
     }
 }

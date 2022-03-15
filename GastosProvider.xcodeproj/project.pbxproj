@@ -41,6 +41,8 @@
 		69C2B5E227984CA10034A440 /* AboutUs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2B5E127984CA10034A440 /* AboutUs.swift */; };
 		69C2B5E427984D930034A440 /* PrivacyPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2B5E327984D930034A440 /* PrivacyPolicy.swift */; };
 		69C2B5E627984F6D0034A440 /* TermsOfService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2B5E527984F6D0034A440 /* TermsOfService.swift */; };
+		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
+		6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAds.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +82,8 @@
 		69C2B5E127984CA10034A440 /* AboutUs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUs.swift; sourceTree = "<group>"; };
 		69C2B5E327984D930034A440 /* PrivacyPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicy.swift; sourceTree = "<group>"; };
 		69C2B5E527984F6D0034A440 /* TermsOfService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfService.swift; sourceTree = "<group>"; };
+		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
+		6E46FD9427E11FC20003E8F0 /* ManageAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAds.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +149,8 @@
 				69C2B5E127984CA10034A440 /* AboutUs.swift */,
 				69C2B5E327984D930034A440 /* PrivacyPolicy.swift */,
 				69C2B5E527984F6D0034A440 /* TermsOfService.swift */,
+				6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */,
+				6E46FD9427E11FC20003E8F0 /* ManageAds.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -294,6 +300,7 @@
 				6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */,
 				69C2B5E627984F6D0034A440 /* TermsOfService.swift in Sources */,
 				697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */,
+				6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
 				691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */,
@@ -315,6 +322,7 @@
 				693D6C412799AE6600DF62C4 /* KeyBoard.swift in Sources */,
 				691286B527970CA400232975 /* UIScreen.swift in Sources */,
 				693D6C3D2799ADFD00DF62C4 /* EnterMobileNumber.swift in Sources */,
+				6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */,
 				69674407279BF189009FBBC3 /* ImagePicker.swift in Sources */,
 				695B871727C61380009C7C40 /* ScanQR.swift in Sources */,
 				692996D727CA92EC001D9F59 /* Settings.swift in Sources */,

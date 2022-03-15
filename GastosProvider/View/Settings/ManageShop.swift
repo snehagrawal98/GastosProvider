@@ -29,7 +29,7 @@ struct ManageShop: View {
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
-                .frame(width: 24, height: 24)
+                .frame(width: 25, height: 20)
                 .foregroundColor(.primary)
             })
 
@@ -269,7 +269,7 @@ struct SettingsTitleView: View {
   @State var title: String
     var body: some View {
         Text(title)
-        .font(.title.weight(.semibold))
+            .font(.system(size: 25, weight: .medium, design: .default))
         .foregroundColor(Color("deepGreen"))
     }
 }
