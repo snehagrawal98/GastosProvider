@@ -101,7 +101,8 @@ struct SetDiscount: View {
               Spacer()
 
               Button(action: {
-                setDiscountViewModel.uploadDiscounts(uid: loginViewModel.uid, discounts: loginViewModel.discounts)
+                setDiscountViewModel.uploadDiscounts(uid: loginViewModel.uid)
+                loginViewModel.didSetDiscounts = setDiscountViewModel.didUploadDiscounts
               }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")
               })
@@ -110,17 +111,18 @@ struct SetDiscount: View {
           .frame(height: UIScreen.screenHeight, alignment: .bottom)
         ) //: OVERLAY
         .onAppear(perform: {
-          if loginViewModel.discounts.count < 1 {
+          if setDiscountViewModel.discounts.count < 1 {
             self.appendDiscounts()
             self.calculateDiscountRange()
             numberOfDiscounts = 1
           }
       })
-      }
+        .environmentObject(setDiscountViewModel)
+      } //: NAV
     }
 
   func appendDiscounts() {
-    loginViewModel.discounts.append(Discount(discountPercentage: 20.0, minBillAmount: ""))
+    setDiscountViewModel.discounts.append(Discount(discountPercentage: 20.0, minBillAmount: ""))
   }
 
   func calculateDiscountRange() {
@@ -157,7 +159,7 @@ struct SetDiscount_Previews: PreviewProvider {
 }
 
 struct SetYourDiscount: View {
-  @EnvironmentObject var loginViewModel: LoginViewModel
+  @EnvironmentObject var setDiscountViewModel: SetDiscountViewModel
   @State var indexOfDiscount: Int
   @State var minimumDiscount: Int
   @State var maximumDiscount: Int
@@ -165,7 +167,7 @@ struct SetYourDiscount: View {
   var body: some View {
     VStack(spacing: 1) {
       HStack {
-        TextField("Min Billed Amount", text: $loginViewModel.discounts[indexOfDiscount].minBillAmount)
+        TextField("Min Billed Amount", text: $setDiscountViewModel.discounts[indexOfDiscount].minBillAmount)
           .padding()
           .font(.subheadline.weight(.regular))
           .frame(width: 0.4 * UIScreen.screenWidth, height: 0.059 * UIScreen.screenHeight, alignment: .center)
@@ -177,7 +179,7 @@ struct SetYourDiscount: View {
 
         Spacer()
 
-        Text("\(loginViewModel.discounts[indexOfDiscount].discountPercentage, specifier: "%g")")
+        Text("\(setDiscountViewModel.discounts[indexOfDiscount].discountPercentage, specifier: "%g")")
           .font(.system(size: 0.21 * UIScreen.screenWidth).weight(.regular))
 
         Text("%")
@@ -188,7 +190,7 @@ struct SetYourDiscount: View {
       .padding(.horizontal)
 
       VStack(spacing: 0) {
-        Slider(value: $loginViewModel.discounts[indexOfDiscount].discountPercentage, in: Double(minimumDiscount)...Double(maximumDiscount), step: 1)
+        Slider(value: $setDiscountViewModel.discounts[indexOfDiscount].discountPercentage, in: Double(minimumDiscount)...Double(maximumDiscount), step: 1)
           .accentColor(Color("textGreen"))
 
         HStack {

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeScreen: View {
     let rupeeSymbol = "\u{20B9}"
+  @EnvironmentObject var loginViewModel: LoginViewModel
+  @StateObject var homeScreenViewModel = HomeScreenViewModel()
 
     var body: some View {
       NavigationView {
@@ -26,7 +28,7 @@ struct HomeScreen: View {
               ShopImages(shopImagesUrl: "detailShop")
 
               HStack {
-                Text("Cafe Bistro")
+                Text(homeScreenViewModel.shopName)
                   .font(.title.weight(.medium))
                   .foregroundColor(Color("deepGreen"))
                   .padding()
@@ -181,6 +183,9 @@ struct HomeScreen: View {
         } //: VSTACK
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .onAppear(perform: {
+          homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+        })
       } //: NAV
     }
 }
@@ -188,6 +193,7 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
+        .environmentObject(LoginViewModel())
     }
 }
 
