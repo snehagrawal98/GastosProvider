@@ -19,7 +19,7 @@ struct RecentPayments: View {
             Button(action: { dismiss() }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
-                .frame(width: 24, height: 24)
+                .frame(width: 20, height: 20)
                 .padding()
                 .foregroundColor(.black)
             })

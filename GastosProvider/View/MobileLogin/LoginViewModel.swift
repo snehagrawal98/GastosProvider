@@ -26,6 +26,8 @@ class LoginViewModel: ObservableObject {
   @AppStorage("didEnterMerchantDetails") var didEnterMerchantDetails = false
   @AppStorage("didSetPaymentInfo") var didSetPaymentInfo = false
   @AppStorage("didAgree") var didAgree = false
+  @AppStorage("didSetDiscounts") var didSetDiscounts = false
+  
   // Loading view
   @Published var loading = false
 

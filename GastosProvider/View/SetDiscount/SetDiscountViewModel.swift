@@ -11,8 +11,10 @@ import Firebase
 class SetDiscountViewModel: ObservableObject {
   var ref: DatabaseReference?
   private var db = Database.database()
+  @Published var discounts = [Discount]()
+  @Published var didUploadDiscounts = false
 
-  func uploadDiscounts(uid: String, discounts: [Discount]) {
+  func uploadDiscounts(uid: String) {
     let ref = db.reference().child("Merchant_data").child("\(uid)/Shop_Information/discounts")
 
     for discount in 0..<discounts.count {
@@ -20,6 +22,7 @@ class SetDiscountViewModel: ObservableObject {
       ref1.child("discountPercentage").setValue(discounts[discount].discountPercentage)
       ref1.child("minBillAmount").setValue(discounts[discount].minBillAmount)
     }
+    didUploadDiscounts = true
   }
 }
 
