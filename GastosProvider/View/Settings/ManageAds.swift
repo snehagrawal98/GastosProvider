@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct ManageAds: View {
-    @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack{
         HStack {
           Button(action: {
-            dismiss()
+              presentationMode.wrappedValue.dismiss()
           }, label: {
             Image(systemName: "arrow.left")
               .resizable()

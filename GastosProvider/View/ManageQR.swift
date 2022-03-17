@@ -19,6 +19,7 @@ struct ManageQR: View {
     }
     @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView {
@@ -26,7 +27,10 @@ struct ManageQR: View {
               
             // Navigation bar
             HStack {
-              Button(action: { dismiss() }, label: {
+              Button(action: {
+                  presentationMode.wrappedValue.dismiss()
+                  
+              }, label: {
                 Image(systemName: "arrow.left")
                   .resizable()
                   .frame(width: 20, height: 20)

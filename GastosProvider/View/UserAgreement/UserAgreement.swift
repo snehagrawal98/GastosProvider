@@ -14,6 +14,7 @@ struct UserAgreement: View {
 
     @StateObject var userAgreementModel = UserAgreementModel()
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
       NavigationView {
@@ -21,7 +22,8 @@ struct UserAgreement: View {
           // Navigation Bar
           HStack {
             Button(action: {
-              dismiss()
+                presentationMode.wrappedValue.dismiss()
+
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

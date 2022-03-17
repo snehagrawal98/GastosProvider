@@ -15,6 +15,7 @@ struct SetPin: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @EnvironmentObject var currentUser: CurrentUser
   @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView{
@@ -23,7 +24,10 @@ struct SetPin: View {
                 VStack{
                   // Navigation bar
                   HStack {
-                    Button(action: { dismiss() }, label: {
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+
+                    }, label: {
                       Image(systemName: "arrow.left")
                         .resizable()
                         .frame(width: 25, height: 15)

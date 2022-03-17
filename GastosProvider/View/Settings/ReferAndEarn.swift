@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ReferAndEarn: View {
-    @Environment(\.dismiss) var dismiss
+   // @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .center){
           // Navigation Bar
           HStack {
             Button(action: {
-              dismiss()
+                presentationMode.wrappedValue.dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

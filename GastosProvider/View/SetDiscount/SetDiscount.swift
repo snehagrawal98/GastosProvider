@@ -15,6 +15,7 @@ struct SetDiscount: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var setDiscountViewModel = SetDiscountViewModel()
   @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
 
   var body: some View {
       NavigationView {
@@ -22,7 +23,7 @@ struct SetDiscount: View {
           // Navigation Bar
           HStack {
             Button(action: {
-              dismiss()
+                presentationMode.wrappedValue.dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

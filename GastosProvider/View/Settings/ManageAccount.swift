@@ -14,6 +14,8 @@ struct ManageAccount: View {
     @State var emailAddress = "piyush82697@gmail.com"
   @EnvironmentObject var loginViewModel: LoginViewModel
   @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
 
     var body: some View {
       NavigationView {
@@ -21,7 +23,8 @@ struct ManageAccount: View {
           // Navigation Bar
           HStack {
             Button(action: {
-              dismiss()
+                presentationMode.wrappedValue.dismiss()
+
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

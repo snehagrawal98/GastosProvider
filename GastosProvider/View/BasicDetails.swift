@@ -14,6 +14,8 @@ struct BasicDetails: View {
   var shopCategories = ["Food & Beverages", "Fashion", "Salon & Spa", "Stores", "Medical", "Others"]
   var shopCategoriesDiscountRange = ["   5-40", "   5-50", "   5-50", "   0-30", "   1-30", "   5-50"]
   @State var showingCategories = false
+    @Environment(\.presentationMode) var presentationMode
+
   @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
@@ -22,6 +24,8 @@ struct BasicDetails: View {
           // Navigation Bar
           HStack {
             Button(action: {
+                presentationMode.wrappedValue.dismiss()
+
               // back
             }, label: {
               Image(systemName: "arrow.left")

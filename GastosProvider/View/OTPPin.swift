@@ -11,7 +11,9 @@ struct OTPPin: View {
   @State var nextPin = false
   @EnvironmentObject var loginViewModel: LoginViewModel
   @EnvironmentObject var currentUser: CurrentUser
-  @Environment(\.dismiss) var dismiss
+ // @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
   @State var otp = ["","","","","",""]
 
   var body: some View {
@@ -21,7 +23,9 @@ struct OTPPin: View {
         VStack{
           // Navigation bar
           HStack {
-            Button(action: { dismiss() }, label: {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
                 .frame(width: 25, height: 15)

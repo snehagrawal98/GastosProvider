@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Settings: View {
   @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
       NavigationView {
           ScrollView{
@@ -16,7 +18,8 @@ struct Settings: View {
             
           //Navigation Bar
           HStack {
-            Button(action: { dismiss() }, label: {
+            Button(action: {             presentationMode.wrappedValue.dismiss()
+             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
                 .frame(width: 20, height: 20)
@@ -81,7 +84,7 @@ struct Settings: View {
                 Spacer()
                 Divider()
                 Spacer()
-
+//wallet
                 NavigationLink(destination: ManageShop()
                                 .navigationBarHidden(true)
                                 .navigationBarBackButtonHidden(true), label: {
@@ -118,18 +121,22 @@ struct Settings: View {
               .foregroundColor(Color("deepGreen"))
 
             VStack {
+                NavigationLink(destination: PostAds()
+                                .navigationBarHidden(true)
+                                .navigationBarBackButtonHidden(true), label: {
               HStack {
                 Image(systemName: "plus.square")
                   .resizable()
                   .frame(width: 20, height: 20)
-                  .padding(.trailing)
+                  .padding(.trailing).foregroundColor(.black)
 
                 Text("Post Ads")
-                  .font(.body)
+                  .font(.body).foregroundColor(.black)
 
                 Spacer()
-                Image(systemName: "chevron.right")
+                Image(systemName: "chevron.right").foregroundColor(.black)
               }
+                })
               Spacer()
               Divider()
               Spacer()
@@ -171,33 +178,43 @@ struct Settings: View {
                 .foregroundColor(Color("deepGreen"))
 
               VStack {
+                  NavigationLink(destination: ManageAds()
+                                  .navigationBarHidden(true)
+                                  .navigationBarBackButtonHidden(true), label: {
                 HStack {
                   Image(systemName: "square.and.arrow.down")
-                    .resizable()
+                    .resizable().foregroundColor(.black)
                     .frame(width: 20, height: 20)
                     .padding(.trailing)
 
                   Text("Request Design")
-                    .font(.body)
+                    .font(.body).foregroundColor(.black)
 
                   Spacer()
-                  Image(systemName: "chevron.right")
+                  Image(systemName: "chevron.right").foregroundColor(.black)
                 }
+                  })
+                  
                 Spacer()
                 Divider()
                 Spacer()
+                  
+            NavigationLink(destination: ManageAds()
+                                  .navigationBarHidden(true)
+                                  .navigationBarBackButtonHidden(true), label: {
                 HStack {
                   Image(systemName: "folder")
                     .resizable()
                     .frame(width: 20, height: 20)
-                    .padding(.trailing)
+                    .padding(.trailing).foregroundColor(.black)
 
-                  Text("Manage Design")
-                    .font(.body)
+                  Text("Manage Designs")
+                    .font(.body).foregroundColor(.black)
 
                   Spacer()
-                  Image(systemName: "chevron.right")
+                  Image(systemName: "chevron.right").foregroundColor(.black)
                 }
+              })
               }
               .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
               .padding()
@@ -237,10 +254,10 @@ struct Settings: View {
                         .font(.body).foregroundColor(.black).offset(x: -5)
 
                   Spacer()
-                  Image(systemName: "chevron.right")
+                  Image(systemName: "chevron.right").foregroundColor(.black)
                 
                 }
-                  })
+              })
               }
               .frame(width: 0.8 * UIScreen.screenWidth, height: 0.05 * UIScreen.screenHeight)
               .padding()
@@ -260,7 +277,9 @@ struct Settings: View {
               .foregroundColor(Color("deepGreen"))
 
             VStack {
-                Link(destination: URL(string: "https://www.apple.com")!) {
+                NavigationLink(destination: ReportAProblem()
+                                .navigationBarHidden(true)
+                                .navigationBarBackButtonHidden(true), label: {
                 HStack {
                   Image(systemName: "highlighter")
                     .resizable()
@@ -274,15 +293,15 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              }
+              })
 
               Spacer()
               Divider()
               Spacer()
 
-              NavigationLink(destination: HelpCenter()
-                              .navigationBarHidden(true)
-                              .navigationBarBackButtonHidden(true), label: {
+                NavigationLink(destination: HelpCenter()
+                                .navigationBarHidden(true)
+                                .navigationBarBackButtonHidden(true), label: {
                 HStack {
                   Image(systemName: "questionmark.circle")
                     .resizable()
@@ -297,6 +316,7 @@ struct Settings: View {
                 }
                 .foregroundColor(.black)
               })
+                               
             }
             .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
             .padding()
@@ -317,9 +337,7 @@ struct Settings: View {
 
             VStack {
 
-              NavigationLink(destination: AboutUs()
-                              .navigationBarHidden(true)
-                              .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://gastos-aboutus.netlify.app")!) {
                 HStack {
                     Image(systemName: "i.square")
                       .resizable()
@@ -335,15 +353,13 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
 
               Spacer()
               Divider()
               Spacer()
 
-              NavigationLink(destination: TermsOfService()
-                              .navigationBarHidden(true)
-                              .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://gastos-termsofservice.netlify.app")!) {
                 HStack {
                   Image(systemName: "doc.plaintext")
                     .resizable()
@@ -357,15 +373,13 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
 
               Spacer()
               Divider()
               Spacer()
 
-              NavigationLink(destination: PrivacyPolicy()
-                              .navigationBarHidden(true)
-                              .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://gastos-privacypolicy.netlify.app")!) {
                 HStack {
                   Image(systemName: "doc.text")
                     .resizable()
@@ -379,7 +393,7 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
 
 
 
