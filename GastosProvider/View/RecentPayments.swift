@@ -10,13 +10,16 @@ import SwiftUI
 struct RecentPayments: View {
   let rupeeSymbol = "\u{20B9}"
   @State var numberOfPayments = 1
-  @Environment(\.dismiss) var dismiss
+//  @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
       NavigationView {
         ScrollView(.vertical) {
           // Navigation Bar
           HStack {
-            Button(action: { dismiss() }, label: {
+            Button(action: {             presentationMode.wrappedValue.dismiss()
+             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
                 .frame(width: 24, height: 24)

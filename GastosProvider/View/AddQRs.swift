@@ -18,14 +18,18 @@ struct AddQRs: View {
       return Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     }
     @EnvironmentObject var loginViewModel: LoginViewModel
-    @Environment(\.dismiss) var dismiss
+   // @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
 
     var body: some View {
       NavigationView {
         VStack {
           // Navigation bar 
           HStack {
-            Button(action: { dismiss() }, label: {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
                 .frame(width: 20, height: 20)

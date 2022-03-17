@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct ReportAProblem: View {
-  @Environment(\.dismiss) var dismiss
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
       NavigationView {
         VStack {
           // Navigation Bar
           HStack {
             Button(action: {
-              dismiss()
+                presentationMode.wrappedValue.dismiss()
+
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

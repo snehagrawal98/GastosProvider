@@ -16,13 +16,16 @@ struct ScanQR: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   let context = CIContext()
   let filter = CIFilter.qrCodeGenerator()
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
       NavigationView {
         VStack {
           // Navigation bar
           HStack {
-            Button(action: { dismiss() }, label: {
+            Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
                 .frame(width: 20, height: 20)
