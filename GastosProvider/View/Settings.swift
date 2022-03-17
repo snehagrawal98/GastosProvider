@@ -178,7 +178,7 @@ struct Settings: View {
                 .foregroundColor(Color("deepGreen"))
 
               VStack {
-                  NavigationLink(destination: ManageAds()
+                  NavigationLink(destination: RequestDesign()
                                   .navigationBarHidden(true)
                                   .navigationBarBackButtonHidden(true), label: {
                 HStack {
@@ -199,7 +199,7 @@ struct Settings: View {
                 Divider()
                 Spacer()
                   
-            NavigationLink(destination: ManageAds()
+            NavigationLink(destination: ManageDesign()
                                   .navigationBarHidden(true)
                                   .navigationBarBackButtonHidden(true), label: {
                 HStack {
