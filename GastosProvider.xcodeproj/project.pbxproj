@@ -39,6 +39,8 @@
 		698F11FF27C351E00097E85F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698F11FE27C351E00097E85F /* GoogleService-Info.plist */; };
 		698F120327C353E80097E85F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698F120227C353E80097E85F /* LoginViewModel.swift */; };
 		69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C237C0279C476C00A9627A /* SetDiscount.swift */; };
+		6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207427E3C27E00B8C80F /* ManageDesign.swift */; };
+		6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207527E3C27F00B8C80F /* RequestDesign.swift */; };
 		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
 		6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAds.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
@@ -79,6 +81,8 @@
 		698F120027C3533E0097E85F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		698F120227C353E80097E85F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		69C237C0279C476C00A9627A /* SetDiscount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDiscount.swift; sourceTree = "<group>"; };
+		6E05207427E3C27E00B8C80F /* ManageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDesign.swift; sourceTree = "<group>"; };
+		6E05207527E3C27F00B8C80F /* RequestDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDesign.swift; sourceTree = "<group>"; };
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
 		6E46FD9427E11FC20003E8F0 /* ManageAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAds.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				691D663527972A0A00056EA0 /* ManageShop.swift */,
 				69674406279BF189009FBBC3 /* ImagePicker.swift */,
 				6934C4DD2797FB520097C124 /* ReportAProblem.swift */,
+				6E05207427E3C27E00B8C80F /* ManageDesign.swift */,
+				6E05207527E3C27F00B8C80F /* RequestDesign.swift */,
 				6934C4DF2797FDBC0097C124 /* HelpCenter.swift */,
 				6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */,
 				6E46FD9427E11FC20003E8F0 /* ManageAds.swift */,
@@ -307,9 +313,11 @@
 				6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
+				6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */,
 				691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */,
 				6965B3D827DDD858005B5D77 /* SetDiscountViewModel.swift in Sources */,
 				6921158F27E215D400EE9DDC /* HomeScreenViewModel.swift in Sources */,
+				6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */,
 				691286B32797087400232975 /* ManageAccount.swift in Sources */,
 				692996D527CA7058001D9F59 /* HomeScreen.swift in Sources */,
 				693D6C452799AF5E00DF62C4 /* OTPPin.swift in Sources */,
