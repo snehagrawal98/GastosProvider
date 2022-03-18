@@ -17,10 +17,10 @@ struct ContentView: View {
         ZStack {
           if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didAgree && loginViewModel.didSetDiscounts {
             HomeScreen()
-          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didAgree {
-            SetDiscount()
-          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo {
+          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts {
             UserAgreement()
+          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo {
+            SetDiscount()
           } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
             AddQRs()
           } else if status && loginViewModel.didSetPin {
