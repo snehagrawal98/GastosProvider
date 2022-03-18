@@ -41,6 +41,10 @@
 		69C2B5E627984F6D0034A440 /* TermsOfService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C2B5E527984F6D0034A440 /* TermsOfService.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
+		C074F50C27DC8CA7000A9479 /* RegistrationPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074F50B27DC8CA7000A9479 /* RegistrationPayment.swift */; };
+		C074F50E27DFAEAB000A9479 /* ManageAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074F50D27DFAEAB000A9479 /* ManageAds.swift */; };
+		C074F51027E22149000A9479 /* AddMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074F50F27E22149000A9479 /* AddMoney.swift */; };
+		C074F51227E22161000A9479 /* PromotionWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C074F51127E22161000A9479 /* PromotionWallet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +82,10 @@
 		69C2B5E527984F6D0034A440 /* TermsOfService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfService.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
+		C074F50B27DC8CA7000A9479 /* RegistrationPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPayment.swift; sourceTree = "<group>"; };
+		C074F50D27DFAEAB000A9479 /* ManageAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAds.swift; sourceTree = "<group>"; };
+		C074F50F27E22149000A9479 /* AddMoney.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoney.swift; sourceTree = "<group>"; };
+		C074F51127E22161000A9479 /* PromotionWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionWallet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +168,8 @@
 				691286AB279707BF00232975 /* ContentView.swift */,
 				6EC23ACE27DA722D009381DD /* MobileLogin */,
 				693D6C3E2799AE3E00DF62C4 /* SetPin.swift */,
+				C074F50B27DC8CA7000A9479 /* RegistrationPayment.swift */,
+				C074F50D27DFAEAB000A9479 /* ManageAds.swift */,
 				693D6C402799AE6600DF62C4 /* KeyBoard.swift */,
 				693D6C422799AF1700DF62C4 /* EnterPin.swift */,
 				693D6C442799AF5E00DF62C4 /* OTPPin.swift */,
@@ -176,6 +186,8 @@
 				692996D627CA92EC001D9F59 /* Settings.swift */,
 				691286AD279707E900232975 /* Settings */,
 				691286AE279707FC00232975 /* Extension */,
+				C074F50F27E22149000A9479 /* AddMoney.swift */,
+				C074F51127E22161000A9479 /* PromotionWallet.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -282,6 +294,7 @@
 				6934C4E02797FDBC0097C124 /* HelpCenter.swift in Sources */,
 				691D663627972A0A00056EA0 /* ManageShop.swift in Sources */,
 				3FCD8F04278EE7A2002836FC /* GastosProviderApp.swift in Sources */,
+				C074F50E27DFAEAB000A9479 /* ManageAds.swift in Sources */,
 				691286B02797080F00232975 /* Text.swift in Sources */,
 				695B871527C60984009C7C40 /* AddQRs.swift in Sources */,
 				693D6C3F2799AE3E00DF62C4 /* SetPin.swift in Sources */,
@@ -290,7 +303,10 @@
 				6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */,
 				693D6C412799AE6600DF62C4 /* KeyBoard.swift in Sources */,
 				691286B527970CA400232975 /* UIScreen.swift in Sources */,
+				C074F51227E22161000A9479 /* PromotionWallet.swift in Sources */,
+				C074F50C27DC8CA7000A9479 /* RegistrationPayment.swift in Sources */,
 				693D6C3D2799ADFD00DF62C4 /* EnterMobileNumber.swift in Sources */,
+				C074F51027E22149000A9479 /* AddMoney.swift in Sources */,
 				69674407279BF189009FBBC3 /* ImagePicker.swift in Sources */,
 				695B871727C61380009C7C40 /* ScanQR.swift in Sources */,
 				692996D727CA92EC001D9F59 /* Settings.swift in Sources */,
