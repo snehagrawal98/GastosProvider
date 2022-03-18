@@ -27,7 +27,7 @@ class LoginViewModel: ObservableObject {
   @AppStorage("didSetPaymentInfo") var didSetPaymentInfo = false
   @AppStorage("didAgree") var didAgree = false
   @AppStorage("didSetDiscounts") var didSetDiscounts = false
-  
+
   // Loading view
   @Published var loading = false
 
@@ -89,7 +89,7 @@ class LoginViewModel: ObservableObject {
   private var db = Database.database()
 
   // Account Info
-  @Published var uid = ""
+  @AppStorage("uid") var uid = ""
   @Published var pin = ""
   @Published var ownerName = ""
   @Published var phoneNumber = ""
@@ -120,25 +120,6 @@ class LoginViewModel: ObservableObject {
 
     ref.child("pin").setValue(pin)
     didSetPin = true
-  }
-
-  func registerMerchantDetails() {
-    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Account_Information")
-    let ref2 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
-
-    var deliveryEnabled = self.deliveryEnabled ? "true" : "false"
-    var pickupEnabled = self.pickupEnabled ? "true" : "false"
-
-    ref1.child("emailAddress").setValue(emailAddress)
-    ref1.child("ownerName").setValue(ownerName)
-
-    ref2.child("category").setValue(shopCategory)
-    ref2.child("shopAddress").setValue(shopAddress)
-    ref2.child("shopCity").setValue(shopCity)
-    ref2.child("homeDelivery").setValue(deliveryEnabled)
-    ref2.child("pickup").setValue(pickupEnabled)
-    ref2.child("shopName").setValue(shopName)
-    didEnterMerchantDetails = true
   }
 
   func registerMerchantPaymentInfo() {
@@ -174,10 +155,6 @@ class LoginViewModel: ObservableObject {
 //    //}
 //  }
 }
-
-
-
-
 
 // class to store current user data
 class CurrentUser: ObservableObject {

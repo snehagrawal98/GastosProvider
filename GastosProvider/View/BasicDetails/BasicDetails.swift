@@ -14,9 +14,9 @@ struct BasicDetails: View {
   var shopCategories = ["Food & Beverages", "Fashion", "Salon & Spa", "Stores", "Medical", "Others"]
   var shopCategoriesDiscountRange = ["   5-40", "   5-50", "   5-50", "   0-30", "   1-30", "   5-50"]
   @State var showingCategories = false
-    @Environment(\.presentationMode) var presentationMode
 
   @EnvironmentObject var loginViewModel: LoginViewModel
+  @StateObject var basicDetailsViewModel = BasicDetailsViewModel()
 
     var body: some View {
       NavigationView {
@@ -24,8 +24,6 @@ struct BasicDetails: View {
           // Navigation Bar
           HStack {
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
-
               // back
             }, label: {
               Image(systemName: "arrow.left")
@@ -92,19 +90,19 @@ struct BasicDetails: View {
 
           // Owner Name to Shop Address
           VStack(spacing: 10) {
-            TextField("Owner Name", text: $loginViewModel.ownerName)
+            TextField("Owner Name", text: $basicDetailsViewModel.ownerName)
               .textFieldStyle(BasicDetailsTextFieldStyle())
 
-            TextField("Phone Number", text: $loginViewModel.phoneNumber)
+            TextField("Phone Number", text: $basicDetailsViewModel.phoneNumber)
               .textFieldStyle(BasicDetailsTextFieldStyle())
 
-            TextField("Email Address", text: $loginViewModel.emailAddress)
+            TextField("Email Address", text: $basicDetailsViewModel.emailAddress)
               .textFieldStyle(BasicDetailsTextFieldStyle())
 
-            TextField("Shop Name", text: $loginViewModel.shopName)
+            TextField("Shop Name", text: $basicDetailsViewModel.shopName)
               .textFieldStyle(BasicDetailsTextFieldStyle())
 
-            TextField("Shop Address", text: $loginViewModel.shopAddress)
+            TextField("Shop Address", text: $basicDetailsViewModel.shopAddress)
               .textFieldStyle(BasicDetailsTextFieldStyle())
           } //: VSTACK
 
@@ -112,7 +110,7 @@ struct BasicDetails: View {
           VStack {
             // Shop City
             Group {
-              TextField("Enter Shop City", text: $loginViewModel.shopCity)
+              TextField("Enter Shop City", text: $basicDetailsViewModel.shopCity)
               .textFieldStyle(BasicDetailsTextFieldStyle())
             }
 
@@ -163,7 +161,7 @@ struct BasicDetails: View {
 
             // Shop Locaton
             HStack {
-              TextField("Shop Location", text: $loginViewModel.shopCity)
+              TextField("Shop Location", text: $basicDetailsViewModel.shopCity)
                 .font(.headline.weight(.regular))
                 .foregroundColor(Color("basicDetailsText"))
                 .padding(.leading, 17)
@@ -194,12 +192,12 @@ struct BasicDetails: View {
 
           // Services
           VStack(spacing: 10) {
-            Toggle(isOn: $loginViewModel.deliveryEnabled.animation()) {
+            Toggle(isOn: $basicDetailsViewModel.deliveryEnabled.animation()) {
                   Text("Delivery Service")
                 .font(.body.weight(.medium))
               }
 
-            Toggle(isOn: $loginViewModel.pickupEnabled.animation()) {
+            Toggle(isOn: $basicDetailsViewModel.pickupEnabled.animation()) {
                   Text("Pickup Service")
                 .font(.body.weight(.medium))
               }
@@ -210,30 +208,56 @@ struct BasicDetails: View {
         } //: SCROLL
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
-      }
-      .overlay(
-        ZStack {
-          BasicScreensBottomBackground()
-          HStack {
-            BasicScreensBottomLeftText(firstLine: "Welcome to ", secondLine: "Gastos Provider Club")
-              .padding(.leading)
-            Spacer()
+        .overlay(
+          ZStack {
+            BasicScreensBottomBackground()
+            HStack {
+              BasicScreensBottomLeftText(firstLine: "Welcome to ", secondLine: "Gastos Provider Club")
+                .padding(.leading)
+              Spacer()
 
-            Button(action: { self.didEnterAllData() }, label: {
-              BasicScreensBottomRighttText(buttonText: "Next")
-            })
+              Button(action: {
+                self.didEnterAllData()
+              }, label: {
+                BasicScreensBottomRighttText(buttonText: "Next")
+              })
+            }
           }
+        .frame(height: UIScreen.screenHeight, alignment: .bottom)
+        ) //: OVERLAY
+        .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: nil) {
+          ImagePicker(image: $image)
         }
-      .frame(height: UIScreen.screenHeight, alignment: .bottom)
-      ) //: OVERLAY
+        .onAppear {
+          basicDetailsViewModel.phoneNumber = loginViewModel.phoneNumber
+          //loginViewModel.didEnterMerchantDetails = true
+        }
+      }
     }
 
   func didEnterAllData() {
-    if (!loginViewModel.ownerName.isEmpty && !loginViewModel.emailAddress.isEmpty && !loginViewModel.shopName.isEmpty && !loginViewModel.shopAddress.isEmpty && !loginViewModel.shopCity.isEmpty ) {
+    if (!basicDetailsViewModel.ownerName.isEmpty && !basicDetailsViewModel.emailAddress.isEmpty && !basicDetailsViewModel.shopName.isEmpty && !basicDetailsViewModel.shopAddress.isEmpty && !basicDetailsViewModel.shopCity.isEmpty) {
 
-      loginViewModel.shopCategory = self.shopCategory
+      basicDetailsViewModel.shopCategory = self.shopCategory
 
-      loginViewModel.registerMerchantDetails()
+      // uploading data to firebase
+      basicDetailsViewModel.registerMerchantDetails(uid: loginViewModel.uid)
+      basicDetailsViewModel.uploadImageToStorage(uid: loginViewModel.uid, image: image ?? UIImage())
+
+      // to go to next screen
+      loginViewModel.didEnterMerchantDetails = true
+
+      // copying data from basic details view model to login view model
+      loginViewModel.ownerName = basicDetailsViewModel.ownerName
+      loginViewModel.phoneNumber = basicDetailsViewModel.phoneNumber
+      loginViewModel.emailAddress = basicDetailsViewModel.emailAddress
+      loginViewModel.shopName = basicDetailsViewModel.shopName
+      loginViewModel.shopAddress = basicDetailsViewModel.shopAddress
+      loginViewModel.shopCity = basicDetailsViewModel.shopCity
+      loginViewModel.shopCategory = basicDetailsViewModel.shopCategory
+      loginViewModel.shopLocation = basicDetailsViewModel.shopLocation
+      loginViewModel.deliveryEnabled = basicDetailsViewModel.deliveryEnabled
+      loginViewModel.pickupEnabled = basicDetailsViewModel.pickupEnabled
     }
   }
 }
