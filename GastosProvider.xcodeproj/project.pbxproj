@@ -44,6 +44,10 @@
 		69FDEBD327E504AB00AAC395 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 69FDEBD227E504AB00AAC395 /* FirebaseStorage */; };
 		6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207427E3C27E00B8C80F /* ManageDesign.swift */; };
 		6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207527E3C27F00B8C80F /* RequestDesign.swift */; };
+		6E42506327E6251000A01FC4 /* ProviderWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506227E6251000A01FC4 /* ProviderWallet.swift */; };
+		6E42506727E6252900A01FC4 /* AddMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506427E6252800A01FC4 /* AddMoney.swift */; };
+		6E42506827E6252900A01FC4 /* PromotionWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506527E6252900A01FC4 /* PromotionWallet.swift */; };
+		6E42506927E6252900A01FC4 /* RegistrationPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506627E6252900A01FC4 /* RegistrationPayment.swift */; };
 		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
 		6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
@@ -87,6 +91,10 @@
 		69EF55C227E505A6008F38F7 /* BasicDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetailsViewModel.swift; sourceTree = "<group>"; };
 		6E05207427E3C27E00B8C80F /* ManageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDesign.swift; sourceTree = "<group>"; };
 		6E05207527E3C27F00B8C80F /* RequestDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDesign.swift; sourceTree = "<group>"; };
+		6E42506227E6251000A01FC4 /* ProviderWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderWallet.swift; sourceTree = "<group>"; };
+		6E42506427E6252800A01FC4 /* AddMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoney.swift; sourceTree = "<group>"; };
+		6E42506527E6252900A01FC4 /* PromotionWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionWallet.swift; sourceTree = "<group>"; };
+		6E42506627E6252900A01FC4 /* RegistrationPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPayment.swift; sourceTree = "<group>"; };
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
 		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
@@ -152,6 +160,9 @@
 			children = (
 				691286B22797087400232975 /* ManageAccount.swift */,
 				691D663527972A0A00056EA0 /* ManageShop.swift */,
+				6E42506427E6252800A01FC4 /* AddMoney.swift */,
+				6E42506227E6251000A01FC4 /* ProviderWallet.swift */,
+				6E42506527E6252900A01FC4 /* PromotionWallet.swift */,
 				6934C4DD2797FB520097C124 /* ReportAProblem.swift */,
 				6E05207427E3C27E00B8C80F /* ManageDesign.swift */,
 				6E05207527E3C27F00B8C80F /* RequestDesign.swift */,
@@ -236,6 +247,7 @@
 				693D6C3E2799AE3E00DF62C4 /* SetPin.swift */,
 				691D0AB227DCF1F500E43235 /* UserAgreement */,
 				693D6C402799AE6600DF62C4 /* KeyBoard.swift */,
+				6E42506627E6252900A01FC4 /* RegistrationPayment.swift */,
 				693D6C422799AF1700DF62C4 /* EnterPin.swift */,
 				693D6C442799AF5E00DF62C4 /* OTPPin.swift */,
 				69FDEBD527E5054300AAC395 /* BasicDetails */,
@@ -340,15 +352,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E42506827E6252900A01FC4 /* PromotionWallet.swift in Sources */,
 				698F120327C353E80097E85F /* LoginViewModel.swift in Sources */,
 				69EF55C327E505A6008F38F7 /* BasicDetailsViewModel.swift in Sources */,
 				693E599627D475AE0086C25C /* SetAQrPrimary.swift in Sources */,
 				6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */,
+				6E42506927E6252900A01FC4 /* RegistrationPayment.swift in Sources */,
 				697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */,
 				6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
 				6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */,
+				6E42506327E6251000A01FC4 /* ProviderWallet.swift in Sources */,
 				691D0AB427DCF23A00E43235 /* UserAgreementModel.swift in Sources */,
 				6965B3D827DDD858005B5D77 /* SetDiscountViewModel.swift in Sources */,
 				6921158F27E215D400EE9DDC /* HomeScreenViewModel.swift in Sources */,
@@ -371,6 +386,7 @@
 				693D6C412799AE6600DF62C4 /* KeyBoard.swift in Sources */,
 				691286B527970CA400232975 /* UIScreen.swift in Sources */,
 				693D6C3D2799ADFD00DF62C4 /* EnterMobileNumber.swift in Sources */,
+				6E42506727E6252900A01FC4 /* AddMoney.swift in Sources */,
 				6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */,
 				69674407279BF189009FBBC3 /* ImagePicker.swift in Sources */,
 				695B871727C61380009C7C40 /* ScanQR.swift in Sources */,
