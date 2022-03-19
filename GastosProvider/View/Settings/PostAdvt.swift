@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PostAds: View {
+struct PostAdvt: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingPopover = false
 
@@ -63,7 +63,7 @@ struct PostAds: View {
 
 struct PostAds_Previews: PreviewProvider {
     static var previews: some View {
-        PostAds()
+        PostAdvt()
     }
 }
 

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ManageAds: View {
+struct ManageAdvt: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack{
@@ -35,6 +35,6 @@ struct ManageAds: View {
 
 struct ManageAds_Previews: PreviewProvider {
     static var previews: some View {
-        ManageAds()
+        ManageAdvt()
     }
 }

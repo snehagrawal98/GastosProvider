@@ -45,10 +45,10 @@
 		6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207427E3C27E00B8C80F /* ManageDesign.swift */; };
 		6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207527E3C27F00B8C80F /* RequestDesign.swift */; };
 		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
-		6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAds.swift */; };
+		6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
-		6EE4B62727E3205B00C87CEB /* PostAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAds.swift */; };
+		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,10 +88,10 @@
 		6E05207427E3C27E00B8C80F /* ManageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDesign.swift; sourceTree = "<group>"; };
 		6E05207527E3C27F00B8C80F /* RequestDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDesign.swift; sourceTree = "<group>"; };
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
-		6E46FD9427E11FC20003E8F0 /* ManageAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAds.swift; sourceTree = "<group>"; };
+		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
-		6EE4B62627E3205A00C87CEB /* PostAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAds.swift; sourceTree = "<group>"; };
+		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +157,8 @@
 				6E05207527E3C27F00B8C80F /* RequestDesign.swift */,
 				6934C4DF2797FDBC0097C124 /* HelpCenter.swift */,
 				6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */,
-				6E46FD9427E11FC20003E8F0 /* ManageAds.swift */,
-				6EE4B62627E3205A00C87CEB /* PostAds.swift */,
+				6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */,
+				6EE4B62627E3205A00C87CEB /* PostAdvt.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -345,7 +345,7 @@
 				693E599627D475AE0086C25C /* SetAQrPrimary.swift in Sources */,
 				6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */,
 				697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */,
-				6E46FD9527E11FC20003E8F0 /* ManageAds.swift in Sources */,
+				6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
 				6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */,
@@ -365,7 +365,7 @@
 				695B871527C60984009C7C40 /* AddQRs.swift in Sources */,
 				693D6C3F2799AE3E00DF62C4 /* SetPin.swift in Sources */,
 				691B699827CB20DA000F43D9 /* RecentPayments.swift in Sources */,
-				6EE4B62727E3205B00C87CEB /* PostAds.swift in Sources */,
+				6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */,
 				691286AC279707BF00232975 /* ContentView.swift in Sources */,
 				6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */,
 				693D6C412799AE6600DF62C4 /* KeyBoard.swift in Sources */,

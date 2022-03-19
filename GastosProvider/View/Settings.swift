@@ -121,7 +121,7 @@ struct Settings: View {
               .foregroundColor(Color("deepGreen"))
 
             VStack {
-                NavigationLink(destination: PostAds()
+                NavigationLink(destination: PostAdvt()
                                 .navigationBarHidden(true)
                                 .navigationBarBackButtonHidden(true), label: {
               HStack {
@@ -141,7 +141,7 @@ struct Settings: View {
               Divider()
               Spacer()
                 
-                NavigationLink(destination: ManageAds()
+                NavigationLink(destination: ManageAdvt()
                                 .navigationBarHidden(true)
                                 .navigationBarBackButtonHidden(true), label: {
               HStack {
