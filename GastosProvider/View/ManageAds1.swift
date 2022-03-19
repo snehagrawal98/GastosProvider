@@ -1,5 +1,5 @@
 //
-//  ManageAds.swift
+//  ManageAds1.swift
 //  GastosProvider
 //
 //  Created by ehsan sat on 3/14/22.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ManageAds: View {
+struct ManageAds1: View {
     var body: some View {
         VStack {
             HStack {
@@ -124,8 +124,8 @@ struct WalletBrand: View {
     }
 }
 
-struct ManageAds_Previews: PreviewProvider {
+struct ManageAds1_Previews: PreviewProvider {
     static var previews: some View {
-        ManageAds()
+        ManageAds1()
     }
 }
