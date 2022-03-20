@@ -18,8 +18,17 @@ struct ManageShop: View {
   @State var deliveryEnabled = true
   @State var pickupEnabled = true
   @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
 
+  @State var isShowingImagePicker = false
+  @State var numberOfExtraImages = 0
+  @State var image: UIImage?
+  @State var selectedImage = 0
+
+  var gridLayout: [GridItem] {
+    return Array(repeating: GridItem(.flexible(), spacing: -55), count: 2)
+  }
+
+  @StateObject var manageShopViewModel = ManageShopViewModel()
 
     var body: some View {
       NavigationView {
@@ -27,7 +36,8 @@ struct ManageShop: View {
           // Navigation Bar
           HStack {
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
+              manageShopViewModel.uploadImagesToStorage(uid: "02OTfNYbg3QZfJZCwDnBnhjDEuu2")
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
@@ -62,7 +72,28 @@ struct ManageShop: View {
               .frame(width: 0.80 * UIScreen.screenWidth, alignment: .leading)
               .padding(.leading, 24)
 
-            AddImagesView()
+              LazyVGrid(columns: gridLayout, spacing: 5, content: {
+                ForEach(0..<numberOfExtraImages, id: \.self) { i in
+
+                  Button(action: {
+                    isShowingImagePicker = true
+                    selectedImage = i
+                  }, label: {
+                    ImageWithEditAndDelete(image: manageShopViewModel.images[i] )
+                  })
+                }
+
+                if numberOfExtraImages < 4 {
+                  Button(action: {
+                    numberOfExtraImages += 1
+                    let systemImage = UIImage(systemName: "plus.rectangle")
+                    manageShopViewModel.images.append(systemImage ?? UIImage())
+                  }, label: {
+                    AddImageButton()
+                  })
+                }
+              })
+
           } //: VSTACK
           .padding(.bottom)
 
@@ -256,8 +287,19 @@ struct ManageShop: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
+        .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: self.appendExtraImages) {
+          ImagePicker(image: $image)
+        }
       }
     }
+
+  func appendExtraImages() {
+    if (manageShopViewModel.images.count - 1) < selectedImage {
+      manageShopViewModel.images.append(image ?? UIImage())
+    } else {
+      manageShopViewModel.images[selectedImage] = image ?? UIImage()
+    }
+  }
 }
 
 struct ManageShop_Previews: PreviewProvider {
@@ -275,9 +317,6 @@ struct SettingsTitleView: View {
         .foregroundColor(Color("deepGreen"))
     }
 }
-
-
-
 
 struct ImageWithEdit: View {
     var body: some View {
@@ -323,20 +362,19 @@ struct AddImagesView: View {
     var body: some View {
       LazyVGrid(columns: gridLayout, spacing: 5, content: {
         ForEach(1..<4) { _ in
-          ImageWithEditAndDelete()
+          ImageWithEditAndDelete(image: UIImage())
         }
         AddImageButton()
       })
     }
 }
 
-
-
 // Image with Delete and Edit
 struct ImageWithEditAndDelete: View {
+  var image: UIImage
     var body: some View {
       ZStack {
-        Image("detailShop")
+        Image(uiImage: image)
           .resizable()
           .scaledToFit()
           .frame(width: 0.34 * UIScreen.screenWidth, height: 0.095 * UIScreen.screenHeight, alignment: .center)

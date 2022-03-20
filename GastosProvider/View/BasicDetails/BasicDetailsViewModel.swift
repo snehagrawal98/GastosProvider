@@ -32,7 +32,7 @@ class BasicDetailsViewModel: ObservableObject {
   let storage = Storage.storage().reference()
 
   func uploadImageToStorage(uid: String, image: UIImage) {
-    let ref = storage.child("\(uid)/shopImagekk")
+    let ref = storage.child("\(uid)/shopImage")
     guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
 
     let metadata = StorageMetadata()

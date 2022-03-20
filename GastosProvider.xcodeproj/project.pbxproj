@@ -38,6 +38,7 @@
 		698F11FD27C343970097E85F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 698F11FC27C343970097E85F /* FirebaseDatabase */; };
 		698F11FF27C351E00097E85F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 698F11FE27C351E00097E85F /* GoogleService-Info.plist */; };
 		698F120327C353E80097E85F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698F120227C353E80097E85F /* LoginViewModel.swift */; };
+		69AB1F0427E7810900922CE1 /* ManageShopViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB1F0327E7810900922CE1 /* ManageShopViewModel.swift */; };
 		69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C237C0279C476C00A9627A /* SetDiscount.swift */; };
 		69EF55C327E505A6008F38F7 /* BasicDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EF55C227E505A6008F38F7 /* BasicDetailsViewModel.swift */; };
 		69EF55C627E5074C008F38F7 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 69EF55C527E5074C008F38F7 /* CodeScanner */; };
@@ -88,6 +89,7 @@
 		698F11FE27C351E00097E85F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		698F120027C3533E0097E85F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		698F120227C353E80097E85F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		69AB1F0327E7810900922CE1 /* ManageShopViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageShopViewModel.swift; sourceTree = "<group>"; };
 		69C237C0279C476C00A9627A /* SetDiscount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetDiscount.swift; sourceTree = "<group>"; };
 		69EF55C227E505A6008F38F7 /* BasicDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicDetailsViewModel.swift; sourceTree = "<group>"; };
 		6E05207427E3C27E00B8C80F /* ManageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDesign.swift; sourceTree = "<group>"; };
@@ -161,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				691286B22797087400232975 /* ManageAccount.swift */,
-				691D663527972A0A00056EA0 /* ManageShop.swift */,
+				69AB1F0227E780F900922CE1 /* ManageShop */,
 				6E42506427E6252800A01FC4 /* AddMoney.swift */,
 				6E42506227E6251000A01FC4 /* ProviderWallet.swift */,
 				6E42506527E6252900A01FC4 /* PromotionWallet.swift */,
@@ -210,6 +212,15 @@
 				6965B3D727DDD858005B5D77 /* SetDiscountViewModel.swift */,
 			);
 			path = SetDiscount;
+			sourceTree = "<group>";
+		};
+		69AB1F0227E780F900922CE1 /* ManageShop */ = {
+			isa = PBXGroup;
+			children = (
+				691D663527972A0A00056EA0 /* ManageShop.swift */,
+				69AB1F0327E7810900922CE1 /* ManageShopViewModel.swift */,
+			);
+			path = ManageShop;
 			sourceTree = "<group>";
 		};
 		69FDEBD127E504AB00AAC395 /* Frameworks */ = {
@@ -403,6 +414,7 @@
 				69674407279BF189009FBBC3 /* ImagePicker.swift in Sources */,
 				695B871727C61380009C7C40 /* ScanQR.swift in Sources */,
 				692996D727CA92EC001D9F59 /* Settings.swift in Sources */,
+				69AB1F0427E7810900922CE1 /* ManageShopViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
