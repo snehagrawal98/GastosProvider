@@ -104,8 +104,7 @@ struct CodePromotionPlaceholer: ViewModifier {
                 .padding(5)
         }
     }
-    
-    
+
 }
 
 struct WelcomePack: View {

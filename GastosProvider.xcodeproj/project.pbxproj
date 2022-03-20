@@ -53,6 +53,7 @@
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
 		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
+		C020491527E748AC009F83AB /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491427E748AC009F83AB /* PromotionViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
 		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
+		C020491427E748AC009F83AB /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 				691B699727CB20DA000F43D9 /* RecentPayments.swift */,
 				692996D627CA92EC001D9F59 /* Settings.swift */,
 				691286AD279707E900232975 /* Settings */,
+				C020491327E74841009F83AB /* PromotionViewModel */,
 				691286AE279707FC00232975 /* Extension */,
 			);
 			path = View;
@@ -269,6 +272,14 @@
 				693D6C3C2799ADFC00DF62C4 /* EnterMobileNumber.swift */,
 			);
 			path = MobileLogin;
+			sourceTree = "<group>";
+		};
+		C020491327E74841009F83AB /* PromotionViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C020491427E748AC009F83AB /* PromotionViewModel.swift */,
+			);
+			path = PromotionViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +385,7 @@
 				6934C4DE2797FB520097C124 /* ReportAProblem.swift in Sources */,
 				69674403279BEB79009FBBC3 /* BasicDetails.swift in Sources */,
 				6934C4E02797FDBC0097C124 /* HelpCenter.swift in Sources */,
+				C020491527E748AC009F83AB /* PromotionViewModel.swift in Sources */,
 				691D663627972A0A00056EA0 /* ManageShop.swift in Sources */,
 				3FCD8F04278EE7A2002836FC /* GastosProviderApp.swift in Sources */,
 				691286B02797080F00232975 /* Text.swift in Sources */,
