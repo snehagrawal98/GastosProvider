@@ -10,31 +10,39 @@ import SwiftUI
 struct ProviderWallet: View {
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        VStack {
-            HStack {
-              Button(action: {
-                  presentationMode.wrappedValue.dismiss()
-              }, label: {
-                Image(systemName: "arrow.left")
-                  .resizable()
-                  .frame(width: 25, height: 20)
-                  .foregroundColor(.primary)
-              })
+        
+        NavigationView {
+            VStack {
+                HStack {
+                  Button(action: {
+                      presentationMode.wrappedValue.dismiss()
+                  }, label: {
+                    Image(systemName: "arrow.left")
+                      .resizable()
+                      .frame(width: 25, height: 20)
+                      .foregroundColor(.primary)
+                  })
+                        .padding(.leading)
+                    
+                  Spacer()
 
-              Spacer()
+                  SettingsTitleView(title: "Provider Wallet")
 
-              SettingsTitleView(title: "Provider Wallet")
+                  Spacer()
+                } //: HSTACK
+                .padding(.vertical)
+                
+                WalletBrand(promotion: 200, branding: 1000)
+                
+                AddAlert()
+                
+                Spacer()
 
-              Spacer()
-            } //: HSTACK
-            .padding(.vertical)
-            WalletBrand(promotion: 200, branding: 1000)
-            
-            AddAlert()
-            
-            Spacer()
+            }
 
         }
+        .navigationBarHidden(true)
+        .navigationTitle("")
     }
 }
 
@@ -87,41 +95,56 @@ struct WalletBrand: View {
                 
                 HStack {
                     
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color.white)
-                        VStack(alignment: .leading) {
-                            Text("Promotion")
-                                .fontWeight(.regular)
-                                .font(.custom("Futura", size: 18))
-                            Text("₹\(promotion)")
-                                .foregroundColor(Color("textGreen"))
-                                .fontWeight(.regular)
-                                .font(.custom("Futura", size: 24))
+                    NavigationLink {
+                        PromotionWallet(promotion: promotion)
+                    } label: {
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.white)
+                            VStack(alignment: .leading) {
+                                Text("Promotion")
+                                    .fontWeight(.regular)
+                                    .font(.custom("Futura", size: 18))
+                                Text("₹\(promotion)")
+                                    .foregroundColor(Color("textGreen"))
+                                    .fontWeight(.regular)
+                                    .font(.custom("Futura", size: 24))
 
+                            }
                         }
+                        .shadow(radius: 10)
+                        .padding(.horizontal)
+
                     }
-                    .shadow(radius: 10)
-                    .padding(.horizontal)
+                    .navigationTitle("")
+                    .navigationBarHidden(true)
                     
                     Spacer()
                     
-                    ZStack {
-                        
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(Color.white)
-                        VStack(alignment: .leading) {
-                            Text("Branding")
-                                .fontWeight(.regular)
-                                .font(.custom("Futura", size: 18))
-                            Text("₹\(branding)")
-                                .foregroundColor(Color("textGreen"))
-                                .fontWeight(.regular)
-                                .font(.custom("Futura", size: 24))
+                    NavigationLink {
+                        AddMoney()
+                    } label: {
+                        ZStack {
+                            
+                            RoundedRectangle(cornerRadius: 20)
+                                .foregroundColor(Color.white)
+                            VStack(alignment: .leading) {
+                                Text("Branding")
+                                    .fontWeight(.regular)
+                                    .font(.custom("Futura", size: 18))
+                                Text("₹\(branding)")
+                                    .foregroundColor(Color("textGreen"))
+                                    .fontWeight(.regular)
+                                    .font(.custom("Futura", size: 24))
+                            }
                         }
+                        .shadow(radius: 10)
+                        .padding(.horizontal)
+
                     }
-                    .shadow(radius: 10)
-                    .padding(.horizontal)
+                    .navigationTitle("")
+                    .navigationBarHidden(true)
+
                 }
                 .padding(.bottom)
             }

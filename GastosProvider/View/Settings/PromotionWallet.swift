@@ -22,7 +22,7 @@ struct PromotionWallet: View {
                   .resizable()
                   .frame(width: 25, height: 20)
                   .foregroundColor(.primary)
-              })
+              }).padding(.leading)
 
               Spacer()
 
@@ -36,33 +36,48 @@ struct PromotionWallet: View {
                 RoundedRectangle(cornerRadius: 15)
                     .foregroundColor(Color.white)
                     .shadow(radius: 20)
-                VStack {
-                    Text("Wallet Ballance")
-                        .fontWeight(.semibold)
-                        .font(.custom("Futura", size: 18))
-                    Text("₹ \(promotion)")
-                        .fontWeight(.regular)
-                        .font(.custom("Futura", size: 50))
-                }
                 
-                HStack {
-                    Spacer()
-                    Button {
-                        // Add Money
-                    } label: {
-                        Text("Add Money")
-                          .font(.body.weight(.bold))
-                          .font(.custom("Lato", size: 16))
-                          .foregroundColor(Color.white)
-                          .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-                          .background(Color("textGreen"))
-                          .cornerRadius(15)
-                          .padding(.trailing)
+                VStack {
+                    
+                    HStack {
+                        VStack {
+                            Text("Wallet Ballance")
+                                .fontWeight(.semibold)
+                                .font(.custom("Futura", size: 18))
+                                .padding(.top)
+                            
+                            Text("₹ \(promotion)")
+                                .fontWeight(.regular)
+                                .font(.custom("Futura", size: 50))
+
+                        }
+                        .padding(.leading)
+                        Spacer()
                     }
-                    .padding(.trailing)
+                
+                    Spacer()
+                
+                    HStack {
+                        Spacer()
+                        Button {
+                            // Add Money
+                        } label: {
+                            Text("Add Money")
+                              .font(.body.weight(.bold))
+                              .font(.custom("Lato", size: 16))
+                              .foregroundColor(Color.white)
+                              .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
+                              .background(Color("textGreen"))
+                              .cornerRadius(15)
+                              .padding(.trailing)
+                        }
+                        .padding(.trailing)
+                    }
+                    .padding(.bottom)
                 }
             }
             .padding(.horizontal)
+            .frame(height: UIScreen.screenHeight * (253 / 812))
             
             HStack {
                 Image(systemName: "star")

@@ -12,6 +12,7 @@ struct AddMoney: View {
     @State var amount: Int = 0
     
     @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         VStack {
             HStack {
@@ -23,6 +24,7 @@ struct AddMoney: View {
                   .frame(width: 25, height: 20)
                   .foregroundColor(.primary)
               })
+                    .padding(.leading)
 
               Spacer()
 
@@ -37,20 +39,31 @@ struct AddMoney: View {
                     .foregroundColor(Color.white)
                     .shadow(radius: 20)
                 VStack {
-                    Text("Enter Amount")
-                        .fontWeight(.semibold)
-                        .font(.custom("Futura", size: 18))
+                    HStack {
+                        Text("Enter Amount")
+                            .fontWeight(.semibold)
+                            .font(.custom("Futura", size: 18))
+                            .padding(.leading)
+                            .padding(.top)
+                        Spacer()
+                    }
+                    
                     HStack {
                         Text("₹")
                             .fontWeight(.regular)
-                            .font(.custom("Futura", size: 50))
+                            .font(.custom("Futura", size: 40))
+                            .padding(.leading)
                         TextField("0", value: $amount, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
+                            .font(.largeTitle)
                     }
+                    .padding(.top)
                     
+                    Spacer()
                 }
             }
             .padding(.horizontal)
+            .frame(height: UIScreen.screenHeight * (253 / 812))
             
             Spacer()
             
@@ -60,6 +73,7 @@ struct AddMoney: View {
         
     }
 }
+
 
 struct AddMoneyBottom: View {
     
