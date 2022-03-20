@@ -104,6 +104,7 @@ class LoginViewModel: ObservableObject {
   @Published var shopLocation = ""
   @Published var shopCategory = ""
   @Published var discounts = [Discount]()
+  @Published var images = [UIImage]()
 
   // Payment Info
   @Published var qrCodes = [QrCode]()
