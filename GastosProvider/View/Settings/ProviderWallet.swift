@@ -122,7 +122,7 @@ struct WalletBrand: View {
                     Spacer()
                     
                     NavigationLink {
-                        AddMoney()
+                        BrandingWallet(branding: branding)
                     } label: {
                         ZStack {
                             
