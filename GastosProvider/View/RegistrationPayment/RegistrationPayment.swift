@@ -214,6 +214,8 @@ struct MakeBrand: View {
 struct RegistrationPaymentBottom: View {
     
     var cost: Int
+  @EnvironmentObject var loginViewModel: LoginViewModel
+
     var body : some View {
         
         ZStack {
@@ -239,7 +241,7 @@ struct RegistrationPaymentBottom: View {
                 Spacer()
                 
                 Button(action: {
-                  // Pay
+                  loginViewModel.madeRegistrationPayment = true
                 }, label: {
                   Text("Pay")
                     .font(.body.weight(.bold))
