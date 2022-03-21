@@ -1,18 +1,20 @@
 //
-//  PromotionWallet.swift
+//  BrandingWallet.swift
 //  GastosProvider
 //
-//  Created by ehsan sat on 3/16/22.
+//  Created by ehsan sat on 3/21/22.
 //
 
 import SwiftUI
 
-struct PromotionWallet: View {
+
+struct BrandingWallet: View {
     
-    var promotion: Int
+    var branding: Int
     
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
+        
         NavigationView {
             VStack {
                 HStack {
@@ -27,7 +29,7 @@ struct PromotionWallet: View {
 
                   Spacer()
 
-                  SettingsTitleView(title: "Promotion Wallet")
+                  SettingsTitleView(title: "Branding Wallet")
 
                   Spacer()
                 } //: HSTACK
@@ -47,7 +49,7 @@ struct PromotionWallet: View {
                                     .font(.custom("Futura", size: 18))
                                     .padding(.top)
                                 
-                                Text("₹ \(promotion)")
+                                Text("₹ \(branding)")
                                     .fontWeight(.regular)
                                     .font(.custom("Futura", size: 50))
 
@@ -63,19 +65,21 @@ struct PromotionWallet: View {
                             NavigationLink {
                                 AddMoney()
                             } label: {
-                                Text("Add Money")
-                                  .font(.body.weight(.bold))
-                                  .font(.custom("Lato", size: 16))
-                                  .foregroundColor(Color.white)
-                                  .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-                                  .background(Color("textGreen"))
-                                  .cornerRadius(15)
-                                  .padding(.trailing)
+                                
+                                    Text("Add Money")
+                                      .font(.body.weight(.bold))
+                                      .font(.custom("Lato", size: 16))
+                                      .foregroundColor(Color.white)
+                                      .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
+                                      .background(Color("textGreen"))
+                                      .cornerRadius(15)
+                                      .padding(.trailing)
+                                
 
                             }
-                            .navigationTitle("")
                             .navigationBarHidden(true)
-
+                            .navigationTitle("")
+                            .navigationBarBackButtonHidden(true)
                         }
                         .padding(.bottom)
                     }
@@ -95,74 +99,22 @@ struct PromotionWallet: View {
                             .font(.custom("Poppins", size: 12))
                     }
                 }
+
+                
                 Spacer()
                 
             }
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
 
-            
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
 }
 
-struct PromotionWalletBottom: View {
-    
-    var cost: Int
-    
-    var body : some View {
-        
-        ZStack {
-            Rectangle()
-              .frame(width: UIScreen.screenWidth, height: 0.17 * UIScreen.screenHeight)
-              .foregroundColor(Color("deepGreen"))
-              .cornerRadius(30, corners: [.topLeft, .topRight])
-              .ignoresSafeArea(.all)
-            
-            HStack {
-                VStack(alignment: .leading) {
-                    Text("Adding Amount in wallet")
-                        .fontWeight(.regular)
-                        .font(.custom("Lato", size: 14))
-                        .foregroundColor(Color.white)
-                    Text("Rs. \(cost)")
-                        .fontWeight(.regular)
-                        .font(.custom("Lato", size: 20))
-                        .foregroundColor(Color.white)
-                }
-                .padding(.leading)
-                
-                Spacer()
-                
-                NavigationLink {
-                    AddMoney()
-                } label: {
-                    Text("Add")
-                      .font(.body.weight(.bold))
-                      .font(.custom("Lato", size: 16))
-                      .foregroundColor(Color("textGreen"))
-                      .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-                      .background(Color.white)
-                      .cornerRadius(15)
-                      .padding(.trailing)
 
-                }
-                .navigationTitle("")
-                .navigationBarTitle("")
-                .navigationBarHidden(true)
-
-            }
-            
-            
-            
-        }
-    }
-}
-
-struct PromotionWallet_Previews: PreviewProvider {
+struct BrandingWallet_Previews: PreviewProvider {
     static var previews: some View {
-        PromotionWallet(promotion: 1000)
+        BrandingWallet(branding: 1200)
     }
 }

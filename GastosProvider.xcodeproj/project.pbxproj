@@ -55,6 +55,7 @@
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
 		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
 		C020491527E748AC009F83AB /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491427E748AC009F83AB /* PromotionViewModel.swift */; };
+		C020491B27E8F252009F83AB /* BrandingWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491A27E8F252009F83AB /* BrandingWallet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
 		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
 		C020491427E748AC009F83AB /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
+		C020491A27E8F252009F83AB /* BrandingWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingWallet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				6E42506427E6252800A01FC4 /* AddMoney.swift */,
 				6E42506227E6251000A01FC4 /* ProviderWallet.swift */,
 				6E42506527E6252900A01FC4 /* PromotionWallet.swift */,
+				C020491A27E8F252009F83AB /* BrandingWallet.swift */,
 				6934C4DD2797FB520097C124 /* ReportAProblem.swift */,
 				6E05207427E3C27E00B8C80F /* ManageDesign.swift */,
 				6E05207527E3C27F00B8C80F /* RequestDesign.swift */,
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E42506827E6252900A01FC4 /* PromotionWallet.swift in Sources */,
+				C020491B27E8F252009F83AB /* BrandingWallet.swift in Sources */,
 				698F120327C353E80097E85F /* LoginViewModel.swift in Sources */,
 				69EF55C327E505A6008F38F7 /* BasicDetailsViewModel.swift in Sources */,
 				693E599627D475AE0086C25C /* SetAQrPrimary.swift in Sources */,

@@ -70,8 +70,10 @@ struct AddMoney: View {
             AddMoneyBottom(cost: 200)
         }
         .edgesIgnoringSafeArea(.bottom)
-        
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
     }
+    
 }
 
 
