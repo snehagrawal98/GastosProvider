@@ -277,9 +277,7 @@ struct Settings: View {
               .foregroundColor(Color("deepGreen"))
 
             VStack {
-                NavigationLink(destination: ReportAProblem()
-                                .navigationBarHidden(true)
-                                .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://gastos-reportaproblem.netlify.app")!) {
                 HStack {
                   Image(systemName: "highlighter")
                     .resizable()
@@ -293,15 +291,13 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
 
               Spacer()
               Divider()
               Spacer()
 
-                NavigationLink(destination: HelpCenter()
-                                .navigationBarHidden(true)
-                                .navigationBarBackButtonHidden(true), label: {
+                Link(destination: URL(string: "https://gastos-helpcenter.netlify.app")!) {
                 HStack {
                   Image(systemName: "questionmark.circle")
                     .resizable()
@@ -315,7 +311,7 @@ struct Settings: View {
                   Image(systemName: "chevron.right")
                 }
                 .foregroundColor(.black)
-              })
+              }
                                
             }
             .frame(width: 0.8 * UIScreen.screenWidth, height: 0.09 * UIScreen.screenHeight)
