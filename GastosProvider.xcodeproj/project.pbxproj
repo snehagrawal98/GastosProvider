@@ -223,6 +223,14 @@
 			path = ManageShop;
 			sourceTree = "<group>";
 		};
+		69F6741A27E8BF3F00777A71 /* RegistrationPayment */ = {
+			isa = PBXGroup;
+			children = (
+				6E42506627E6252900A01FC4 /* RegistrationPayment.swift */,
+			);
+			path = RegistrationPayment;
+			sourceTree = "<group>";
+		};
 		69FDEBD127E504AB00AAC395 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -260,7 +268,7 @@
 				693D6C3E2799AE3E00DF62C4 /* SetPin.swift */,
 				691D0AB227DCF1F500E43235 /* UserAgreement */,
 				693D6C402799AE6600DF62C4 /* KeyBoard.swift */,
-				6E42506627E6252900A01FC4 /* RegistrationPayment.swift */,
+				69F6741A27E8BF3F00777A71 /* RegistrationPayment */,
 				693D6C422799AF1700DF62C4 /* EnterPin.swift */,
 				693D6C442799AF5E00DF62C4 /* OTPPin.swift */,
 				69FDEBD527E5054300AAC395 /* BasicDetails */,

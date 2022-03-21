@@ -50,7 +50,7 @@ class ManageShopViewModel: ObservableObject {
 
   func uploadImageURLsToRealtime(uid: String, url: String, imageNumber: Int) {
     let ref = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
-      ref.child("shopImageurl\(imageNumber)").setValue("\(url)")
+      ref.child("shopImageUri\(imageNumber)").setValue("\(url)")
   }
 
 }
