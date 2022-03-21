@@ -10,22 +10,28 @@ import SwiftUI
 struct RegistrationPayment: View {
     
     @State var promotionCode: String = ""
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
-            
             HStack {
+              Button(action: {
+                  presentationMode.wrappedValue.dismiss()
+              }, label: {
                 Image(systemName: "arrow.left")
+                  .resizable()
+                  .frame(width: 25, height: 20)
+                  .foregroundColor(.primary)
+              })
                     .padding(.leading)
-                    .padding(.trailing)
-                
-                Text("Registration Payment")
-                    .fontWeight(.regular)
-                    .font(.custom("Futura", size: 25))
-                    .padding(.leading)
-                
-                Spacer()
-            }
+
+              Spacer()
+
+              SettingsTitleView(title: "Registration Payment")
+
+              Spacer()
+            } //: HSTACK
+            
             
             WelcomePack(cost: 599)
             

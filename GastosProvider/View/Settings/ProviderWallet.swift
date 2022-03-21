@@ -96,7 +96,7 @@ struct WalletBrand: View {
                 HStack {
                     
                     NavigationLink {
-                        PromotionWallet(promotion: promotion)
+                        PromotionWallet(promotion: promotion).navigationBarHidden(true)
                     } label: {
                         ZStack {
                             RoundedRectangle(cornerRadius: 20)
@@ -151,7 +151,7 @@ struct WalletBrand: View {
         }
         .frame(height: UIScreen.screenHeight * (253 / 812))
         .padding(.horizontal)
-        .shadow(radius: 20)
+        //.shadow(radius: 20)
     }
 }
 

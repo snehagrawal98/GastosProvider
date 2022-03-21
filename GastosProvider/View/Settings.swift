@@ -85,7 +85,7 @@ struct Settings: View {
                 Divider()
                 Spacer()
 //wallet
-                NavigationLink(destination: ManageShop()
+                NavigationLink(destination: ProviderWallet()
                                 .navigationBarHidden(true)
                                 .navigationBarBackButtonHidden(true), label: {
                   HStack {

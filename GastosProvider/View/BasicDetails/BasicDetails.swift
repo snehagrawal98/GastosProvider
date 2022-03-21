@@ -17,6 +17,7 @@ struct BasicDetails: View {
 
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var basicDetailsViewModel = BasicDetailsViewModel()
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
       NavigationView {
@@ -25,6 +26,7 @@ struct BasicDetails: View {
           HStack {
             Button(action: {
               // back
+                presentationMode.wrappedValue.dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()

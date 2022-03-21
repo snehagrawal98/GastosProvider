@@ -23,7 +23,6 @@ struct RequestDesign: View {
 
 
     var body: some View {
-        ZStack {
             VStack(alignment: .leading){
             HStack {
               Button(action: {
@@ -170,9 +169,9 @@ struct RequestDesign: View {
         )
             
             if showingPopover{
-                //popUp1(dismiss: $showingPopover)
+              //  popUp1(dismiss: $showingPopover)
             }
-        }
+        
     }
 }
 
