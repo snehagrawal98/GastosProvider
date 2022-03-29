@@ -14,8 +14,7 @@ struct GastosProviderApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-//          RegistrationPayment()
-            LiveQrGeneration()
+          RegistrationPayment()
         }
     }
 }

@@ -304,6 +304,8 @@ struct MakeBrand: View {
 }
 
 struct RegistrationPaymentBottom: View {
+    
+    @StateObject var loginAuthViewModel = LoginViewModel()
 
   //var cost: Int
   var promoCodeApplied: Bool
@@ -334,19 +336,27 @@ struct RegistrationPaymentBottom: View {
                 .padding(.leading)
 
                 Spacer()
+                
+                Link(destination: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=\(loginAuthViewModel.uid)")!) {
+                    //Button(action: {
+                      //loginViewModel.madeRegistrationPayment = true
+                        
+                    //}, label: {
+                      Text("Pay")
+                        .font(.body.weight(.bold))
+                        .font(.custom("Lato", size: 16))
+                        .foregroundColor(Color("textGreen"))
+                        .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
+                        .background(Color.white)
+                        .cornerRadius(15)
+                        .padding(.trailing)
+                    //})
 
-                Button(action: {
-                  loginViewModel.madeRegistrationPayment = true
-                }, label: {
-                  Text("Pay")
-                    .font(.body.weight(.bold))
-                    .font(.custom("Lato", size: 16))
-                    .foregroundColor(Color("textGreen"))
-                    .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-                    .background(Color.white)
-                    .cornerRadius(15)
-                    .padding(.trailing)
-                })
+                }
+                .onTapGesture {
+                    loginViewModel.madeRegistrationPayment = true
+
+                }
             }
         }
     }
