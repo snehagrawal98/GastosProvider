@@ -60,7 +60,6 @@
 		C020491D27EF2022009F83AB /* LiveQrGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491C27EF2022009F83AB /* LiveQrGeneration.swift */; };
 		C020491F27F0CEF3009F83AB /* Merchant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491E27F0CEF2009F83AB /* Merchant.swift */; };
 		C020492127F0CF35009F83AB /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020492027F0CF35009F83AB /* FirebaseManager.swift */; };
-		C020492327F0CFC7009F83AB /* QrViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020492227F0CFC7009F83AB /* QrViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -115,7 +114,6 @@
 		C020491C27EF2022009F83AB /* LiveQrGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveQrGeneration.swift; sourceTree = "<group>"; };
 		C020491E27F0CEF2009F83AB /* Merchant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Merchant.swift; sourceTree = "<group>"; };
 		C020492027F0CF35009F83AB /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		C020492227F0CFC7009F83AB /* QrViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +233,6 @@
 				C020491C27EF2022009F83AB /* LiveQrGeneration.swift */,
 				C020491E27F0CEF2009F83AB /* Merchant.swift */,
 				C020492027F0CF35009F83AB /* FirebaseManager.swift */,
-				C020492227F0CFC7009F83AB /* QrViewModel.swift */,
 			);
 			path = ManageShop;
 			sourceTree = "<group>";
@@ -433,7 +430,6 @@
 				695B871527C60984009C7C40 /* AddQRs.swift in Sources */,
 				693D6C3F2799AE3E00DF62C4 /* SetPin.swift in Sources */,
 				691B699827CB20DA000F43D9 /* RecentPayments.swift in Sources */,
-				C020492327F0CFC7009F83AB /* QrViewModel.swift in Sources */,
 				6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */,
 				691286AC279707BF00232975 /* ContentView.swift in Sources */,
 				6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */,

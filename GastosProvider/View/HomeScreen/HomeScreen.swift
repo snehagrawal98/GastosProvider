@@ -62,7 +62,7 @@ struct HomeScreen: View {
             } //: VSTACK
 
             VStack {
-              NavigationLink(destination: RecentPayments()
+              NavigationLink(destination: LiveQrGeneration()
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true),
                               label: {
@@ -79,7 +79,7 @@ struct HomeScreen: View {
               })
                 .padding(.vertical)
 
-              Text("Payments")
+              Text("Generate QR")
             } //: VSTACK
 
             VStack {
