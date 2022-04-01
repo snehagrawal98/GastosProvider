@@ -66,10 +66,10 @@ struct HomeScreen: View {
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true),
                               label: {
-                Image(systemName: "square.and.arrow.down.fill")
+                Image("qr")
                   .resizable()
                   .frame(width: 30, height: 30)
-                  .foregroundColor(Color("deepGreen"))
+                  
                   .background(
                     Circle()
                       .frame(width: 60, height: 60)
@@ -112,49 +112,50 @@ struct HomeScreen: View {
               .padding()
 
             HStack {
-              VStack {
-                Image("foodItem")
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: 0.16 * UIScreen.screenWidth, height: 0.074 * UIScreen.screenHeight)
-                  .clipShape(Circle())
-                Spacer()
-              }
-              .padding(.trailing, 2)
-
-              VStack(alignment: .leading) {
-                Text("Sanjay Butt")
-                  .font(.headline.weight(.medium))
-                Spacer()
-                HStack {
-                  Text("Paid")
-                    .font(.subheadline)
-                  Text("\(rupeeSymbol) 450")
-                    .font(.title3.weight(.semibold))
-                    .foregroundColor(Color("textGreen"))
-                }
-                HStack {
-                  Text("Billed Amount")
-                    .font(.subheadline)
-                  Text("\(rupeeSymbol) 500")
-                    .font(.body.weight(.semibold))
-                    .foregroundColor(.black.opacity(0.6))
-                }
-              }
-              .frame(height: 0.1 * UIScreen.screenHeight)
-              Spacer()
-
-              VStack(alignment: .trailing) {
-                Image("Google Pay")
-                  .resizable()
-                  .scaledToFit()
-                  .frame(width: 0.14 * UIScreen.screenWidth, height: 0.08 * UIScreen.screenHeight)
-
-                Text("02:30 PM")
-                  .font(.caption2)
-                Text("25 DEC 2020")
-                  .font(.caption2)
-              }
+                Text("No Recent Payment").foregroundColor(.black).font(.caption)
+//              VStack {
+//                Image("foodItem")
+//                  .resizable()
+//                  .scaledToFit()
+//                  .frame(width: 0.16 * UIScreen.screenWidth, height: 0.074 * UIScreen.screenHeight)
+//                  .clipShape(Circle())
+//                Spacer()
+//              }
+//              .padding(.trailing, 2)
+//
+//              VStack(alignment: .leading) {
+//                Text("Sanjay Butt")
+//                  .font(.headline.weight(.medium))
+//                Spacer()
+//                HStack {
+//                  Text("Paid")
+//                    .font(.subheadline)
+//                  Text("\(rupeeSymbol) 450")
+//                    .font(.title3.weight(.semibold))
+//                    .foregroundColor(Color("textGreen"))
+//                }
+//                HStack {
+//                  Text("Billed Amount")
+//                    .font(.subheadline)
+//                  Text("\(rupeeSymbol) 500")
+//                    .font(.body.weight(.semibold))
+//                    .foregroundColor(.black.opacity(0.6))
+//                }
+//              }
+//              .frame(height: 0.1 * UIScreen.screenHeight)
+//              Spacer()
+//
+//              VStack(alignment: .trailing) {
+//                Image("Google Pay")
+//                  .resizable()
+//                  .scaledToFit()
+//                  .frame(width: 0.14 * UIScreen.screenWidth, height: 0.08 * UIScreen.screenHeight)
+//
+//                Text("02:30 PM")
+//                  .font(.caption2)
+//                Text("25 DEC 2020")
+//                  .font(.caption2)
+//              }
             }
             .frame(width: 0.85 * UIScreen.screenWidth, height: 0.118 * UIScreen.screenHeight)
             .background(
