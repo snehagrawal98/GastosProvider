@@ -11,11 +11,15 @@ struct RegistrationPayment: View {
 
   @State var promotionCode: String = ""
   @State var promoCodeApplied = false
+  @State var isShowingPaymentPage = false
+  var cost: Int {
+    return promoCodeApplied ? 299 : 599
+  }
+  @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var registrationPaymentViewModel = RegistrationPaymentViewModel()
 
     var body: some View {
         VStack {
-
             HStack {
                 Image(systemName: "arrow.left")
                     .padding(.leading)
@@ -42,7 +46,7 @@ struct RegistrationPayment: View {
 
             Spacer()
 
-          RegistrationPaymentBottom(promoCodeApplied: promoCodeApplied)
+          RegistrationPaymentBottom(isShowingPaymentPage: $isShowingPaymentPage, promoCodeApplied: promoCodeApplied)
 
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -50,6 +54,10 @@ struct RegistrationPayment: View {
           registrationPaymentViewModel.getBDSales()
         }
         .environmentObject(registrationPaymentViewModel)
+        .fullScreenCover(isPresented: $isShowingPaymentPage, content: {
+          PaymentView(url: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=02OTfNYbg3QZfJZCwDnBnhjDEuu2")!)
+                               //\(loginViewModel.uid)")!)
+        })
     }
 }
 
@@ -304,10 +312,7 @@ struct MakeBrand: View {
 }
 
 struct RegistrationPaymentBottom: View {
-    
-    @StateObject var loginAuthViewModel = LoginViewModel()
-
-  //var cost: Int
+  @Binding var isShowingPaymentPage: Bool
   var promoCodeApplied: Bool
   @EnvironmentObject var loginViewModel: LoginViewModel
   var cost: Int {
@@ -337,26 +342,37 @@ struct RegistrationPaymentBottom: View {
 
                 Spacer()
                 
-                Link(destination: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=\(loginAuthViewModel.uid)")!) {
+                //Link(destination: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=\(loginAuthViewModel.uid)")!)
+//              NavigationLink(destination: {
+//                PaymentView(url: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=\(loginViewModel.uid)")!)
+//              }, label: {
+
+              Button(action: {
+                isShowingPaymentPage.toggle()
+              }, label: {
+                Text("Pay")
+                    .font(.body.weight(.bold))
+                    .font(.custom("Lato", size: 16))
+                    .foregroundColor(Color("textGreen"))
+                    .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(15)
+                    .padding(.trailing)
+
+              })
+             // }) //{
                     //Button(action: {
                       //loginViewModel.madeRegistrationPayment = true
                         
                     //}, label: {
-                      Text("Pay")
-                        .font(.body.weight(.bold))
-                        .font(.custom("Lato", size: 16))
-                        .foregroundColor(Color("textGreen"))
-                        .frame(width: 0.31 * UIScreen.screenWidth, height: 0.065 * UIScreen.screenHeight, alignment: .center)
-                        .background(Color.white)
-                        .cornerRadius(15)
-                        .padding(.trailing)
+
                     //})
 
-                }
-                .onTapGesture {
-                    loginViewModel.madeRegistrationPayment = true
-
-                }
+                //}
+//                .onTapGesture {
+//                    loginViewModel.madeRegistrationPayment = true
+//
+//                }
             }
         }
     }

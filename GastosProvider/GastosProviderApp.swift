@@ -14,7 +14,7 @@ struct GastosProviderApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     var body: some Scene {
         WindowGroup {
-          ContentView()
+          RegistrationPayment()
         }
     }
 }
@@ -28,6 +28,5 @@ class AppDelegate: NSObject,UIApplicationDelegate {
 
   // needed for firebase phone auth
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
   }
 }
