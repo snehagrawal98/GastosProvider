@@ -68,8 +68,8 @@ class BasicDetailsViewModel: ObservableObject {
     let ref1 = db.reference().child("Merchant_data").child("\(uid)/Account_Information")
     let ref2 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
 
-    let deliveryEnabled = self.deliveryEnabled ? "true" : "false"
-    let pickupEnabled = self.pickupEnabled ? "true" : "false"
+    //let deliveryEnabled = self.deliveryEnabled ? "true" : "false"
+    //let pickupEnabled = self.pickupEnabled ? "true" : "false"
 
     ref1.child("emailAddress").setValue(emailAddress)
     ref1.child("ownerName").setValue(ownerName)
@@ -78,7 +78,7 @@ class BasicDetailsViewModel: ObservableObject {
     ref2.child("shopAddress").setValue(shopAddress)
     ref2.child("shopCity").setValue(shopCity)
     ref2.child("homeDelivery").setValue(deliveryEnabled)
-    ref2.child("pickup").setValue(pickupEnabled)
+    ref2.child("pickUp").setValue(pickupEnabled)
     ref2.child("shopName").setValue(shopName)
     didEnterMerchantDetails = true
   }

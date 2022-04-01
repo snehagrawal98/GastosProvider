@@ -15,10 +15,11 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-          if  status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree && loginViewModel.madeRegistrationPayment {
-            HomeScreen()
-          }
-          else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree {
+//          if  status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree && loginViewModel.madeRegistrationPayment {
+//            HomeScreen()
+//          }
+//          else
+          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree {
             RegistrationPayment()
           } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts {
             UserAgreement()
