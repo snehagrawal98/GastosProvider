@@ -35,15 +35,15 @@ struct ReferAndEarn: View {
         Image("Asset1")
                 Text("Register a Friend in Gastos Provider Club and get").font(.system(size:17, weight: .semibold)) + Text(" Rs150 ").foregroundColor(Color("deepGreen")).font(.system(size:17, weight: .semibold)) + Text("in your wallet for each registration.").font(.system(size:17, weight: .semibold))
                     
-                Button {
-                    
-                } label: {
-                    HStack{
-                    Text("Share").font(.system(size:20, weight: .semibold)).foregroundColor(.white)
-                        Image("shape")
-                    }
-                }.frame(width: 99, height: 40, alignment: .center).background(Color("deepGreen")).cornerRadius(10)
-                Image("text")
+//                Button {
+//
+//                } label: {
+//                    HStack{
+//                    Text("Share").font(.system(size:20, weight: .semibold)).foregroundColor(.white)
+//                        Image("shape")
+//                    }
+//                }.frame(width: 99, height: 40, alignment: .center).background(Color("deepGreen")).cornerRadius(10)
+//                Image("text")
 
             }.padding(.horizontal)
         }
