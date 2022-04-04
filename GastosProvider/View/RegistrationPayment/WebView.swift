@@ -99,25 +99,34 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate, ObservableObject {
 //    }
     let urlRequest = URLRequest(url: url)
 
-    let task = URLSession.shared.dataTask(with: urlRequest) { (data,response,error)  in
-      guard let data = data, error == nil else {
-        print("Couldn't fetch data from server")
-        return
-      }
-      do {
-        let response = try JSONDecoder().decode([Response].self, from: data)
-        print("\n\n\n decoded \n\n\n")
-        //////
-        //print(response)
-        ////
-        DispatchQueue.main.async {
-          //self.response = response
+    URLSession.shared.dataTask(with: urlRequest) { (data,response,error)  in
+        if error != nil{
+            print(error?.localizedDescription as Any)
+        } else {
+            if let data = data{
+                do {
+                   // let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as! NSDictionary
+                    let response = try JSONDecoder().decode(Response.self, from: data)
+                  print("This is the response \(response)")
+                  //////
+                  //print(response)
+                  ////
+                  DispatchQueue.main.async {
+                    //self.response = response
+                  }
+                } catch {
+                  print("Couldn't decode data \(error.localizedDescription)")
+                }
+            }
+            }
         }
-      } catch {
-        print("Couldn't decode data \(error.localizedDescription)")
-      }
-    }
-    task.resume()
+//      guard let data = data1, error1 == nil else {
+//        print("Couldn't fetch data from server")
+//        return
+//      }
+      
+    
+    .resume()
   }
 
 }
@@ -139,24 +148,74 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate, ObservableObject {
 //  var TXNID: String
 //}
 
-struct Response: Identifiable, Codable {
-  let banktxnid, checksumhash, currency, mid, orderid, respcode, respmsg, status, txnamount, txnid : String?
-  //@DocumentID
-  var id: String?
-
-    enum CodingKeys: String, CodingKey {
-        case banktxnid = "BANKTXNID"
-        case checksumhash = "CHECKSUMHASH"
-        case currency = "CURRENCY"
-        case mid = "MID"
-        case orderid = "ORDERID"
-        case respcode = "RESPCODE"
-        case respmsg = "RESPMSG"
-        case status = "STATUS"
-        case txnamount = "TXNAMOUNT"
-        case txnid = "TXNID"
+struct Response: Codable{
+    var ORDERID: String?
+    var MID: String?
+    var TXNID: String?
+    var TXNAMOUNT: String?
+    var PAYMENTMODE: String?
+    var CURRENCY: String?
+    var TXNDATE: String?
+    var STATUS: String?
+    var RESPCODE: String?
+    var RESPMSG: String?
+    var GATEWAYNAME: String?
+    var BANKTXNID: String?
+    var CHECKSUMHASH: String?
+    
+    enum CodingKeys: String, CodingKey{
+        case ORDERID = "ORDERID"
+        case MID = "MID"
+        case TXNID = "TXNID"
+        case TXNAMOUNT = "TXNAMOUNT"
+        case PAYMENTMODE = "PAYMENTMODE"
+        case CURRENCY = "CURRENCY"
+        case TXNDATE = "TXNDATE"
+        case STATUS = "STATUS"
+        case RESPCODE = "RESPCODE"
+        case RESPMSG = "RESPMSG"
+        case GATEWAYNAME = "GATEWAYNAME"
+        case BANKTXNID = "BANKTXNID"
+        case CHECKSUMHASH = "CHECKSUMHASH"
     }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        ORDERID = try values.decodeIfPresent(String.self, forKey: .ORDERID)
+        MID = try values.decodeIfPresent(String.self, forKey: .MID)
+        TXNID = try values.decodeIfPresent(String.self, forKey: .TXNID)
+        TXNAMOUNT = try values.decodeIfPresent(String.self, forKey: .TXNAMOUNT)
+        PAYMENTMODE = try values.decodeIfPresent(String.self, forKey: .PAYMENTMODE)
+        CURRENCY = try values.decodeIfPresent(String.self, forKey: .CURRENCY)
+        TXNDATE = try values.decodeIfPresent(String.self, forKey: .TXNDATE)
+        STATUS = try values.decodeIfPresent(String.self, forKey: .STATUS)
+        RESPCODE = try values.decodeIfPresent(String.self, forKey: .RESPCODE)
+        RESPMSG = try values.decodeIfPresent(String.self, forKey: .RESPMSG)
+        GATEWAYNAME = try values.decodeIfPresent(String.self, forKey: .GATEWAYNAME)
+        BANKTXNID = try values.decodeIfPresent(String.self, forKey: .BANKTXNID)
+        CHECKSUMHASH = try values.decodeIfPresent(String.self, forKey: .CHECKSUMHASH)
+    }
+
 }
+
+//struct Response: Identifiable, Codable {
+//  let banktxnid, checksumhash, currency, mid, orderid, respcode, respmsg, status, txnamount : String?
+//  //@DocumentID
+//  var id: String?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case banktxnid = "BANKTXNID"
+//        case checksumhash = "CHECKSUMHASH"
+//        case currency = "CURRENCY"
+//        case mid = "MID"
+//        case orderid = "ORDERID"
+//        case respcode = "RESPCODE"
+//        case respmsg = "RESPMSG"
+//        case status = "STATUS"
+//        case txnamount = "TXNAMOUNT"
+//    //    case txnid = "TXNID"
+//    }
+//}
 
 extension View {
   func toAnyView() -> AnyView {
