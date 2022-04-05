@@ -18,7 +18,7 @@ struct PaymentView: View {
   var body: some View {
     VStack {
       WebView(url: url, showLoading: $showLoading)
-        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
+//        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
     }
   }
 }
@@ -62,46 +62,92 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate { //, ObservableObject 
   func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
     didStart()
   }
-
-  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-    //print("\n\nfinished loading \n\n")
-    didFinish()
-    let host = webView.url
-    if ((host?.absoluteString.contains("paywithpaytmresponse")) == true) {
-      print("\n\n finished loading \n\n")
-      print(host?.absoluteString)
-//      self.fetch(url: host!)
-    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-      self.fetch(url: host!)
-    })
-
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+      print(error.localizedDescription)
     }
-  }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        didFinish()
+        let doc = webView.evaluateJavaScript("document.documentElement.outerHTML", completionHandler: { html, error in
+            print(html)
+        })
+        fetch()
+    }
+}
 
+//  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//    //print("\n\nfinished loading \n\n")
+//    didFinish()
+//    let host = webView.url
+//    if ((host?.absoluteString.contains("paywithpaytmresponse")) == true) {
+//      print("\n\n finished loading \n\n")
+//      print(host?.absoluteString)
+////      self.fetch(url: host!)
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+//    //  self.fetch(url: host!)
+//    })
+//
+//    }
+//  }
 
-  func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-    print(error.localizedDescription)
-  }
+    
+    
 
+func getHtml(_ urlString: String, completion: @escaping (String?, Error?) -> Void) {
+    DispatchQueue.global(qos: .userInitiated).async(execute: {
+        guard let url = URL(string: urlString) else {
+            print("URLError: \(urlString) doesn't seem to be a valid URL")
+            return completion(nil, URLError.init(URLError.Code.badURL))
+        }
+
+        do {
+            let html = try String(contentsOf: url, encoding: .ascii)
+            print("HTML: \(html)")
+            return completion(html, nil)
+        } catch let error {
+            print("Error: \(error)")
+            return completion(nil, error)
+        }
+    })
+}
+    
+func fetch(){
+getHtml("https://gastos-paytm-gatway.herokuapp.com/paywithpaytmresponse", completion: { html, error in
+    if let e = error {
+        print(e)
+        // handle your error
+        return
+    }
+    print(html as Any)
+    DispatchQueue.main.async {
+        //update your UI on the main thread
+    }
+})
+}
+    
+    
+    
   // to watch for response
   let webView = WKWebView()
+    
+    
+    
 
   // for reading back response
   //@Published var response = Response(ORDERID: "", MID: "", TXNID: "", TXNAMOUNT: "", PAYMENTMODE: "", CURRENCY: "", TXNDATE: "", STATUS: "", RESPCODE: "", RESPMSG: "", GATEWAYNAME: "", BANKTXNID: "", CHECKSUMHASH: "")
 
-  func fetch(url: URL) {
-    webView.evaluateJavaScript("""
-                                 var docu = document.documentElement.innerHTML; docu
-                               """) { (result, error) in
-      if error != nil {
-        print("error \(error?.localizedDescription)")
-        return
-      }
-      let data = result as! String
-      print(data)
-    }
-  }
-}
+//    func fetch(url: URL) {
+//    webView.evaluateJavaScript("document.toString()", completionHandler: { (result: Any?, error: Error?) in
+//      if error != nil {
+//        print("error \(error?.localizedDescription)")
+//        return
+//      }
+//    //  let data = result as! String
+//      print(result!)
+//    })
+//  }
+
 
 struct Response: Identifiable, Codable {
   let banktxnid, checksumhash, currency, mid, orderid, respcode, respmsg, status, txnamount, txnid : String?
