@@ -69,29 +69,20 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate { //, ObservableObject 
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         didFinish()
-        let doc = webView.evaluateJavaScript("document.documentElement.outerHTML", completionHandler: { html, error in
-            print(html)
+        let doc = webView.evaluateJavaScript("document.documentElement.innerHTML", completionHandler: { html, error in
+            let a = html as? String
+            print(a?.htmlStripped ?? "")
+         //   print(html)
         })
         fetch()
     }
 }
 
-//  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//    //print("\n\nfinished loading \n\n")
-//    didFinish()
-//    let host = webView.url
-//    if ((host?.absoluteString.contains("paywithpaytmresponse")) == true) {
-//      print("\n\n finished loading \n\n")
-//      print(host?.absoluteString)
-////      self.fetch(url: host!)
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-//    //  self.fetch(url: host!)
-//    })
-//
-//    }
-//  }
-
-    
+extension String{
+    var htmlStripped : String{
+        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+    }
+}
     
 
 func getHtml(_ urlString: String, completion: @escaping (String?, Error?) -> Void) {
@@ -119,7 +110,9 @@ getHtml("https://gastos-paytm-gatway.herokuapp.com/paywithpaytmresponse", comple
         // handle your error
         return
     }
-    print(html as Any)
+    
+    print(html)
+    //print(html as Any)
     DispatchQueue.main.async {
         //update your UI on the main thread
     }
