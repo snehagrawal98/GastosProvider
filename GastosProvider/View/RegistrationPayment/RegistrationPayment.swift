@@ -54,10 +54,6 @@ struct RegistrationPayment: View {
           registrationPaymentViewModel.getBDSales()
         }
         .environmentObject(registrationPaymentViewModel)
-        .fullScreenCover(isPresented: $isShowingPaymentPage, content: {
-          PaymentView(url: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=02OTfNYbg3QZfJZCwDnBnhjDEuu2")!)
-                               //\(loginViewModel.uid)")!)
-        })
     }
 }
 
@@ -85,7 +81,6 @@ struct CodePromotion: View {
                     .padding()
                     .foregroundColor(.gray.opacity(0.8))
                 }
-
                       //.modifier(CodePromotionPlaceholer(showPlaceholder: promotionCode.isEmpty,
                                                        // placeholderText: "Promo Code"))
                     //  .foregroundColor(Color.white)
@@ -375,6 +370,10 @@ struct RegistrationPaymentBottom: View {
 //                }
             }
         }
+        .fullScreenCover(isPresented: $isShowingPaymentPage, content: {
+          PaymentView(url: URL(string: "https://gastos-paytm-gatway.herokuapp.com/paywithpaytm?amount=\(cost)&uid=ub3Cb1sdBaaTKww6kDSzh1QDPjc2")!)
+                               //\(loginViewModel.uid)")!)
+        })
     }
 }
 

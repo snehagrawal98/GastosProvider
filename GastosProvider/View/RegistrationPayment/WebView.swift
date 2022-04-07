@@ -13,12 +13,25 @@ import Combine
 
 struct PaymentView: View {
   let url: URL
+  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var showLoading = false
+  @StateObject var webViewCoordiantor = WebViewCoordinator()
+  @EnvironmentObject var registrationPaymentViewModel: RegistrationPaymentViewModel
+  @EnvironmentObject var loginViewModel: LoginViewModel
 
   var body: some View {
     VStack {
       WebView(url: url, showLoading: $showLoading)
 //        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
+    }
+    .onReceive(timer) { _ in
+      if returnIsDecodedToPaymentView() {
+        let response = returnResponseToPaymentView()
+        if response.STATUS == "TXN_SUCCESS" {
+          registrationPaymentViewModel.uploadPaymentData(response: response, uid: "ub3Cb1sdBaaTKww6kDSzh1QDPjc2")//loginViewModel.uid)
+        }
+        timer.upstream.connect().cancel()
+      }
     }
   }
 }
@@ -26,8 +39,6 @@ struct PaymentView: View {
 struct WebView: UIViewRepresentable {
   let url: URL
   @Binding var showLoading: Bool
-
-  //@StateObject var webViewCoordiantor = WebViewCoordinator()
 
   func makeUIView(context: Context) -> some UIView {
     let webView = WKWebView()
@@ -50,7 +61,7 @@ struct WebView: UIViewRepresentable {
   }
 }
 
-class WebViewCoordinator: NSObject, WKNavigationDelegate { //, ObservableObject {
+class WebViewCoordinator: NSObject, ObservableObject, WKNavigationDelegate {
   var didStart: () -> Void
   var didFinish: () -> Void
 
@@ -63,102 +74,48 @@ class WebViewCoordinator: NSObject, WKNavigationDelegate { //, ObservableObject 
     didStart()
   }
     
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-      print(error.localizedDescription)
+  func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    print(error.localizedDescription)
+  }
+
+  func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+      didFinish()
+    let url = webView.url?.absoluteString ?? ""
+    if url.contains("paywithpaytmresponse") {
+      let _: Void = webView.evaluateJavaScript("document.documentElement.innerHTML", completionHandler: { html, error in
+        if error != nil {
+          print(error?.localizedDescription ?? "")
+          return
+        }
+        let htmlAsString = html as! String
+        let paymentResponse = htmlAsString.htmlStripped
+        print(paymentResponse)
+
+        let responseInJson = """
+        \(paymentResponse)
+        """.data(using: .utf8)!
+
+        self.decodeResponse(response: responseInJson)
+        print(html)
+      })
     }
-    
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        didFinish()
-        let doc = webView.evaluateJavaScript("document.documentElement.innerHTML", completionHandler: { html, error in
-            let a = html as? String
-            print(a?.htmlStripped ?? "")
-         //   print(html)
-        })
-        fetch()
-    }
+  }
+
+  func decodeResponse(response: Data) {
+    let decodedResponse = try? JSONDecoder().decode(Response.self, from: response)
+    paymentResponse = decodedResponse ?? paymentResponse
+    decoded = true
+  }
 }
 
 extension String{
-    var htmlStripped : String{
-        return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
-    }
-}
-    
+  var htmlStripped : String{
+    return self.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
+  }
 
-func getHtml(_ urlString: String, completion: @escaping (String?, Error?) -> Void) {
-    DispatchQueue.global(qos: .userInitiated).async(execute: {
-        guard let url = URL(string: urlString) else {
-            print("URLError: \(urlString) doesn't seem to be a valid URL")
-            return completion(nil, URLError.init(URLError.Code.badURL))
-        }
-
-        do {
-            let html = try String(contentsOf: url, encoding: .ascii)
-            print("HTML: \(html)")
-            return completion(html, nil)
-        } catch let error {
-            print("Error: \(error)")
-            return completion(nil, error)
-        }
-    })
-}
-    
-func fetch(){
-getHtml("https://gastos-paytm-gatway.herokuapp.com/paywithpaytmresponse", completion: { html, error in
-    if let e = error {
-        print(e)
-        // handle your error
-        return
-    }
-    
-    print(html)
-    //print(html as Any)
-    DispatchQueue.main.async {
-        //update your UI on the main thread
-    }
-})
-}
-    
-    
-    
-  // to watch for response
-  let webView = WKWebView()
-    
-    
-    
-
-  // for reading back response
-  //@Published var response = Response(ORDERID: "", MID: "", TXNID: "", TXNAMOUNT: "", PAYMENTMODE: "", CURRENCY: "", TXNDATE: "", STATUS: "", RESPCODE: "", RESPMSG: "", GATEWAYNAME: "", BANKTXNID: "", CHECKSUMHASH: "")
-
-//    func fetch(url: URL) {
-//    webView.evaluateJavaScript("document.toString()", completionHandler: { (result: Any?, error: Error?) in
-//      if error != nil {
-//        print("error \(error?.localizedDescription)")
-//        return
-//      }
-//    //  let data = result as! String
-//      print(result!)
-//    })
-//  }
-
-
-struct Response: Identifiable, Codable {
-  let banktxnid, checksumhash, currency, mid, orderid, respcode, respmsg, status, txnamount, txnid : String?
-  //@DocumentID
-  var id: String?
-
-    enum CodingKeys: String, CodingKey {
-        case banktxnid = "BANKTXNID"
-        case checksumhash = "CHECKSUMHASH"
-        case currency = "CURRENCY"
-        case mid = "MID"
-        case orderid = "ORDERID"
-        case respcode = "RESPCODE"
-        case respmsg = "RESPMSG"
-        case status = "STATUS"
-        case txnamount = "TXNAMOUNT"
-        case txnid = "TXNID"
-    }
+  var optionalStripped: String {
+    return self.replacingOccurrences(of: "Optional()", with: "", options: .regularExpression, range: nil)
+  }
 }
 
 extension View {
@@ -166,3 +123,48 @@ extension View {
     AnyView(self)
   }
 }
+
+var paymentResponse: Response = Response(ORDERID: " ", MID: " ", TXNID: " ", TXNAMOUNT: " ", PAYMENTMODE: " ", CURRENCY: " ", TXNDATE: " ", STATUS: " ", RESPCODE: " ", RESPMSG: " ", GATEWAYNAME: " ", BANKTXNID: " ", CHECKSUMHASH: " ")
+var decoded = false
+
+func returnIsDecodedToPaymentView() -> Bool {
+  return decoded
+}
+
+func returnResponseToPaymentView() -> Response {
+  return paymentResponse
+}
+
+//func getHtml(_ urlString: String, completion: @escaping (String?, Error?) -> Void) {
+//    DispatchQueue.global(qos: .userInitiated).async(execute: {
+//        guard let url = URL(string: urlString) else {
+//            //print("URLError: \(urlString) doesn't seem to be a valid URL")
+//            return completion(nil, URLError.init(URLError.Code.badURL))
+//        }
+//
+//        do {
+//            let html = try String(contentsOf: url, encoding: .ascii)
+//            //print("HTML: \(html)")
+//            return completion(html, nil)
+//        } catch let error {
+//            //print("Error: \(error)")
+//            return completion(nil, error)
+//        }
+//    })
+//}
+    
+//func fetch(){
+//getHtml("https://gastos-paytm-gatway.herokuapp.com/paywithpaytmresponse", completion: { html, error in
+//    if let e = error {
+//        //print(e)
+//        // handle your error
+//        return
+//    }
+//    
+//   // print(html)
+//    //print(html as Any)
+//    DispatchQueue.main.async {
+//        //update your UI on the main thread
+//    }
+//})
+//}

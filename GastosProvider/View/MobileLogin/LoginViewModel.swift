@@ -125,7 +125,7 @@ class LoginViewModel: ObservableObject {
   }
 
   func registerMerchantPaymentInfo() {
-    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
+    let _ = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
 
     let qrRange = 0..<qrCodes.count
     for qrCode in qrRange {
