@@ -18,17 +18,40 @@ struct PaymentView: View {
   @StateObject var webViewCoordiantor = WebViewCoordinator()
   @EnvironmentObject var registrationPaymentViewModel: RegistrationPaymentViewModel
   @EnvironmentObject var loginViewModel: LoginViewModel
+  @State private var showGreenPage: Bool?
+    let response = returnResponseToPaymentView()
+
 
   var body: some View {
     VStack {
-      WebView(url: url, showLoading: $showLoading)
+        ZStack {
+            
+            WebView(url: url, showLoading: $showLoading)
+            
+            if showGreenPage == true {
+                
+                
+                Success(billAmount: response.TXNAMOUNT)
+                
+            } else if showGreenPage == false {
+                Failed(billAmount: response.TXNAMOUNT)
+            } else {
+                Rectangle()
+                    .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
+                    .opacity(0)
+            }
+
+        }
+            
 //        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
     }
     .onReceive(timer) { _ in
       if returnIsDecodedToPaymentView() {
-        let response = returnResponseToPaymentView()
         if response.STATUS == "TXN_SUCCESS" {
+            showGreenPage = true
           registrationPaymentViewModel.uploadPaymentData(response: response, uid: "ub3Cb1sdBaaTKww6kDSzh1QDPjc2")//loginViewModel.uid)
+        } else if response.STATUS == "TXN_FAILURE" {
+            showGreenPage = false
         }
         timer.upstream.connect().cancel()
       }

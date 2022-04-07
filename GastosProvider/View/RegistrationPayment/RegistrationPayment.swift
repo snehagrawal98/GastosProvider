@@ -13,7 +13,7 @@ struct RegistrationPayment: View {
   @State var promoCodeApplied = false
   @State var isShowingPaymentPage = false
   var cost: Int {
-    return promoCodeApplied ? 1 : 1
+    return promoCodeApplied ? 299 : 599
   }
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var registrationPaymentViewModel = RegistrationPaymentViewModel()
