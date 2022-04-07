@@ -51,6 +51,8 @@
 		6E42506927E6252900A01FC4 /* RegistrationPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506627E6252900A01FC4 /* RegistrationPayment.swift */; };
 		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
 		6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */; };
+		6E49628027FF35500053DB16 /* Detail in Resources */ = {isa = PBXBuildFile; fileRef = 6E49627E27FF35500053DB16 /* Detail */; };
+		6E49628127FF35500053DB16 /* MainViews in Resources */ = {isa = PBXBuildFile; fileRef = 6E49627F27FF35500053DB16 /* MainViews */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
 		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
@@ -104,6 +106,8 @@
 		6E42506627E6252900A01FC4 /* RegistrationPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPayment.swift; sourceTree = "<group>"; };
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
 		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
+		6E49627E27FF35500053DB16 /* Detail */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Detail; sourceTree = "<group>"; };
+		6E49627F27FF35500053DB16 /* MainViews */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MainViews; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
 		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
@@ -272,6 +276,15 @@
 			path = BasicDetails;
 			sourceTree = "<group>";
 		};
+		6E49627727FF34F20053DB16 /* Payment Response */ = {
+			isa = PBXGroup;
+			children = (
+				6E49627E27FF35500053DB16 /* Detail */,
+				6E49627F27FF35500053DB16 /* MainViews */,
+			);
+			path = "Payment Response";
+			sourceTree = "<group>";
+		};
 		6E4CA4C927D9D896006AC87D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +299,7 @@
 				69FDEBD527E5054300AAC395 /* BasicDetails */,
 				69FDEBD427E5050C00AAC395 /* QR */,
 				6965B3D627DDD844005B5D77 /* SetDiscount */,
+				6E49627727FF34F20053DB16 /* Payment Response */,
 				6921158D27E215BE00EE9DDC /* HomeScreen */,
 				691B699727CB20DA000F43D9 /* RecentPayments.swift */,
 				692996D627CA92EC001D9F59 /* Settings.swift */,
@@ -382,7 +396,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FCD8F0B278EE7B1002836FC /* Preview Assets.xcassets in Resources */,
+				6E49628027FF35500053DB16 /* Detail in Resources */,
 				3FCD8F08278EE7B1002836FC /* Assets.xcassets in Resources */,
+				6E49628127FF35500053DB16 /* MainViews in Resources */,
 				698F11FF27C351E00097E85F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
