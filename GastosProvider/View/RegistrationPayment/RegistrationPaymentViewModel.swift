@@ -36,6 +36,24 @@ class RegistrationPaymentViewModel: ObservableObject {
     }
     return "Incorrect PromoCode"
   }
+
+  func uploadPaymentData(response: Response, uid: String) {
+    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Registration_Payment_Info")
+
+    ref1.child("banktxnid").setValue(response.BANKTXNID?.optionalStripped)
+    ref1.child("checksumhash").setValue(response.CHECKSUMHASH?.optionalStripped)
+    ref1.child("currency").setValue(response.CURRENCY?.optionalStripped)
+    ref1.child("gatewayname").setValue(response.GATEWAYNAME?.optionalStripped)
+    ref1.child("mid").setValue(response.MID?.optionalStripped)
+    ref1.child("orderid").setValue(response.ORDERID?.optionalStripped)
+    ref1.child("paymentmode").setValue(response.PAYMENTMODE?.optionalStripped)
+    ref1.child("respcode").setValue(response.RESPCODE?.optionalStripped)
+    ref1.child("respmsg").setValue(response.RESPMSG?.optionalStripped)
+    ref1.child("status").setValue(response.STATUS?.optionalStripped)
+    ref1.child("txnamount").setValue(response.TXNAMOUNT?.optionalStripped)
+    ref1.child("txndate").setValue(response.TXNDATE?.optionalStripped)
+    ref1.child("txnid").setValue(response.TXNID?.optionalStripped)
+  }
 }
 
 struct BDSale {
@@ -43,3 +61,6 @@ struct BDSale {
   var name: String
 }
 
+struct Response: Codable {
+  var ORDERID, MID, TXNID, TXNAMOUNT, PAYMENTMODE, CURRENCY, TXNDATE, STATUS, RESPCODE, RESPMSG, GATEWAYNAME, BANKTXNID, CHECKSUMHASH: String?
+}
