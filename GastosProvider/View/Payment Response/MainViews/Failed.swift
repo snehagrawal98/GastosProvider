@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Failed: View {
-    @State var rating: Int?
-    var billAmount: Double
+   // @State var rating: Int?
+    var billAmount: String
 
     var body: some View {
       ZStack {
@@ -151,9 +151,8 @@ struct Failed: View {
 
 struct Failed_Previews: PreviewProvider {
     static var previews: some View {
-        //Failed()
+        Failed()
 
-      Failed()
-      .previewDevice(PreviewDevice(rawValue: "iPhone SE (2nd generation)"))
+      
     }
 }

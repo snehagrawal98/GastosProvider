@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Success: View {
-    var billAmount: Double
+    @Binding var billAmount: String
     @State var rating: Int?
 
     var body: some View {
@@ -17,22 +17,6 @@ struct Success: View {
 
         VStack {
 
-//          Spacer()
-
-//          HStack {
-//              Button(action: {
-//                // back
-//              }, label: {
-//                Image(systemName: "arrow.left")
-//                  .resizable()
-//                  .frame(width: 23, height: 15, alignment: .leading)
-//                  .foregroundColor(.white)
-//            })
-//              .padding()
-              
-//
-//            Spacer()
-//          }
 
           Spacer()
 
@@ -74,7 +58,7 @@ struct Success: View {
       }
     }
 }
-
+//
 struct Success_Previews: PreviewProvider {
     static var previews: some View {
       Success(billAmount: 599)
