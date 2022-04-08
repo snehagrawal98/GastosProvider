@@ -29,13 +29,13 @@ struct PaymentView: View {
             WebView(url: url, showLoading: $showLoading)
             
             if showGreenPage == true {
-                
-               
               
-              //  Success1(billAmount: response.TXNAMOUNT)
+              //  Success(billAmount: response.TXNAMOUNT)
                 
             } else if showGreenPage == false {
-               // Failed(billAmount: response.TXNAMOUNT)
+                
+              //  Failed(billAmount: response.TXNAMOUNT)
+                
             } else {
                 Rectangle()
                     .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
