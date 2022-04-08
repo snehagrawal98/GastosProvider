@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Success: View {
     @Binding var billAmount: String
-    @State var rating: Int?
+  //  @State var rating: Int?
 
     var body: some View {
       ZStack {
@@ -39,8 +39,8 @@ struct Success: View {
           Spacer()
 
           Group {
-            Rating(productRating: $rating)
-              .padding(.bottom)
+//            Rating(productRating: $rating)
+//              .padding(.bottom)
 
             Spacer()
 
