@@ -26,23 +26,22 @@ struct PaymentView: View {
     VStack {
         ZStack {
             
-            WebView(url: url, showLoading: $showLoading)
-            
+            WebView(url: url, showLoading: $showLoading).overlay{
+              //  Rectangle().foregroundColor(.white).ignoresSafeArea(.all)
             if showGreenPage == true {
 
-              //  Success(billAmount: response.TXNAMOUNT)
-                Success_Response(amount: paymentResponse.TXNAMOUNT!, active: "Activated")
+                Success_Response()
 
             } else if showGreenPage == false {
 
-              //  Failed(billAmount: response.TXNAMOUNT)
-                Failure_Response(amount: paymentResponse.TXNAMOUNT!, active: "Failed")
+                Failure_Response()
             } else {
                 Rectangle()
                     .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
                     .opacity(0)
             }
 
+        }
         }
             
 //        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
@@ -82,6 +81,7 @@ struct WebView: UIViewRepresentable {
     WebViewCoordinator(didStart: {
       showLoading = true
     }, didFinish: {
+        
       showLoading = false
     })
   }
