@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Success: View {
+    var billAmount: Double
     @State var rating: Int?
 
     var body: some View {
@@ -16,34 +17,35 @@ struct Success: View {
 
         VStack {
 
+//          Spacer()
+
+//          HStack {
+//              Button(action: {
+//                // back
+//              }, label: {
+//                Image(systemName: "arrow.left")
+//                  .resizable()
+//                  .frame(width: 23, height: 15, alignment: .leading)
+//                  .foregroundColor(.white)
+//            })
+//              .padding()
+              
+//
+//            Spacer()
+//          }
+
           Spacer()
 
-          HStack {
-              Button(action: {
-                // back
-              }, label: {
-                Image(systemName: "arrow.left")
-                  .resizable()
-                  .frame(width: 23, height: 15, alignment: .leading)
-                  .foregroundColor(.white)
-            })
-              .padding()
-
-            Spacer()
-          }
-
-          Spacer()
-
-          Text("Bill Paid Successfully")
+          Text("Welcome to \n GASTOS PROVIDER CLUB")
             .font(.headline.weight(.bold))
             .foregroundColor(.white)
             .padding(.top, 1)
             .padding(.bottom, 40)
-
+            
           Spacer()
 
           ZStack{
-            Reciept(billAmount: 10000, customerName: "Krishna Kumar", shopName: "shop name", date: "02 August 2021", time: "02 : 35 : 45 PM", discount: 20, paymentStatus: true, shapeColor: Color("deepGreen"))
+            Reciept(billAmount: billAmount, shapeColor: Color("deepGreen"))
               .padding()
 
             PaymentSymbol(shapeColor: Color("lightGreen"), paymentSymbol: "checkmark")
@@ -60,6 +62,7 @@ struct Success: View {
 
             Button(action: {
               // go home
+                ContentView()
             }, label: {
               BottomButton(buttonText: "Jump to Home", buttonColor: "white", textColor: "5")
                 .padding(.bottom, 30)
@@ -74,6 +77,6 @@ struct Success: View {
 
 struct Success_Previews: PreviewProvider {
     static var previews: some View {
-      Success()
+      Success(billAmount: 599)
     }
 }
