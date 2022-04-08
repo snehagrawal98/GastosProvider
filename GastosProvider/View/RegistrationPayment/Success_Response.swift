@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct Success_Response: View {
-    @State var amount = "299.00"
-    @State var active = "Activated"
+    var amount = "299.00"
+    var active = "Activated"
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [Color("5"), Color("1")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all).overlay{
             VStack{
                 Text("Welcome to").foregroundColor(.white).font(.system(size: 20, weight: .medium, design: .default))
                 Text("GASTOS PROVIDERS CLUB").foregroundColor(.white).font(.system(size: 20, weight: .medium, design: .default))
                 
-                ResponsePay(amount: $amount, active: $active).padding(.vertical, 100)
+                ResponsePay(amount: amount, active: active).padding(.vertical, 100)
                 
                 
                 JumpToHome_Success()
@@ -35,8 +35,8 @@ struct Success_Response_Previews: PreviewProvider {
 
 
 struct ResponsePay: View{
-    @Binding var amount : String
-    @Binding var active: String
+    var amount : String
+    var active: String
     var body: some View{
         VStack{
             Text("Payment Total").foregroundColor(.gray).font(.system(size: 13, weight: .medium, design: .default))
@@ -46,14 +46,16 @@ struct ResponsePay: View{
             HStack{
                 Text("Date").foregroundColor(.gray).font(.system(size: 12, weight: .medium, design: .default))
                 Spacer()
-                Text("12.22.3456").foregroundColor(.black).font(.system(size: 12, weight: .medium, design: .default))
+                Text(Date.now, format: .dateTime.year().month().day())
+                    .foregroundColor(.black).font(.system(size: 12, weight: .medium, design: .default))
             }.padding(.vertical,5)
             
             
             HStack{
                 Text("Time").foregroundColor(.gray).font(.system(size: 12, weight: .medium, design: .default))
                 Spacer()
-                Text("12: 22: 3456 PM").foregroundColor(.black).font(.system(size: 12, weight: .medium, design: .default))
+                Text(Date.now, format: .dateTime.hour().minute().second())
+                    .foregroundColor(.black).font(.system(size: 12, weight: .medium, design: .default))
             }.padding(.vertical, 5)
             
             

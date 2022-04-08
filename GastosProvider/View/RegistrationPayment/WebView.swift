@@ -31,10 +31,12 @@ struct PaymentView: View {
             if showGreenPage == true {
               
               //  Success(billAmount: response.TXNAMOUNT)
+                Success_Response(amount: response.TXNAMOUNT!, active: "Activated")
                 
             } else if showGreenPage == false {
                 
               //  Failed(billAmount: response.TXNAMOUNT)
+                Failure_Response(amount: response.TXNAMOUNT!, active: "Failed")
                 
             } else {
                 Rectangle()
