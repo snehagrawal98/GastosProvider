@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct Failure_Response: View {
-    @State var amount = "299.00"
-    @State var active = "Failed"
+    var amount = "299.00"
+    var active = "Failed"
     var body: some View {
         LinearGradient(gradient: Gradient(colors: [Color.red, Color("2")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all).overlay{
             VStack{
                 Text("Welcome to").foregroundColor(.white).font(.system(size: 20, weight: .medium, design: .default))
                 Text("GASTOS PROVIDERS CLUB").foregroundColor(.white).font(.system(size: 20, weight: .medium, design: .default))
                 
-                ResponsePay(amount: $amount, active: $active).padding(.vertical, 100)
+                ResponsePay(amount: amount, active: active).padding(.vertical, 100)
                 
                 
                 JumpToHome_Failure()

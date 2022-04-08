@@ -19,7 +19,7 @@ struct PaymentView: View {
   @EnvironmentObject var registrationPaymentViewModel: RegistrationPaymentViewModel
   @EnvironmentObject var loginViewModel: LoginViewModel
   @State private var showGreenPage: Bool?
-    let response = returnResponseToPaymentView()
+    //let response = returnResponseToPaymentView()
 
 
   var body: some View {
@@ -29,13 +29,14 @@ struct PaymentView: View {
             WebView(url: url, showLoading: $showLoading)
             
             if showGreenPage == true {
-              
+
               //  Success(billAmount: response.TXNAMOUNT)
-                
+                Success_Response(amount: paymentResponse.TXNAMOUNT!, active: "Activated")
+
             } else if showGreenPage == false {
-                
+
               //  Failed(billAmount: response.TXNAMOUNT)
-                
+                Failure_Response(amount: paymentResponse.TXNAMOUNT!, active: "Failed")
             } else {
                 Rectangle()
                     .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
@@ -48,10 +49,11 @@ struct PaymentView: View {
     }
     .onReceive(timer) { _ in
       if returnIsDecodedToPaymentView() {
-        if response.STATUS == "TXN_SUCCESS" {
+        //let response = returnResponseToPaymentView()
+        if paymentResponse.STATUS == "TXN_SUCCESS" {
             showGreenPage = true
-          registrationPaymentViewModel.uploadPaymentData(response: response, uid: "ub3Cb1sdBaaTKww6kDSzh1QDPjc2")//loginViewModel.uid)
-        } else if response.STATUS == "TXN_FAILURE" {
+          registrationPaymentViewModel.uploadPaymentData(response: paymentResponse, uid: "ub3Cb1sdBaaTKww6kDSzh1QDPjc2")//loginViewModel.uid)
+        } else if paymentResponse.STATUS == "TXN_FAILURE" {
             showGreenPage = false
         }
         timer.upstream.connect().cancel()
@@ -120,7 +122,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKNavigationDelegate {
         """.data(using: .utf8)!
 
         self.decodeResponse(response: responseInJson)
-        print(html)
+        //print(html)
       })
     }
   }
