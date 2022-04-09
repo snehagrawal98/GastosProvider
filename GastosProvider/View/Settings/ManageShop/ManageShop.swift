@@ -8,21 +8,13 @@
 import SwiftUI
 
 struct ManageShop: View {
-  @State var shopCity = "Chandigarh"
-  @State var shopLocation = "Chandigarh"
-  @State var shopName = "Chandigarh Dhaba"
-  @State var shopAddress = "Chandigarh chabacknaksncasm"
-  @State var shopCategory = "Food"
-  @State var discountPercent = "5"
-  @State var minimumOrderForDiscount = "150"
-  @State var deliveryEnabled = true
-  @State var pickupEnabled = true
-  @Environment(\.dismiss) var dismiss
-
+    
   @State var isShowingImagePicker = false
   @State var numberOfExtraImages = 0
   @State var image: UIImage?
   @State var selectedImage = 0
+    @StateObject var homeScreenViewModel = HomeScreenViewModel()
+    @Environment(\.presentationMode) var presentationMode
 
   var gridLayout: [GridItem] {
     return Array(repeating: GridItem(.flexible(), spacing: -55), count: 2)
@@ -36,8 +28,7 @@ struct ManageShop: View {
           // Navigation Bar
           HStack {
             Button(action: {
-                dismiss()
-              manageShopViewModel.uploadImagesToStorage(uid: "02OTfNYbg3QZfJZCwDnBnhjDEuu2")
+                presentationMode.wrappedValue.dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
@@ -107,7 +98,7 @@ struct ManageShop: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              TextField("Shop Name Here", text: $shopName)
+                TextField("Shop Name Here", text: $homeScreenViewModel.shopName)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -125,7 +116,7 @@ struct ManageShop: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              TextField("Shop Address Here", text: $shopAddress)
+              TextField("Shop Address Here", text: $homeScreenViewModel.shopAddress)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -143,7 +134,7 @@ struct ManageShop: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              TextField("Enter City", text: $shopCity)
+              TextField("Enter City", text: $homeScreenViewModel.shopCity)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -161,7 +152,7 @@ struct ManageShop: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              TextField("Enter Category", text: $shopCategory)
+              TextField("Enter Category", text: $homeScreenViewModel.category)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -180,7 +171,7 @@ struct ManageShop: View {
                   .foregroundColor(.secondary)
                   .padding(.bottom, 1)
 
-                TextField("Enter Location", text: $shopLocation)
+                TextField("Enter Location", text: $homeScreenViewModel.shopLocation)
                   .font(.title3.weight(.medium))
               } //: VSTACK
 
@@ -210,9 +201,9 @@ struct ManageShop: View {
 
               HStack(spacing: 4) {
                 HStack(spacing: 0) {
-                  TextField("", text: $discountPercent)
-                        .font(.system(size:15, weight: .medium,design: .default))
-                    .frame(width: 20, height: 40, alignment: .center)
+                  Text($discountPercent)
+                        .font(.system(size:18, weight: .medium,design: .default))
+                    
 
                     Text("%").font(.system(size:15, weight: .medium,design: .default))
                     //.frame(width: 20, height: 28, alignment: .bottom)
@@ -226,37 +217,14 @@ struct ManageShop: View {
                   Image("RupeeIcon")
                     .resizable()
                     .frame(width: 7.76, height: 11.54, alignment: .center)
-                  TextField("", text: $minimumOrderForDiscount)
+                  Text($minimumOrderForDiscount)
                         .font(.system(size: 17, weight: .medium, design: .default))
                     .frame(width: 37, height: 30, alignment: .leading)
                 }
               }
               .frame(width: UIScreen.screenWidth - 64, alignment: .leading)
 
-              HStack(spacing: 4) {
-                HStack(spacing: 0) {
-                  TextField("", text: $discountPercent)
-                    .font(.largeTitle)
-                    .frame(width: 20, height: 40, alignment: .center)
-
-                  Text("%")
-                    .frame(width: 20, height: 28, alignment: .bottom)
-                }
-
-                Text("Discount at minimum order of")
-                  .frame(width: 230, height: 20, alignment: .leading)
-                  .foregroundColor(Color.black.opacity(0.7))
-
-                HStack(spacing: 5) {
-                  Image("RupeeIcon")
-                    .resizable()
-                    .frame(width: 7.76, height: 11.54, alignment: .center)
-                  TextField("", text: $minimumOrderForDiscount)
-                    .font(.title2)
-                    .frame(width: 37, height: 30, alignment: .leading)
-                }
-              }
-              .frame(width: UIScreen.screenWidth - 64, alignment: .leading)
+              
 
             } //: VSTACK
             .padding(.horizontal)
@@ -269,13 +237,13 @@ struct ManageShop: View {
 
             // Services
             VStack {
-              Toggle(isOn: $deliveryEnabled.animation()) {
+                Toggle(isOn: $homeScreenViewModel.delivery.animation()) {
                     Text("Delivery Service")
                   .font(.body.weight(.medium))
                 }
               .padding(.bottom, 8)
 
-              Toggle(isOn: $pickupEnabled.animation()) {
+                Toggle(isOn: $homeScreenViewModel.pickUp.animation()) {
                     Text("Pickup Service")
                   .font(.body.weight(.medium))
                 }

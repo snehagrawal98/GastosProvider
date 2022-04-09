@@ -43,7 +43,7 @@ struct ReferAndEarn: View {
 //                        Image("shape")
 //                    }
 //                }.frame(width: 99, height: 40, alignment: .center).background(Color("deepGreen")).cornerRadius(10)
-//                Image("text")
+                Image("text")
 
             }.padding(.horizontal)
         }

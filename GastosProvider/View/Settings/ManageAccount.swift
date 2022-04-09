@@ -9,9 +9,7 @@ import SwiftUI
 import Firebase
 
 struct ManageAccount: View {
-    @State var ownerName = "Maheep Singhania"
-    @State var contactNumber = "+91 7000937287"
-    @State var emailAddress = "piyush82697@gmail.com"
+    @StateObject var accountViewModel = AccountViewModel()
   @EnvironmentObject var loginViewModel: LoginViewModel
   @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
@@ -50,7 +48,7 @@ struct ManageAccount: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              Text(ownerName)
+                Text(accountViewModel.ownerName)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -68,7 +66,7 @@ struct ManageAccount: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              Text(contactNumber)
+                Text(accountViewModel.phone)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)
@@ -86,7 +84,7 @@ struct ManageAccount: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              Text(emailAddress)
+                Text(accountViewModel.email)
                 .font(.title3.weight(.medium))
             } //: VSTACK
             .padding(.horizontal)

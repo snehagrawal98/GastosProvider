@@ -54,6 +54,7 @@
 		6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */; };
 		6E4C53E0280016A1003BE970 /* Success_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4C53DF280016A1003BE970 /* Success_Response.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
+		6E70A5762801F54400F36213 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70A5752801F54300F36213 /* AccountViewModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
 		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
 		C020491527E748AC009F83AB /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491427E748AC009F83AB /* PromotionViewModel.swift */; };
@@ -109,6 +110,7 @@
 		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
 		6E4C53DF280016A1003BE970 /* Success_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success_Response.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
+		6E70A5752801F54300F36213 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
 		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
 		C020491427E748AC009F83AB /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 		691286AD279707E900232975 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6E70A5752801F54300F36213 /* AccountViewModel.swift */,
 				691286B22797087400232975 /* ManageAccount.swift */,
 				69AB1F0227E780F900922CE1 /* ManageShop */,
 				6E42506427E6252800A01FC4 /* AddMoney.swift */,
@@ -410,6 +413,7 @@
 				697AD551279D14A7009042C8 /* UserAgreement.swift in Sources */,
 				6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */,
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
+				6E70A5762801F54400F36213 /* AccountViewModel.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
 				6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */,
 				C020491D27EF2022009F83AB /* LiveQrGeneration.swift in Sources */,
