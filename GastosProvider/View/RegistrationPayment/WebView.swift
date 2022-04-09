@@ -5,6 +5,13 @@
 //  Created by Sai Kumar Kasireddi's MacBook on 31/03/22.
 //
 
+//
+//  WebView.swift
+//  GastosProvider
+//
+//  Created by Sai Kumar Kasireddi's MacBook on 31/03/22.
+//
+
 import Foundation
 import SwiftUI
 import WebKit
@@ -19,34 +26,39 @@ struct PaymentView: View {
   @EnvironmentObject var registrationPaymentViewModel: RegistrationPaymentViewModel
   @EnvironmentObject var loginViewModel: LoginViewModel
   @State private var showGreenPage: Bool?
+  @State private var didResponseStarted = false
     //let response = returnResponseToPaymentView()
 
 
   var body: some View {
     VStack {
         ZStack {
-            
-            WebView(url: url, showLoading: $showLoading).overlay{
-              //  Rectangle().foregroundColor(.white).ignoresSafeArea(.all)
-            if showGreenPage == true {
-
-                Success_Response()
-
-            } else if showGreenPage == false {
-
-                Failure_Response()
-            } else {
-                Rectangle()
-                    .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
-                    .opacity(0)
+          WebView(url: url, showLoading: $showLoading)
+          ZStack {
+            if (didResponseStarted) {
+              ProgressView("Processing...")
+                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight)
+                .background(Color.white)
             }
 
+            if showGreenPage == true {
+                  Success_Response(amount: paymentResponse.TXNAMOUNT!, active: "Activated")
+              } else if showGreenPage == false {
+                  Failure_Response(amount: paymentResponse.TXNAMOUNT!, active: "Failed")
+              } else {
+                  Rectangle()
+                      .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight, alignment: .center)
+                      .opacity(0)
+              }
+          }
         }
-        }
-            
-//        .overlay(showLoading ? ProgressView("Loading...").toAnyView() : EmptyView().toAnyView())
     }
     .onReceive(timer) { _ in
+      if returnIfResponsePageStarted() {
+        didResponseStarted = true
+      } else {
+        didResponseStarted = false
+      }
       if returnIsDecodedToPaymentView() {
         //let response = returnResponseToPaymentView()
         if paymentResponse.STATUS == "TXN_SUCCESS" {
@@ -81,7 +93,6 @@ struct WebView: UIViewRepresentable {
     WebViewCoordinator(didStart: {
       showLoading = true
     }, didFinish: {
-        
       showLoading = false
     })
   }
@@ -98,8 +109,12 @@ class WebViewCoordinator: NSObject, ObservableObject, WKNavigationDelegate {
 
   func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
     didStart()
+    let url = webView.url?.absoluteString ?? ""
+    if url.contains("paywithpaytmresponse") {
+      responseAppeared = true
+    }
   }
-    
+
   func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
     print(error.localizedDescription)
   }
@@ -131,6 +146,7 @@ class WebViewCoordinator: NSObject, ObservableObject, WKNavigationDelegate {
     let decodedResponse = try? JSONDecoder().decode(Response.self, from: response)
     paymentResponse = decodedResponse ?? paymentResponse
     decoded = true
+    responseAppeared = false
   }
 }
 
@@ -152,6 +168,7 @@ extension View {
 
 var paymentResponse: Response = Response(ORDERID: " ", MID: " ", TXNID: " ", TXNAMOUNT: " ", PAYMENTMODE: " ", CURRENCY: " ", TXNDATE: " ", STATUS: " ", RESPCODE: " ", RESPMSG: " ", GATEWAYNAME: " ", BANKTXNID: " ", CHECKSUMHASH: " ")
 var decoded = false
+var responseAppeared = false
 
 func returnIsDecodedToPaymentView() -> Bool {
   return decoded
@@ -159,6 +176,10 @@ func returnIsDecodedToPaymentView() -> Bool {
 
 func returnResponseToPaymentView() -> Response {
   return paymentResponse
+}
+
+func returnIfResponsePageStarted() -> Bool {
+  return responseAppeared
 }
 
 //func getHtml(_ urlString: String, completion: @escaping (String?, Error?) -> Void) {
@@ -178,7 +199,7 @@ func returnResponseToPaymentView() -> Response {
 //        }
 //    })
 //}
-    
+
 //func fetch(){
 //getHtml("https://gastos-paytm-gatway.herokuapp.com/paywithpaytmresponse", completion: { html, error in
 //    if let e = error {
@@ -186,7 +207,7 @@ func returnResponseToPaymentView() -> Response {
 //        // handle your error
 //        return
 //    }
-//    
+//
 //   // print(html)
 //    //print(html as Any)
 //    DispatchQueue.main.async {
