@@ -18,6 +18,7 @@ class HomeScreenViewModel: ObservableObject {
     @Published var shopLocation = ""
     @Published var delivery = false
     @Published var pickUp = false
+    @Published var discounts = []
 
   func readShopInfo(uid: String) {
     let ref = db.reference().child("Merchant_data/\(uid)/Shop_Information")
@@ -31,7 +32,7 @@ class HomeScreenViewModel: ObservableObject {
         self.shopLocation = value?["shopArea"] as? String ?? ""
         self.delivery = value?["shopName"] as? Bool ?? false
         self.pickUp = value?["shopName"] as? Bool ?? false
-
+        self.discounts = value?["disconts"] as? [[String: Any]] ?? [[]]
 
       }
   }
