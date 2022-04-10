@@ -11,6 +11,7 @@ struct Success_Response: View {
    // var amount = "500"
     var amount = "\(paymentResponse.TXNAMOUNT!)"
     var active = "Activated"
+  @EnvironmentObject var loginViewModel: LoginViewModel
     
     var body: some View {
         
@@ -37,7 +38,9 @@ struct Success_Response: View {
                 
                 JumpToHome_Success()
                 
-            }.padding(.horizontal, 35)
+            }
+            .padding(.horizontal, 35)
+            .environmentObject(loginViewModel)
         }
         
     }
@@ -100,15 +103,19 @@ struct ResponsePay: View{
 
 
 struct JumpToHome_Success: View{
-    @State var click = false
+   // @State var click = false
+  @EnvironmentObject var loginViewModel: LoginViewModel
     var body: some View{
         Button {
-            self.click.toggle()
+            //self.click.toggle()
+          loginViewModel.madeRegistrationPayment = true
+
         } label: {
             RoundedRectangle(cornerRadius: 22).frame( height: 60, alignment: .center).foregroundColor(.white)
-        }.fullScreenCover(isPresented: $click) {
-            HomeScreen()
-        }.overlay{
+        }//.fullScreenCover(isPresented: $click) {
+           // HomeScreen()
+       // }
+    .overlay{
             Text("Jump to home").foregroundColor(.black).font(.system(size: 20, weight: .medium, design: .default))
         }
 
