@@ -17,7 +17,8 @@ struct ManageQR: View {
     var gridLayout: [GridItem] {
       return Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     }
-    @EnvironmentObject var loginViewModel: LoginViewModel
+    @StateObject var manageQrViewModel = ManageQRViewModel()
+  @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
 
@@ -52,22 +53,22 @@ struct ManageQR: View {
             })
 
             // showing all QRs
-            if loginViewModel.qrCodes.count == 0 {
+            if manageQrViewModel.qrCodes.count == 0 {
               Spacer()
               Text("No QR Added")
                 .foregroundColor(.gray)
               Spacer()
             } else {
               LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10, content: {
-                ForEach(0..<loginViewModel.qrCodes.count, id: \.self) { qrCode in
-                  if loginViewModel.qrCodes[qrCode].isPrimary {
-                    QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                ForEach(0..<manageQrViewModel.qrCodes.count, id: \.self) { qrCode in
+                  if manageQrViewModel.qrCodes[qrCode].isPrimary {
+                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
                       .onTapGesture {
                         primaryQr = qrCode
                         isShowingSetPrimary = true
                       }
                   } else {
-                    QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
                       .onTapGesture {
                         primaryQr = qrCode
                         isShowingSetPrimary = true
@@ -89,14 +90,15 @@ struct ManageQR: View {
 
             Spacer()
           } //: VSTACK
-           //: OVERLAY
+          .environmentObject(manageQrViewModel)
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
           .onAppear(perform: {
-            let qrRange = 0..<loginViewModel.qrCodes.count
+            manageQrViewModel.readPaymentInfo(uid: loginViewModel.uid)
+            let qrRange = 0..<manageQrViewModel.qrCodes.count
             for qrCode in qrRange {
-              if loginViewModel.qrCodes[qrCode].isPrimary {
-                primaryQrName = loginViewModel.qrCodes[qrCode].qrName
+              if manageQrViewModel.qrCodes[qrCode].isPrimary {
+                primaryQrName = manageQrViewModel.qrCodes[qrCode].qrName
               }
             }
           })
