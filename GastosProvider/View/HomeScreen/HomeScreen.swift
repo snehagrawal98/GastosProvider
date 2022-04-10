@@ -168,17 +168,17 @@ struct HomeScreen: View {
           .padding(.bottom)
 
           // bottom ads
-          TabView {
-            ForEach(1..<5) { _ in
-              Image("HomeScreenAd")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 0.97 *  UIScreen.screenWidth, height: 0.3 * UIScreen.screenHeight)
-                .cornerRadius(30)
-            }
-          }//: TAB
-          .frame(width: 2 * UIScreen.screenWidth - 32, height: 0.18 * UIScreen.screenHeight)
-          .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+//          TabView {
+//            ForEach(1..<5) { _ in
+//              Image("HomeScreenAd")
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: 0.97 *  UIScreen.screenWidth, height: 0.3 * UIScreen.screenHeight)
+//                .cornerRadius(30)
+//            }
+//          }//: TAB
+//          .frame(width: 2 * UIScreen.screenWidth - 32, height: 0.18 * UIScreen.screenHeight)
+//          .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
 
           Spacer()
         } //: VSTACK
