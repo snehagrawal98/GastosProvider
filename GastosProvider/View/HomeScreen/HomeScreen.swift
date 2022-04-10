@@ -11,7 +11,9 @@ struct HomeScreen: View {
     let rupeeSymbol = "\u{20B9}"
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var homeScreenViewModel = HomeScreenViewModel()
-
+    @StateObject var imagesViewModel = ImagesViewModel()
+    @State private var shop: Shop?
+    
     var body: some View {
       NavigationView {
         VStack {
@@ -25,7 +27,14 @@ struct HomeScreen: View {
               .shadow(color: .gray.opacity(0.25), radius: 5)
 
             VStack {
-              ShopImages(shopImagesUrl: "detailShop")
+                                
+                ShopImages(shopImagesUrl: self.shop?.shopImageURI ?? "",
+                           shopImagesUri1: self.shop?.shopImageURI1 ?? "",
+                           shopImagesUri2: self.shop?.shopImageURI2 ?? "",
+                           shopImagesUri3: self.shop?.shopImageURI3 ?? "",
+                           shopImagesUri4: self.shop?.shopImageURI4 ?? "")
+
+
 
               HStack {
                 Text(homeScreenViewModel.shopName)
@@ -36,6 +45,14 @@ struct HomeScreen: View {
                 Spacer()
               } //: HSTACK
             } //: VSTACK
+            .onAppear {
+                imagesViewModel.getAllMerchants()
+                for thisShop in imagesViewModel.merchantArray {
+                    if thisShop.phone == "" {
+                        
+                    }
+                }
+            }
           } //: ZSTACK
           .frame(width: UIScreen.screenWidth, height: 0.407 * UIScreen.screenHeight)
 
@@ -199,19 +216,71 @@ struct HomeScreen_Previews: PreviewProvider {
 }
 
 // Shop Images
+//struct ShopImages: View {
+//    var shopImagesUrl: String
+//    var body: some View {
+//      TabView {
+//        ForEach(1..<5) { _ in
+//          Image(shopImagesUrl)
+//            .resizable()
+//            .scaledToFit()
+//            .frame(width: 0.898 *  UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+//            .cornerRadius(30)
+//        }
+//      }//: TAB
+//      .frame(width: 0.898 * UIScreen.screenWidth - 32, height: 0.226 * UIScreen.screenHeight)
+//      .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+//    }
+//}
+
+// Shop Images
 struct ShopImages: View {
-    var shopImagesUrl: String
+    
+    var shopImagesUrl: String?
+    var shopImagesUri1: String?
+    var shopImagesUri2: String?
+    var shopImagesUri3: String?
+    var shopImagesUri4: String?
+    
     var body: some View {
       TabView {
-        ForEach(1..<5) { _ in
-          Image(shopImagesUrl)
+        
+          Image(shopImagesUrl ?? "")
             .resizable()
-            .scaledToFit()
-            .frame(width: 0.898 *  UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(30)
-        }
+            .scaledToFill()
+            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+            .cornerRadius(10)
+          
+          Image(shopImagesUri1 ?? "")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+            .cornerRadius(10)
+          
+          Image(shopImagesUri2 ?? "")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+            .cornerRadius(10)
+          
+          Image(shopImagesUri3 ?? "")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+            .cornerRadius(10)
+          
+          Image(shopImagesUri4 ?? "")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+            .cornerRadius(10)
+
+        
       }//: TAB
-      .frame(width: 0.898 * UIScreen.screenWidth - 32, height: 0.226 * UIScreen.screenHeight)
+      .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
       .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
     }
 }
+
+
+
