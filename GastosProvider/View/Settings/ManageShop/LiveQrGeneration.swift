@@ -51,7 +51,9 @@ struct LiveQrGeneration: View {
                 .keyboardType(.numberPad)
                 .frame(width: UIScreen.screenWidth * (234 / 375), height: UIScreen.screenHeight * (54 / 812))
                 .background(Color.gray.opacity(0.2))
-                .cornerRadius(15)
+                .cornerRadius(15).onTapGesture {
+                    self.hideKeyboard()
+                }
 
             Spacer()
             

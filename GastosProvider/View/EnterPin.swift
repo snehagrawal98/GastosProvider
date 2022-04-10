@@ -22,7 +22,9 @@ struct EnterPin: View {
 
           HStack{
             TextField("Pin", text: $name1).frame(width: 350, height: 65, alignment: .center)
-              .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3)
+              .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).onTapGesture {
+                  self.hideKeyboard()
+              }
             Spacer()
           }
 

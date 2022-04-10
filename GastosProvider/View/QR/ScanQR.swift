@@ -53,11 +53,17 @@ struct ScanQR: View {
           // QR details
           VStack {
             TextField("QR Name", text: $qrName)
-              .textFieldStyle(ScanQrTextFieldStyle())
+              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
             TextField("UPI Address", text: $upiAdress)
-              .textFieldStyle(ScanQrTextFieldStyle())
+              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
             TextField("Merchant ID", text: $merchantId)
-              .textFieldStyle(ScanQrTextFieldStyle())
+              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             Spacer()
 

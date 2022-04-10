@@ -231,7 +231,9 @@ struct ShopDet: View{
 
           TextField("Shop Address Here", text: $homeScreenViewModel.shopAddress)
             .font(.title3.weight(.medium))
-        } //: VSTACK
+        } .onTapGesture {
+            self.hideKeyboard()
+        }//: VSTACK
         .padding(.horizontal)
         .padding(.vertical, 8)
         .frame(width: UIScreen.screenWidth - 48, alignment: .leading)
@@ -276,7 +278,9 @@ struct ShopDet: View{
             .background(
               RoundedRectangle(cornerRadius: 12)
                 .stroke(Color("textGreen").opacity(0.2), lineWidth: 1)
-            )
+            ).onTapGesture {
+                self.hideKeyboard()
+            }
             
             // Shop Location
             HStack {
@@ -287,7 +291,9 @@ struct ShopDet: View{
                   .padding(.bottom, 1)
 
                 TextField("Enter Location", text: $homeScreenViewModel.shopLocation)
-                  .font(.title3.weight(.medium))
+                  .font(.title3.weight(.medium)).onTapGesture {
+                      self.hideKeyboard()
+                  }
               } //: VSTACK
 
               Button(action: {

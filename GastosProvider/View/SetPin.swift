@@ -46,14 +46,18 @@ struct SetPin: View {
                     .foregroundColor(Color("deepGreen"))
                     HStack{
                     TextField("New Pin", text: $pin1).frame(width: 350, height: 65, alignment: .center)
-                            .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad)
+                            .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad).onTapGesture {
+                                self.hideKeyboard()
+                            }
                         Spacer()
                     }
 
                     HStack{
                     TextField("Re-enter Pin", text: $pin2)
                         .frame(width: 350, height: 65, alignment: .center)
-                        .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad)
+                        .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad).onTapGesture {
+                            self.hideKeyboard()
+                        }
                         Spacer()
                     }
 

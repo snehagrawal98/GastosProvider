@@ -55,7 +55,9 @@ struct AddMoney: View {
                             .padding(.leading)
                         TextField("0", value: $amount, formatter: NumberFormatter())
                             .keyboardType(.numberPad)
-                            .font(.largeTitle)
+                            .font(.largeTitle).onTapGesture {
+                                self.hideKeyboard()
+                            }
                     }
                     .padding(.top)
                     

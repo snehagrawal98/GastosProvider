@@ -93,19 +93,29 @@ struct BasicDetails: View {
           // Owner Name to Shop Address
           VStack(spacing: 10) {
             TextField("Owner Name", text: $basicDetailsViewModel.ownerName)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             TextField("Phone Number", text: $basicDetailsViewModel.phoneNumber)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             TextField("Email Address", text: $basicDetailsViewModel.emailAddress)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             TextField("Shop Name", text: $basicDetailsViewModel.shopName)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             TextField("Shop Address", text: $basicDetailsViewModel.shopAddress)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
           } //: VSTACK
 
           // Shop City to Shop Location
@@ -113,7 +123,9 @@ struct BasicDetails: View {
             // Shop City
             Group {
               TextField("Enter Shop City", text: $basicDetailsViewModel.shopCity)
-              .textFieldStyle(BasicDetailsTextFieldStyle())
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
             }
 
             // Shop Catergory
@@ -167,7 +179,9 @@ struct BasicDetails: View {
                 .font(.headline.weight(.regular))
                 .foregroundColor(Color("basicDetailsText"))
                 .padding(.leading, 17)
-                .padding(.vertical, 10)
+                .padding(.vertical, 10).onTapGesture {
+                    self.hideKeyboard()
+                }
 
               Button(action: {
                 // add location

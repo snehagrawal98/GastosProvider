@@ -79,7 +79,9 @@ struct CodePromotion: View {
                 } else {
                   TextField("Promo Code", text: $promotionCode)
                     .padding()
-                    .foregroundColor(.gray.opacity(0.8))
+                    .foregroundColor(.gray.opacity(0.8)).onTapGesture {
+                        self.hideKeyboard()
+                    }
                 }
                       //.modifier(CodePromotionPlaceholer(showPlaceholder: promotionCode.isEmpty,
                                                        // placeholderText: "Promo Code"))

@@ -48,7 +48,7 @@ struct PostAdvt: View {
                 Spacer()
 
                 Button(action: { //self.didEnterAllData()
-                    
+                    self.hideKeyboard()
                 }, label: {
                   BasicScreensBottomRighttText(buttonText: "Next")
                 }).popover(isPresented: $showingPopover) {

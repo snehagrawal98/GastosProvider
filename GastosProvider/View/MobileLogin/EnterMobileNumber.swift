@@ -37,8 +37,12 @@ struct EnterMobileNumber: View {
             }
 
             HStack(spacing:0){
-              TextField("+91", text: $countryCode).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle())
-              TextField("Mobile Number", text: $loginViewModel.phoneNumber).textFieldStyle(MyTextFieldStyle())
+              TextField("+91", text: $countryCode).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
+              TextField("Mobile Number", text: $loginViewModel.phoneNumber).textFieldStyle(MyTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
 
             }.padding(.horizontal)
 

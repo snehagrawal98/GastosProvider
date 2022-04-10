@@ -169,7 +169,9 @@ struct SetYourDiscount: View {
   var body: some View {
     VStack(spacing: 1) {
       HStack {
-        TextField("Min Billed Amount", text: $setDiscountViewModel.discounts[indexOfDiscount].minBillAmount)
+        TextField("Min Billed Amount", text: $setDiscountViewModel.discounts[indexOfDiscount].minBillAmount).onTapGesture {
+            self.hideKeyboard()
+        }
           .padding()
           .font(.subheadline.weight(.regular))
           .frame(width: 0.4 * UIScreen.screenWidth, height: 0.059 * UIScreen.screenHeight, alignment: .center)
