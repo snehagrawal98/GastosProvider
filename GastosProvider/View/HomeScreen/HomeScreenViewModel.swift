@@ -30,10 +30,13 @@ class HomeScreenViewModel: ObservableObject {
         self.shopCity = value?["shopState"] as? String ?? ""
         self.category = value?["category"] as? String ?? ""
         self.shopLocation = value?["shopArea"] as? String ?? ""
-        self.delivery = value?["shopName"] as? Bool ?? false
-        self.pickUp = value?["shopName"] as? Bool ?? false
+        self.delivery = value?["homeDelivery"] as? Bool ?? false
+        self.pickUp = value?["pickUp"] as? Bool ?? false
         self.discounts = value?["disconts"] as? [[String: Any]] ?? [[]]
 
       }
   }
 }
+
+
+

@@ -14,14 +14,12 @@ struct ManageShop: View {
   @State var numberOfExtraImages = 0
   @State var image: UIImage?
   @State var selectedImage = 0
-    @StateObject var homeScreenViewModel = HomeScreenViewModel()
+  @StateObject var homeScreenViewModel = HomeScreenViewModel()
     @Environment(\.presentationMode) var presentationMode
-    
-
+  
   var gridLayout: [GridItem] {
     return Array(repeating: GridItem(.flexible(), spacing: -55), count: 2)
   }
-
   @StateObject var manageShopViewModel = ManageShopViewModel()
 
     var body: some View {
@@ -201,6 +199,7 @@ struct ManageShop_Previews: PreviewProvider {
 
 struct ShopDet: View{
     @StateObject var homeScreenViewModel = HomeScreenViewModel()
+    @EnvironmentObject var loginViewModel: LoginViewModel
     var body: some View{
         
         VStack{
@@ -212,7 +211,7 @@ struct ShopDet: View{
             .foregroundColor(.secondary)
             .padding(.bottom, 1)
 
-            TextField("Shop Name Here", text: $homeScreenViewModel.shopName)
+            Text(homeScreenViewModel.shopName)
             .font(.title3.weight(.medium))
         } //: VSTACK
         .padding(.horizontal)
@@ -309,7 +308,9 @@ struct ShopDet: View{
             )
 
             
-        }
+        }.onAppear(perform: {
+            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+          })
     }
 }
 
