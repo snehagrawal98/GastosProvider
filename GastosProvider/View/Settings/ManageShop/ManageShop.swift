@@ -9,12 +9,14 @@ import SwiftUI
 
 struct ManageShop: View {
     
+  @EnvironmentObject var loginViewModel: LoginViewModel
   @State var isShowingImagePicker = false
   @State var numberOfExtraImages = 0
   @State var image: UIImage?
   @State var selectedImage = 0
     @StateObject var homeScreenViewModel = HomeScreenViewModel()
     @Environment(\.presentationMode) var presentationMode
+    
 
   var gridLayout: [GridItem] {
     return Array(repeating: GridItem(.flexible(), spacing: -55), count: 2)
@@ -116,7 +118,9 @@ struct ManageShop: View {
           .padding(.bottom)
         }
         .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true).onAppear(perform: {
+            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+          })
         .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: self.appendExtraImages) {
           ImagePicker(image: $image)
         }

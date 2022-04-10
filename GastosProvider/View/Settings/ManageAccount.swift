@@ -13,8 +13,8 @@ struct ManageAccount: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
-
-
+    
+    @StateObject var homeScreenViewModel = HomeScreenViewModel()
     var body: some View {
       NavigationView {
         VStack {
@@ -112,7 +112,9 @@ struct ManageAccount: View {
             .padding(.bottom)
         }
         .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true).onAppear(perform: {
+            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+          })
       } //: VSTACK
     }
 }
