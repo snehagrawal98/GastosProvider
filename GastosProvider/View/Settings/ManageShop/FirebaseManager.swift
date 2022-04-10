@@ -15,6 +15,31 @@ class FirebaseMnager {
     
     private var db = Database.database()
     
+    func getAllImages(uid: String) -> [String] {
+        var imageUriArray = [String]()
+        let ref = db.reference()
+        ref.child("Merchant_data/\(uid)/Shop_Information").getData { error, snapshot in
+            guard error == nil else {
+                print(error?.localizedDescription)
+                return
+            }
+            let firstImage = snapshot.childSnapshot(forPath: "shopImageUri").value as? String ?? ""
+            let secondImage = snapshot.childSnapshot(forPath: "shopImageUri1").value as? String ?? ""
+            let thirdImage = snapshot.childSnapshot(forPath: "shopImageUri2").value as? String ?? ""
+            let forthImage = snapshot.childSnapshot(forPath: "shopImageUri3").value as? String ?? ""
+            let fifthImage = snapshot.childSnapshot(forPath: "shopImageUri4").value as? String ?? ""
+            imageUriArray.append(firstImage)
+            imageUriArray.append(secondImage)
+            imageUriArray.append(thirdImage)
+            imageUriArray.append(forthImage)
+            imageUriArray.append(fifthImage)
+
+        }
+
+
+        return imageUriArray
+    }
+    
     func getAllShops(completion: @escaping ([Merchant])->Void)  {
         let ref = db.reference().child("Merchant_data")
         

@@ -12,7 +12,7 @@ struct HomeScreen: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var homeScreenViewModel = HomeScreenViewModel()
     @StateObject var imagesViewModel = ImagesViewModel()
-    @State private var shop: Shop?
+    @StateObject var loginInfoViewModel = LoginViewModel()
     
     var body: some View {
       NavigationView {
@@ -28,11 +28,11 @@ struct HomeScreen: View {
 
             VStack {
                                 
-                ShopImages(shopImagesUrl: self.shop?.shopImageURI ?? "",
-                           shopImagesUri1: self.shop?.shopImageURI1 ?? "",
-                           shopImagesUri2: self.shop?.shopImageURI2 ?? "",
-                           shopImagesUri3: self.shop?.shopImageURI3 ?? "",
-                           shopImagesUri4: self.shop?.shopImageURI4 ?? "")
+                ShopImages(shopImagesUrl: imagesViewModel.imagesArray[0],
+                           shopImagesUri1: imagesViewModel.imagesArray[1],
+                           shopImagesUri2: imagesViewModel.imagesArray[2],
+                           shopImagesUri3: imagesViewModel.imagesArray[3],
+                           shopImagesUri4: imagesViewModel.imagesArray[4])
 
 
 
@@ -46,12 +46,9 @@ struct HomeScreen: View {
               } //: HSTACK
             } //: VSTACK
             .onAppear {
-                imagesViewModel.getAllMerchants()
-                for thisShop in imagesViewModel.merchantArray {
-                    if thisShop.phone == "" {
-                        
-                    }
-                }
+                let uid = loginInfoViewModel.uid
+                imagesViewModel.getImages(uid: uid)
+                
             }
           } //: ZSTACK
           .frame(width: UIScreen.screenWidth, height: 0.407 * UIScreen.screenHeight)
