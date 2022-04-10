@@ -220,6 +220,7 @@ struct BasicDetails: View {
 
               Button(action: {
                 self.didEnterAllData()
+                self.hideKeyboard()
               }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")
               })

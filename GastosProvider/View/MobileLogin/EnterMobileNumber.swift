@@ -58,6 +58,7 @@ struct EnterMobileNumber: View {
               Button(action: {
                 currentUser.phone = loginViewModel.phoneNumber
                 loginViewModel.sendCode()
+                  self.hideKeyboard()
               }, label: {
                 Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: .center)
               }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding()

@@ -159,6 +159,7 @@ struct RequestDesign: View {
 
                     Button(action: { //self.didEnterAllData()
                         showingPopover.toggle()
+                        self.hideKeyboard()
                         
                     }, label: {
                       BasicScreensBottomRighttText(buttonText: "Next")

@@ -65,6 +65,7 @@ struct OTPPin: View {
                 Spacer()
                 Button(action: {
                   loginViewModel.requestCode()
+                    self.hideKeyboard()
                 }, label: {
                 Text("Resend OTP").foregroundColor(.gray).fontWeight(.medium).font(.system(size: 13))
             }).padding(.horizontal).background(

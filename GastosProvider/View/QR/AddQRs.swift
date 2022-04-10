@@ -103,6 +103,7 @@ struct AddQRs: View {
               Button(action: {
                 loginViewModel.registerMerchantPaymentInfo()
                 isShowingSetDiscount.toggle()
+                  self.hideKeyboard()
               }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")
               })

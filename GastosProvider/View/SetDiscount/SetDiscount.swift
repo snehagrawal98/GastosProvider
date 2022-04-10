@@ -104,6 +104,7 @@ struct SetDiscount: View {
               Button(action: {
                 setDiscountViewModel.uploadDiscounts(uid: loginViewModel.uid)
                 loginViewModel.didSetDiscounts = setDiscountViewModel.didUploadDiscounts
+                  self.hideKeyboard()
               }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")
               })

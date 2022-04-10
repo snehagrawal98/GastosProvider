@@ -46,14 +46,14 @@ struct SetPin: View {
                     .foregroundColor(Color("deepGreen"))
                     HStack{
                     TextField("New Pin", text: $pin1).frame(width: 350, height: 65, alignment: .center)
-                        .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3)
+                            .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad)
                         Spacer()
                     }
 
                     HStack{
                     TextField("Re-enter Pin", text: $pin2)
                         .frame(width: 350, height: 65, alignment: .center)
-                        .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3)
+                        .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad)
                         Spacer()
                     }
 
@@ -70,6 +70,7 @@ struct SetPin: View {
 
                       Button(action: {
                         self.didEnterProperPin()
+                          self.hideKeyboard()
                       }, label: {
                             Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                         })
@@ -77,6 +78,7 @@ struct SetPin: View {
                         .background(Color("textGreen"))
                         .clipShape(Circle())
                         .padding()
+                        
                     }
                 }
             }
@@ -116,3 +118,11 @@ struct MyTextFieldStyle: TextFieldStyle {
     }
 }
 
+
+#if canImport(UIKit)
+extension View {
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+#endif
