@@ -199,30 +199,35 @@ struct ManageShop: View {
                 .foregroundColor(.secondary)
                 .padding(.bottom, 1)
 
-              HStack(spacing: 4) {
-                HStack(spacing: 0) {
-                  Text($discountPercent)
-                        .font(.system(size:18, weight: .medium,design: .default))
-                    
+                VStack {
+                    ForEach(homeScreenViewModel.discounts, id: \.self) { discount in
+                        HStack(spacing: 4) {
+                        HStack(spacing: 0) {
+                            Text("\(discount.discountPercentage)")
+                                .font(.system(size:18, weight: .medium,design: .default))
+                            
 
-                    Text("%").font(.system(size:15, weight: .medium,design: .default))
-                    //.frame(width: 20, height: 28, alignment: .bottom)
+                            Text("%").font(.system(size:15, weight: .medium,design: .default))
+                            //.frame(width: 20, height: 28, alignment: .bottom)
+                        }
+
+                          Text("Discount at minimum order of").font(.system(size:15, weight: .regular ,design: .default))
+                         // .frame(width: 230, height: 20, alignment: .leading)
+                          .foregroundColor(Color.black.opacity(0.7))
+
+                        HStack(spacing: 5) {
+                          Image("RupeeIcon")
+                            .resizable()
+                            .frame(width: 7.76, height: 11.54, alignment: .center)
+                            Text(discount.minimumOrderForDiscount)
+                                .font(.system(size: 17, weight: .medium, design: .default))
+                            .frame(width: 37, height: 30, alignment: .leading)
+                        }
+                      }
+                        .frame(width: UIScreen.screenWidth - 64, alignment: .leading)
+
+                    }
                 }
-
-                  Text("Discount at minimum order of").font(.system(size:15, weight: .regular ,design: .default))
-                 // .frame(width: 230, height: 20, alignment: .leading)
-                  .foregroundColor(Color.black.opacity(0.7))
-
-                HStack(spacing: 5) {
-                  Image("RupeeIcon")
-                    .resizable()
-                    .frame(width: 7.76, height: 11.54, alignment: .center)
-                  Text($minimumOrderForDiscount)
-                        .font(.system(size: 17, weight: .medium, design: .default))
-                    .frame(width: 37, height: 30, alignment: .leading)
-                }
-              }
-              .frame(width: UIScreen.screenWidth - 64, alignment: .leading)
 
               
 

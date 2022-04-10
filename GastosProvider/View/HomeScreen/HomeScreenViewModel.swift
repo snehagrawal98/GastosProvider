@@ -18,6 +18,7 @@ class HomeScreenViewModel: ObservableObject {
     @Published var shopLocation = ""
     @Published var delivery = false
     @Published var pickUp = false
+    @Published var discounts: [DiscountModel] = []
 
   func readShopInfo(uid: String) {
     let ref = db.reference().child("Merchant_data/\(uid)/Shop_Information")
@@ -31,8 +32,23 @@ class HomeScreenViewModel: ObservableObject {
         self.shopLocation = value?["shopArea"] as? String ?? ""
         self.delivery = value?["shopName"] as? Bool ?? false
         self.pickUp = value?["shopName"] as? Bool ?? false
-
+        
+        if let discountsArray = value?["discounts"] as? [[String: Any]] {
+            for discount in discountsArray {
+                let discountPercentage = discount["discountPercentage"] as? Int ?? 0
+                let minimumOrderForDiscount = discount["minimumOrderForDiscount"] as? String ?? "0"
+                let oneDiscount = DiscountModel(discountPercentage: discountPercentage,
+                                                minimumOrderForDiscount: minimumOrderForDiscount)
+                
+                self.discounts.append(oneDiscount)
+            }
+        }
 
       }
   }
+}
+
+struct DiscountModel: Hashable {
+    let discountPercentage: Int
+    let minimumOrderForDiscount: String
 }
