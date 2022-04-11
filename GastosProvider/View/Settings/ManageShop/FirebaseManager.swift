@@ -15,7 +15,7 @@ class FirebaseMnager {
     
     private var db = Database.database()
     
-    func getAllImages(uid: String) -> [String] {
+    func getAllImages(uid: String, completion: @escaping ([String])->Void) {
         var imageUriArray = [String]()
         let ref = db.reference()
         ref.child("Merchant_data/\(uid)/Shop_Information").getData { error, snapshot in
@@ -33,11 +33,10 @@ class FirebaseMnager {
             imageUriArray.append(thirdImage)
             imageUriArray.append(forthImage)
             imageUriArray.append(fifthImage)
-
+            print(imageUriArray)
+            
+            completion(imageUriArray)
         }
-
-
-        return imageUriArray
     }
     
     func getAllShops(completion: @escaping ([Merchant])->Void)  {

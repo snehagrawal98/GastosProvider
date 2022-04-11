@@ -28,12 +28,17 @@ struct HomeScreen: View {
 
             VStack {
                                 
-                ShopImages(shopImagesUrl: imagesViewModel.imagesArray[0],
-                           shopImagesUri1: imagesViewModel.imagesArray[1],
-                           shopImagesUri2: imagesViewModel.imagesArray[2],
-                           shopImagesUri3: imagesViewModel.imagesArray[3],
-                           shopImagesUri4: imagesViewModel.imagesArray[4])
-
+                ShopImages(shopImagesUrl: imagesViewModel.imagesArray?[0] ?? "",
+                           shopImagesUri1: imagesViewModel.imagesArray?[1] ?? "",
+                           shopImagesUri2: imagesViewModel.imagesArray?[2] ?? "",
+                           shopImagesUri3: imagesViewModel.imagesArray?[3] ?? "",
+                           shopImagesUri4: imagesViewModel.imagesArray?[4] ?? "")
+                    .onAppear {
+                        let uid = loginInfoViewModel.uid
+                        imagesViewModel.getImages(uid: uid)
+                    }
+                    .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
+                    .cornerRadius(10)
 
 
               HStack {
@@ -48,7 +53,6 @@ struct HomeScreen: View {
             .onAppear {
                 let uid = loginInfoViewModel.uid
                 imagesViewModel.getImages(uid: uid)
-                
             }
           } //: ZSTACK
           .frame(width: UIScreen.screenWidth, height: 0.407 * UIScreen.screenHeight)
@@ -199,7 +203,7 @@ struct HomeScreen: View {
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
-          homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
         })
       } //: NAV
     }
@@ -233,45 +237,19 @@ struct HomeScreen_Previews: PreviewProvider {
 // Shop Images
 struct ShopImages: View {
     
-    var shopImagesUrl: String?
-    var shopImagesUri1: String?
-    var shopImagesUri2: String?
-    var shopImagesUri3: String?
-    var shopImagesUri4: String?
+    var shopImagesUrl: String
+    var shopImagesUri1: String
+    var shopImagesUri2: String
+    var shopImagesUri3: String
+    var shopImagesUri4: String
     
     var body: some View {
       TabView {
-        
-          Image(shopImagesUrl ?? "")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(10)
-          
-          Image(shopImagesUri1 ?? "")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(10)
-          
-          Image(shopImagesUri2 ?? "")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(10)
-          
-          Image(shopImagesUri3 ?? "")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(10)
-          
-          Image(shopImagesUri4 ?? "")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
-            .cornerRadius(10)
-
+          AsyncImage(url: URL(string: shopImagesUrl))
+          AsyncImage(url: URL(string: shopImagesUri1))
+          AsyncImage(url: URL(string: shopImagesUri2))
+          AsyncImage(url: URL(string: shopImagesUri3))
+          AsyncImage(url: URL(string: shopImagesUri4))
         
       }//: TAB
       .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
