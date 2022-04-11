@@ -10,6 +10,13 @@ import Foundation
 
 class ImagesViewModel: ObservableObject {
     @Published var merchantArray: [Merchant] = [Merchant]()
+    @Published var imagesArray: [String] = [String]()
+    
+    func getImages(uid: String) {
+        let firebaseManager = FirebaseMnager()
+        let imagesArray: [String] = firebaseManager.getAllImages(uid: uid)
+        self.imagesArray = imagesArray
+    }
     
     func getAllMerchants() {
         let firebaseManager = FirebaseMnager()
