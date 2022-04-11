@@ -53,6 +53,15 @@ class RegistrationPaymentViewModel: ObservableObject {
     ref1.child("txnamount").setValue(response.TXNAMOUNT?.optionalStripped)
     ref1.child("txndate").setValue(response.TXNDATE?.optionalStripped)
     ref1.child("txnid").setValue(response.TXNID?.optionalStripped)
+
+    let ref2 = db.reference().child("Merchant_data").child("\(uid)/Account_Information")
+
+    let registrationPayment = Int(response.TXNAMOUNT?.optionalStripped ?? "0") ?? 0
+    let registrationPaymentDone = true
+
+    ref2.child("registrationPayment").setValue(registrationPayment)
+    ref2.child("registrationPaymentDone").setValue(registrationPaymentDone)
+    ref2.child("registrationTime").setValue(response.TXNDATE?.optionalStripped)
   }
 }
 
