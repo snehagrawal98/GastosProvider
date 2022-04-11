@@ -132,7 +132,7 @@ class LoginViewModel: ObservableObject {
       let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
 
       ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
-      ref2.child("primary").setValue("\(qrCodes[qrCode].isPrimary)")
+      ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
       ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
       ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
     }
