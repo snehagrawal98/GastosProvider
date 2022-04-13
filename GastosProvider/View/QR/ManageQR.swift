@@ -62,13 +62,17 @@ struct ManageQR: View {
               LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10, content: {
                 ForEach(0..<manageQrViewModel.qrCodes.count, id: \.self) { qrCode in
                   if manageQrViewModel.qrCodes[qrCode].isPrimary {
-                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+//                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: true, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+
                       .onTapGesture {
                         primaryQr = qrCode
                         isShowingSetPrimary = true
                       }
                   } else {
-                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+//                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: manageQrViewModel.qrCodes[qrCode].merchantId, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+                    QrSheet(qrName: manageQrViewModel.qrCodes[qrCode].qrName, isPrimary: false, upiAddress: manageQrViewModel.qrCodes[qrCode].upiAdress)
+
                       .onTapGesture {
                         primaryQr = qrCode
                         isShowingSetPrimary = true

@@ -15,6 +15,7 @@ struct GastosProviderApp: App {
     var body: some Scene {
         WindowGroup {
           ContentView()
+          //AddQRs()
         }
     }
 }

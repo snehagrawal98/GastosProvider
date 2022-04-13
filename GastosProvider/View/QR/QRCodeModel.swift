@@ -11,6 +11,6 @@ import SwiftUI
 struct QrCode: Hashable {
   var qrName: String
   var upiAdress: String
-  var merchantId: String
+  //var merchantId: String
   var isPrimary: Bool
 }

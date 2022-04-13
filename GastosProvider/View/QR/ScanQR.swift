@@ -7,16 +7,19 @@
 
 import SwiftUI
 import CoreImage.CIFilterBuiltins
+import CodeScanner
 
 struct ScanQR: View {
   @Environment(\.dismiss) var dismiss
   @State var qrName = ""
   @State var upiAdress = ""
   @State var merchantId = ""
+  @State var scannedCode = ""
+  @State var isShowingScanner = false
+
   @EnvironmentObject var loginViewModel: LoginViewModel
   let context = CIContext()
   let filter = CIFilter.qrCodeGenerator()
-    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
       NavigationView {
@@ -24,7 +27,7 @@ struct ScanQR: View {
           // Navigation bar
           HStack {
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
@@ -39,7 +42,14 @@ struct ScanQR: View {
           } //: HSTACK
           .padding(.bottom)
 
-          VStack {
+//          Text("Scanned code: \(scannedCode)")
+//            .font(.title3)
+//            .foregroundColor(.black)
+
+          ZStack {
+            CodeScannerView(codeTypes: [.qr], simulatedData: "upi://pay?pa=BHARATPE90718988349@yesbankltd&pn=BharatPe%20Merchant&cu=INR&tn=Verified%20Merchant", completion: handleScan)
+
+
             Image("ScanSymbol")
               .resizable()
               .scaledToFit()
@@ -60,10 +70,10 @@ struct ScanQR: View {
               .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
-            TextField("Merchant ID", text: $merchantId)
-              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
-                  self.hideKeyboard()
-              }
+//            TextField("Merchant ID", text: $merchantId)
+//              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
+//                  self.hideKeyboard()
+//              }
 
             Spacer()
 
@@ -82,10 +92,28 @@ struct ScanQR: View {
 
   // checking if all data is recieved
   func didEnterAllData() {
-    if !qrName.isEmpty && !upiAdress.isEmpty && !merchantId.isEmpty {
-      let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, merchantId: merchantId, isPrimary: false)
+    if !qrName.isEmpty && !upiAdress.isEmpty {
+      //let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, merchantId: merchantId, isPrimary: false)
+      let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, isPrimary: false)
       loginViewModel.qrCodes.append(qrCode)
       dismiss()
+    }
+  }
+
+  // func to handle scan
+  func handleScan(result: Result<ScanResult, ScanError>) {
+    //isShowingScanner = false
+
+    switch result {
+    case .success(let result):
+      scannedCode = result.string // .components(separatedBy: "\n")
+      upiAdress = scannedCode.slice(from: "pa=", to: "&") ?? ""
+      let qrNameWith20 = scannedCode.slice(from: "pn=", to: "&") ?? ""
+      qrName = qrNameWith20.strip20s
+      guard !scannedCode.isEmpty else { return }
+
+    case .failure(let error):
+      print("Scanning failed: \(error.localizedDescription)")
     }
   }
 }
@@ -108,5 +136,19 @@ struct ScanQrTextFieldStyle: TextFieldStyle {
         RoundedRectangle(cornerRadius: 10)
           .stroke(Color("textGreen").opacity(0.2), lineWidth: 1)
       )
+  }
+}
+
+extension String {
+  func slice(from: String, to: String) -> String? {
+      return (range(of: from)?.upperBound).flatMap { substringFrom in
+          (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+              String(self[substringFrom..<substringTo])
+          }
+      }
+  }
+
+  var strip20s: String {
+    return self.replacingOccurrences(of: "%20", with: "", options: .regularExpression, range: nil)
   }
 }

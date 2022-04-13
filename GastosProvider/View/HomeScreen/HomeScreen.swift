@@ -60,7 +60,7 @@ struct HomeScreen: View {
           // Middle part
           HStack(spacing: 0.1 * UIScreen.screenWidth) {
             VStack {
-              NavigationLink(destination: AddQRs()
+              NavigationLink(destination: ManageQR()
                               .navigationBarHidden(true)
                               .navigationBarBackButtonHidden(true), label: {
                 Image(systemName: "qrcode.viewfinder")
