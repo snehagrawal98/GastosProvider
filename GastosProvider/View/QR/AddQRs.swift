@@ -60,13 +60,15 @@ struct AddQRs: View {
             LazyVGrid(columns: gridLayout, alignment: .center, spacing: 10, content: {
               ForEach(0..<loginViewModel.qrCodes.count, id: \.self) { qrCode in
                 if loginViewModel.qrCodes[qrCode].isPrimary {
-                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+//                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: true, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
                     .onTapGesture {
                       primaryQr = qrCode
                       isShowingSetPrimary = true
                     }
                 } else {
-                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+//                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: false, merchantId: loginViewModel.qrCodes[qrCode].merchantId, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
+                  QrSheet(qrName: loginViewModel.qrCodes[qrCode].qrName, isPrimary: false, upiAddress: loginViewModel.qrCodes[qrCode].upiAdress)
                     .onTapGesture {
                       primaryQr = qrCode
                       isShowingSetPrimary = true
@@ -152,8 +154,18 @@ struct BottomButton: View {
 struct QrSheet: View {
   @State var qrName: String
   @State var isPrimary: Bool
-  @State var merchantId: String
+  //@State var merchantId: String
   @State var upiAddress: String
+  var merchantQrApp: String {
+    switch qrName {
+    case "PaytmMerchant":
+      return "Paytm"
+    case "PhonePeMerchant":
+      return "Phonepe"
+    default:
+      return "Other UPI"
+    }
+  }
 
   let context = CIContext()
   let filter = CIFilter.qrCodeGenerator()
@@ -161,7 +173,7 @@ struct QrSheet: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 13)
-        .foregroundColor(Color(qrName))
+        .foregroundColor(Color(merchantQrApp))
 
       VStack {
         ZStack {
@@ -171,12 +183,13 @@ struct QrSheet: View {
           .padding(8)
 
           ZStack {
-            Image(uiImage: generateQRCode(from: "\(qrName)\n\(upiAddress)\n\(merchantId)"))
+            //Image(uiImage: generateQRCode(from: "\(qrName)\n\(upiAddress)\n\(merchantId)"))
+            Image(uiImage: generateQRCode(from: "\(qrName)\n\(upiAddress)"))
               .resizable()
               .interpolation(.none)
               .scaledToFit()
               .frame(width: 0.144 * UIScreen.screenWidth, height: 0.066 * UIScreen.screenHeight, alignment: .center)
-            Image(qrName)
+            Image(merchantQrApp)
               .resizable()
               .scaledToFit()
               .frame(width: 0.042 * UIScreen.screenWidth, height: 0.019 * UIScreen.screenHeight, alignment: .center)
@@ -186,7 +199,7 @@ struct QrSheet: View {
 
         Spacer()
 
-        Text(qrName)
+        Text(merchantQrApp)
           .foregroundColor(.white)
           .font(.body.weight(.semibold))
           .padding()

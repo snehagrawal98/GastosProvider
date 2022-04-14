@@ -21,13 +21,15 @@ class ManageQRViewModel: ObservableObject {
     ref.observe(DataEventType.value) { snapshot in
       if snapshot.childrenCount > 0 {
         for qr in snapshot.children.allObjects as! [DataSnapshot] {
-          let merchantId = qr.childSnapshot(forPath: "merchantId").value as? String
+          //let merchantId = qr.childSnapshot(forPath: "merchantId").value as? String
           let primary = qr.childSnapshot(forPath: "primary").value as? Bool
           let rawString = qr.childSnapshot(forPath: "rawString").value as? String
           let upiId = qr.childSnapshot(forPath: "upiId").value as? String
           let upiName = qr.childSnapshot(forPath: "upiName").value as? String
 
-          let qrCode = QrCode(qrName: upiName ?? " ", upiAdress: upiId ?? " ", merchantId: merchantId ?? " ", isPrimary: primary ?? false)
+//          let qrCode = QrCode(qrName: upiName ?? " ", upiAdress: upiId ?? " ", merchantId: merchantId ?? " ", isPrimary: primary ?? false)
+          let qrCode = QrCode(qrName: upiName ?? " ", upiAdress: upiId ?? " ", isPrimary: primary ?? false)
+
           qrCodesFromFirebase.append(qrCode)
         }
       }

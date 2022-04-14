@@ -44,19 +44,41 @@ struct Failure_Response_Previews: PreviewProvider {
 
 
 
+//struct JumpToHome_Failure: View{
+//    @State var click = false
+//    var body: some View{
+//        Button {
+//            self.click.toggle()
+//        } label: {
+//            RoundedRectangle(cornerRadius: 22).frame( height: 60, alignment: .center).foregroundColor(.white)
+//        }.fullScreenCover(isPresented: $click) {
+//            RegistrationPayment()
+//        }.overlay{
+//            Text("Jump to home").foregroundColor(.black).font(.system(size: 20, weight: .medium, design: .default))
+//        }
+//
+//        
+//    }
+//}
+
 struct JumpToHome_Failure: View{
-    @State var click = false
+   // @State var click = false
+  @EnvironmentObject var loginViewModel: LoginViewModel
     var body: some View{
         Button {
-            self.click.toggle()
+            //self.click.toggle()
+          loginViewModel.madeRegistrationPayment = true
+
         } label: {
             RoundedRectangle(cornerRadius: 22).frame( height: 60, alignment: .center).foregroundColor(.white)
-        }.fullScreenCover(isPresented: $click) {
-            RegistrationPayment()
-        }.overlay{
+        }//.fullScreenCover(isPresented: $click) {
+           // HomeScreen()
+       // }
+    .overlay{
             Text("Jump to home").foregroundColor(.black).font(.system(size: 20, weight: .medium, design: .default))
         }
 
-        
+
     }
 }
+

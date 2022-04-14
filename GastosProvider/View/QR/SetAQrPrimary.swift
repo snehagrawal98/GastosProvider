@@ -16,7 +16,9 @@ struct SetAQrPrimary: View {
     NavigationView {
       VStack {
         Spacer()
-        QrSheet(qrName: loginViewModel.qrCodes[primaryQr].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[primaryQr].merchantId, upiAddress: loginViewModel.qrCodes[primaryQr].upiAdress)
+//        QrSheet(qrName: loginViewModel.qrCodes[primaryQr].qrName, isPrimary: true, merchantId: loginViewModel.qrCodes[primaryQr].merchantId, upiAddress: loginViewModel.qrCodes[primaryQr].upiAdress)
+        QrSheet(qrName: loginViewModel.qrCodes[primaryQr].qrName, isPrimary: true, upiAddress: loginViewModel.qrCodes[primaryQr].upiAdress)
+
         Spacer()
 
         Text("you’ll be receiving all of your payments on the bank account linked with this QR.")
