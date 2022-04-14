@@ -21,6 +21,9 @@ struct GastosProviderApp: App {
 }
 
 class AppDelegate: NSObject,UIApplicationDelegate {
+    
+    static var orientationLock = UIInterfaceOrientationMask.portrait
+
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
     FirebaseApp.configure()
@@ -30,4 +33,11 @@ class AppDelegate: NSObject,UIApplicationDelegate {
   // needed for firebase phone auth
   func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
   }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+
+      return AppDelegate.orientationLock
+
+    }
 }
+

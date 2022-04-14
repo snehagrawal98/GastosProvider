@@ -20,7 +20,7 @@ class FirebaseMnager {
         let ref = db.reference()
         ref.child("Merchant_data/\(uid)/Shop_Information").getData { error, snapshot in
             guard error == nil else {
-                print(error?.localizedDescription)
+               // print(error?.localizedDescription)
                 return
             }
             let firstImage = snapshot.childSnapshot(forPath: "shopImageUri").value as? String ?? ""
