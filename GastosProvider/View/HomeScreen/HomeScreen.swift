@@ -28,7 +28,7 @@ struct HomeScreen: View {
 
             VStack {
                                 
-                ShopImages(shopImagesUrl: imagesViewModel.imagesArray?[0] ?? "",
+                ShopImages(shopImagesUri: imagesViewModel.imagesArray?[0] ?? "",
                            shopImagesUri1: imagesViewModel.imagesArray?[1] ?? "",
                            shopImagesUri2: imagesViewModel.imagesArray?[2] ?? "",
                            shopImagesUri3: imagesViewModel.imagesArray?[3] ?? "",
@@ -237,7 +237,7 @@ struct HomeScreen_Previews: PreviewProvider {
 // Shop Images
 struct ShopImages: View {
     
-    var shopImagesUrl: String
+    var shopImagesUri: String
     var shopImagesUri1: String
     var shopImagesUri2: String
     var shopImagesUri3: String
@@ -245,7 +245,7 @@ struct ShopImages: View {
     
     var body: some View {
       TabView {
-          AsyncImage(url: URL(string: shopImagesUrl))
+          AsyncImage(url: URL(string: shopImagesUri))
           AsyncImage(url: URL(string: shopImagesUri1))
           AsyncImage(url: URL(string: shopImagesUri2))
           AsyncImage(url: URL(string: shopImagesUri3))

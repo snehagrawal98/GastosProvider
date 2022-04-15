@@ -331,38 +331,94 @@ struct SettingsTitleView: View {
 }
 
 struct ImageWithEdit: View {
+    @State var isShowingImagePicker = false
+    @State var image: UIImage?
     var body: some View {
-      ZStack {
-        Image("detailShop")
-          .resizable()
-          .scaledToFit()
-          .frame(width: 0.75 * UIScreen.screenWidth, height: 0.21 * UIScreen.screenHeight, alignment: .center)
-          .cornerRadius(19)
-
-        // Edit Button
-        VStack {
-          Spacer()
-
-          HStack {
-            Spacer()
-
-            Button(action: {
-              // edit
-            }, label: {
-              Image(systemName: "pencil")
+        
+        ZStack {
+          Button(action: {
+            isShowingImagePicker.toggle()
+          }, label: {
+            if let image = self.image {
+              Image(uiImage: image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 18, height: 18, alignment: .center)
-                .foregroundColor(.white)
-                .padding()
-                .background(Color("textGreen"))
-                .cornerRadius(12)
-            }) //: BUTTON
-          } //: HSTACK
-        } //: VSTACK
-        .frame(width: 0.85 * UIScreen.screenWidth, height: 0.22 * UIScreen.screenHeight, alignment: .center)
+                .frame(width: 0.72 * UIScreen.screenWidth, height: 0.20 * UIScreen.screenHeight, alignment: .center)
+                .background(
+                  RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color("textGreen").opacity(0.2), lineWidth: 2)
+                )
+            } else {
+              Text("Shop Cover Photo")
+                .font(.title2.weight(.medium))
+                .foregroundColor(Color("deepGreen"))
+                .frame(width: 0.72 * UIScreen.screenWidth, height: 0.20 * UIScreen.screenHeight, alignment: .center)
+                .background(Color.white.cornerRadius(10))
+                .background(
+                  RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color("textGreen").opacity(0.2), lineWidth: 2)
+                )
+            }
+          }) //: BUTTON
 
-      } //: ZSTACK
+          // Plus Button
+          Button(action: {
+            isShowingImagePicker.toggle()
+          }, label: {
+            VStack {
+              Spacer()
+              HStack {
+                Spacer()
+                Image(systemName: "pencil")
+                  .resizable()
+                  .frame(width: 23, height: 23, alignment: .center)
+                  .padding(8)
+                  .foregroundColor(.white)
+                  .background(Color("textGreen"))
+                  .cornerRadius(10)
+              }
+            } //: VSTACK
+            .frame(width: 0.79 * UIScreen.screenWidth, height: 0.23 * UIScreen.screenHeight, alignment: .center)
+          })
+        }
+        .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: nil) {
+            ImagePicker(image: $image)
+          }
+        
+        
+        
+        
+//      ZStack {
+//        Image("detailShop")
+//          .resizable()
+//          .scaledToFit()
+//          .frame(width: 0.75 * UIScreen.screenWidth, height: 0.21 * UIScreen.screenHeight, alignment: .center)
+//          .cornerRadius(19)
+//
+//        // Edit Button
+//        VStack {
+//          Spacer()
+//
+//          HStack {
+//            Spacer()
+//
+//            Button(action: {
+//              // edit
+//            }, label: {
+//              Image(systemName: "pencil")
+//                .resizable()
+//                .scaledToFit()
+//                .frame(width: 18, height: 18, alignment: .center)
+//                .foregroundColor(.white)
+//                .padding()
+//                .background(Color("textGreen"))
+//                .cornerRadius(12)
+//            }) //: BUTTON
+//          } //: HSTACK
+//        } //: VSTACK
+//        .frame(width: 0.85 * UIScreen.screenWidth, height: 0.22 * UIScreen.screenHeight, alignment: .center)
+//
+//      } //: ZSTACK
     }
 }
 
@@ -432,7 +488,7 @@ struct ImageWithEditAndDelete: View {
         } //: VSTACK
         .frame(width: 0.40 * UIScreen.screenWidth, height: 0.1 * UIScreen.screenHeight, alignment: .center)
 
-      } //: ZSTACK
+      }//: ZSTACK
     }
 }
 
