@@ -47,6 +47,9 @@ struct LiveQrGeneration: View {
             Spacer()
             
             TextField("Enter Amount", text: $qrCodeUrl)
+                .onChange(of: qrCodeUrl, perform: {
+                  qrCodeUrl = String($0.prefix(5))
+                })
                 .multilineTextAlignment(.center)
                 .keyboardType(.numberPad)
                 .frame(width: UIScreen.screenWidth * (234 / 375), height: UIScreen.screenHeight * (54 / 812))
