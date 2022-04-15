@@ -111,6 +111,7 @@ struct BasicDetails: View {
               .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
+              .keyboardType(.emailAddress)
 
             TextField("Shop Address", text: $basicDetailsViewModel.shopAddress)
               .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
