@@ -11,6 +11,7 @@ struct ContentView: View {
   @AppStorage("log_Status") var status = false
  // @State private var showOnboardingScreen = true
   @StateObject var loginViewModel = LoginViewModel()
+
   @StateObject var currentUser = CurrentUser()
 
     var body: some View {

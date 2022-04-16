@@ -109,6 +109,7 @@
 		6E42506627E6252900A01FC4 /* RegistrationPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationPayment.swift; sourceTree = "<group>"; };
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
 		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
+		6E494AD7280A09FF00683BAD /* GastosProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GastosProvider.entitlements; sourceTree = "<group>"; };
 		6E4C53DF280016A1003BE970 /* Success_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success_Response.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6E70A5752801F54300F36213 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		3FCD8F02278EE7A2002836FC /* GastosProvider */ = {
 			isa = PBXGroup;
 			children = (
+				6E494AD7280A09FF00683BAD /* GastosProvider.entitlements */,
 				3FCD8F03278EE7A2002836FC /* GastosProviderApp.swift */,
 				6E4CA4C927D9D896006AC87D /* View */,
 				698F120027C3533E0097E85F /* Info.plist */,
@@ -582,6 +584,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GastosProvider/GastosProvider.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GastosProvider/Preview Content\"";
@@ -615,6 +618,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GastosProvider/GastosProvider.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GastosProvider/Preview Content\"";
