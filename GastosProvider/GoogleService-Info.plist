@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>828672159733-l8clhjmusorhtd66p2gsrsa0hqriigq9.apps.googleusercontent.com</string>
+	<string>1019774045667-njjbilfqln21mr9qcm24ntituv6c36cs.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.828672159733-l8clhjmusorhtd66p2gsrsa0hqriigq9</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>828672159733-3jrcai1u31bs747e9ekt45crulo4d6i4.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.1019774045667-njjbilfqln21mr9qcm24ntituv6c36cs</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCaD5Kx76ZvDMhToaZ7IwG2wGjL_gd73kI</string>
+	<string>AIzaSyClW_IqbfGVwz9Lmz1XBkRLF369seLYUSk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>828672159733</string>
+	<string>1019774045667</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.project.GastosProvider</string>
+	<string>me.goyal.rachit.Gastos-user-mvp1</string>
 	<key>PROJECT_ID</key>
-	<string>gastosprovidermvp</string>
+	<string>gastos-ios-mvp1</string>
 	<key>STORAGE_BUCKET</key>
-	<string>gastosprovidermvp.appspot.com</string>
+	<string>gastos-ios-mvp1.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:828672159733:ios:226b91ae325233a521babc</string>
+	<string>1:1019774045667:ios:35fbaa8eff885eb58ee4d6</string>
 	<key>DATABASE_URL</key>
-	<string>https://gastosprovidermvp-default-rtdb.firebaseio.com</string>
+	<string>https://gastos-ios-mvp1-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
