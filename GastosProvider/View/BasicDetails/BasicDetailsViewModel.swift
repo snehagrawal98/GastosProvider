@@ -18,6 +18,7 @@ class BasicDetailsViewModel: ObservableObject {
   @Published var emailAddress = ""
 
   // Shop Info
+  @Published var timestamp = "\(Date().millisecondsSince1970)"
   @Published var shopName = ""
   @Published var shopAddress = ""
   @Published var deliveryEnabled = true
@@ -73,7 +74,9 @@ class BasicDetailsViewModel: ObservableObject {
 
     ref1.child("emailAddress").setValue(emailAddress)
     ref1.child("ownerName").setValue(ownerName)
-
+      
+      
+    ref2.child("creationTimestamp").setValue(timestamp)
     ref2.child("category").setValue(shopCategory)
     ref2.child("homeDelivery").setValue(deliveryEnabled)
     ref2.child("pickUp").setValue(pickupEnabled)
@@ -87,3 +90,14 @@ class BasicDetailsViewModel: ObservableObject {
     
 }
 
+
+
+extension Date {
+    var millisecondsSince1970:Int64 {
+        Int64((self.timeIntervalSince1970 * 1000.0).rounded())
+    }
+    
+    init(milliseconds:Int64) {
+        self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+}
