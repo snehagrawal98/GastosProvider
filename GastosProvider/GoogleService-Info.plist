@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1019774045667-njjbilfqln21mr9qcm24ntituv6c36cs.apps.googleusercontent.com</string>
+	<string>1019774045667-41jpjker6vk12uaui19u47994j3ea41f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1019774045667-njjbilfqln21mr9qcm24ntituv6c36cs</string>
+	<string>com.googleusercontent.apps.1019774045667-41jpjker6vk12uaui19u47994j3ea41f</string>
 	<key>API_KEY</key>
 	<string>AIzaSyClW_IqbfGVwz9Lmz1XBkRLF369seLYUSk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>me.goyal.rachit.Gastos-user-mvp1</string>
+	<string>com.project.GastosProvider</string>
 	<key>PROJECT_ID</key>
 	<string>gastos-ios-mvp1</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1019774045667:ios:35fbaa8eff885eb58ee4d6</string>
+	<string>1:1019774045667:ios:4df747d199e199168ee4d6</string>
 	<key>DATABASE_URL</key>
 	<string>https://gastos-ios-mvp1-default-rtdb.firebaseio.com</string>
 </dict>

@@ -60,7 +60,7 @@ class BasicDetailsViewModel: ObservableObject {
 
   func uploadImageURLsToRealtime(uid: String, url: String) {
     let ref = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
-      ref.child("shopImageuri").setValue("\(url)")
+      ref.child("shopImageUri").setValue("\(url)")
     didEnterMerchantDetails = true
   }
 
@@ -75,12 +75,15 @@ class BasicDetailsViewModel: ObservableObject {
     ref1.child("ownerName").setValue(ownerName)
 
     ref2.child("category").setValue(shopCategory)
-    ref2.child("shopAddress").setValue(shopAddress)
-    ref2.child("shopCity").setValue(shopCity)
     ref2.child("homeDelivery").setValue(deliveryEnabled)
     ref2.child("pickUp").setValue(pickupEnabled)
+    ref2.child("shopAddress").setValue(shopAddress)
+    ref2.child("shopCity").setValue(shopCity)
     ref2.child("shopName").setValue(shopName)
     didEnterMerchantDetails = true
   }
 
+
+    
 }
+

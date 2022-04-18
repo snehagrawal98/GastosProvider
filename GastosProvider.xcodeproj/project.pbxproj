@@ -56,7 +56,7 @@
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6E70A5762801F54400F36213 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70A5752801F54300F36213 /* AccountViewModel.swift */; };
 		6EB07E9927DA09C700A10A85 /* ManageQR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB07E9827DA09C600A10A85 /* ManageQR.swift */; };
-		6EDEBF9B280DDD5500960D9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EDEBF9A280DDD5500960D9C /* GoogleService-Info.plist */; };
+		6EDEBF9D280DEDFD00960D9C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EDEBF9C280DEDFD00960D9C /* GoogleService-Info.plist */; };
 		6EE4B62727E3205B00C87CEB /* PostAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE4B62627E3205A00C87CEB /* PostAdvt.swift */; };
 		C020491527E748AC009F83AB /* PromotionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491427E748AC009F83AB /* PromotionViewModel.swift */; };
 		C020491B27E8F252009F83AB /* BrandingWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C020491A27E8F252009F83AB /* BrandingWallet.swift */; };
@@ -115,7 +115,7 @@
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6E70A5752801F54300F36213 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		6EB07E9827DA09C600A10A85 /* ManageQR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageQR.swift; sourceTree = "<group>"; };
-		6EDEBF9A280DDD5500960D9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6EDEBF9C280DEDFD00960D9C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EE4B62627E3205A00C87CEB /* PostAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostAdvt.swift; sourceTree = "<group>"; };
 		C020491427E748AC009F83AB /* PromotionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionViewModel.swift; sourceTree = "<group>"; };
 		C020491A27E8F252009F83AB /* BrandingWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandingWallet.swift; sourceTree = "<group>"; };
@@ -164,7 +164,7 @@
 				3FCD8F03278EE7A2002836FC /* GastosProviderApp.swift */,
 				6E4CA4C927D9D896006AC87D /* View */,
 				698F120027C3533E0097E85F /* Info.plist */,
-				6EDEBF9A280DDD5500960D9C /* GoogleService-Info.plist */,
+				6EDEBF9C280DEDFD00960D9C /* GoogleService-Info.plist */,
 				3FCD8F07278EE7B1002836FC /* Assets.xcassets */,
 				3FCD8F09278EE7B1002836FC /* Preview Content */,
 			);
@@ -408,7 +408,7 @@
 			files = (
 				3FCD8F0B278EE7B1002836FC /* Preview Assets.xcassets in Resources */,
 				3FCD8F08278EE7B1002836FC /* Assets.xcassets in Resources */,
-				6EDEBF9B280DDD5500960D9C /* GoogleService-Info.plist in Resources */,
+				6EDEBF9D280DEDFD00960D9C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
