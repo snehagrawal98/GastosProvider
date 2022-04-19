@@ -8,6 +8,10 @@
 import SwiftUI
 import Firebase
 import FirebaseStorage
+import Combine
+import Foundation
+import FirebaseDatabase
+import FirebaseDatabaseSwift
 
 class BasicDetailsViewModel: ObservableObject {
   @State var didEnterMerchantDetails = false
@@ -99,5 +103,68 @@ extension Date {
     
     init(milliseconds:Int64) {
         self = Date(timeIntervalSince1970: TimeInterval(milliseconds) / 1000)
+    }
+}
+
+//Models
+struct AccountInformationModel: Codable{
+    var emailAddress: String
+    var ownerName: String
+    var phoneNumber: String
+    var pin: String
+    var registrationPayment: Int
+    var registrationPaymentDone: Bool
+    var registrationTime: String
+    var salesCode: String
+    var walletBranding: String
+    var walletPromotion: String
+
+    
+}
+
+struct ShopInformation: Codable{
+    var category: String
+    var creationTimeStamp: String
+    var discounts:[DiscountModel]
+    var homeDelivery: Bool
+    var pickUp:Bool
+    var shopAddress: String
+    var shopAddressLatitude: String
+    var shopAddressLongitude: String
+    var shopArea: String
+    var shopDistrict: String
+    var shopImageUri: String
+    var shopImageUri1: String
+    var shopImageUri2: String
+    var shopImageUri3: String
+    var shopImageUri4: String
+    var shopName: String
+    var shopState: String
+
+    
+    
+}
+
+struct DiscountModel: Codable{
+    var discountPercentage: Int
+    var minBillAmount: Int
+}
+
+
+
+//ViewModels
+
+class AccountInformationViewModel: ObservableObject{
+    @Published var accInfo = [AccountInformationModel]()
+    private let ref = Database.database().reference()
+    var auth: CurrentUser
+   // let uid = Auth.auth().currentUser!.uid
+    init(auth: CurrentUser){
+        self.auth = auth
+        initListener(uid: auth.uid)
+    }
+    
+    func initListener(uid: String){
+        ref.child("Merchant_data/\(uid)/AccountInformation)")
     }
 }

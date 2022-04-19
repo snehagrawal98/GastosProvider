@@ -11,7 +11,7 @@ struct EnterMobileNumber: View {
 
   @State var nextScreen = false
   @EnvironmentObject var loginViewModel: LoginViewModel
-  @EnvironmentObject var currentUser: CurrentUser
+ // @EnvironmentObject var currentUser: Login
   @State var countryCode = "+91"
 
   var body: some View {
@@ -40,7 +40,7 @@ struct EnterMobileNumber: View {
               TextField("+91", text: $countryCode).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
-              TextField("Mobile Number", text: $loginViewModel.phoneNumber).textFieldStyle(MyTextFieldStyle()).onTapGesture {
+              TextField("Mobile Number", text: $loginViewModel.auth.phone).textFieldStyle(MyTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
 
@@ -60,13 +60,13 @@ struct EnterMobileNumber: View {
               }
 
               Button(action: {
-                currentUser.phone = loginViewModel.phoneNumber
+//                  loginViewModel.auth.phone = loginViewModel.auth.phone
                 loginViewModel.sendCode()
                   self.hideKeyboard()
               }, label: {
                 Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: .center)
               }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding()
-                .disabled(loginViewModel.phoneNumber == "" ? true : false)
+                .disabled(loginViewModel.auth.phone == "" ? true : false)
             }
           }.padding(.vertical, 50)
         }
@@ -82,8 +82,8 @@ struct EnterMobileNumber: View {
 struct EnterMobileNumber_Previews: PreviewProvider {
   static var previews: some View {
       EnterMobileNumber()
-      .environmentObject(LoginViewModel())
-      .environmentObject(CurrentUser())
+//      .environmentObject(LoginViewModel())
+//      .environmentObject(CurrentUser())
   }
 }
 

@@ -247,7 +247,7 @@ struct BasicDetails: View {
           ImagePicker(image: $image)
         }
         .onAppear {
-          basicDetailsViewModel.phoneNumber = loginViewModel.phoneNumber
+          basicDetailsViewModel.phoneNumber = loginViewModel.auth.phone
           //loginViewModel.didEnterMerchantDetails = true
         }
       }
@@ -259,23 +259,23 @@ struct BasicDetails: View {
       basicDetailsViewModel.shopCategory = self.shopCategory
 
       // uploading data to firebase
-      basicDetailsViewModel.registerMerchantDetails(uid: loginViewModel.uid)
-      basicDetailsViewModel.uploadImageToStorage(uid: loginViewModel.uid, image: image ?? UIImage())
+    //  basicDetailsViewModel.registerMerchantDetails(uid: loginViewModel.uid)
+     // basicDetailsViewModel.uploadImageToStorage(uid: loginViewModel.uid, image: image ?? UIImage())
 
       // to go to next screen
       loginViewModel.didEnterMerchantDetails = true
 
       // copying data from basic details view model to login view model
-      loginViewModel.ownerName = basicDetailsViewModel.ownerName
-      loginViewModel.phoneNumber = basicDetailsViewModel.phoneNumber
-      loginViewModel.emailAddress = basicDetailsViewModel.emailAddress
-      loginViewModel.shopName = basicDetailsViewModel.shopName
-      loginViewModel.shopAddress = basicDetailsViewModel.shopAddress
-      loginViewModel.shopCity = basicDetailsViewModel.shopCity
-      loginViewModel.shopCategory = basicDetailsViewModel.shopCategory
-      loginViewModel.shopLocation = basicDetailsViewModel.shopLocation
-      loginViewModel.deliveryEnabled = basicDetailsViewModel.deliveryEnabled
-      loginViewModel.pickupEnabled = basicDetailsViewModel.pickupEnabled
+    //  loginViewModel.ownerName = basicDetailsViewModel.ownerName
+    //  loginViewModel.phoneNumber = basicDetailsViewModel.phoneNumber
+   //   loginViewModel.emailAddress = basicDetailsViewModel.emailAddress
+//      loginViewModel.shopName = basicDetailsViewModel.shopName
+//      loginViewModel.shopAddress = basicDetailsViewModel.shopAddress
+//      loginViewModel.shopCity = basicDetailsViewModel.shopCity
+//      loginViewModel.shopCategory = basicDetailsViewModel.shopCategory
+//      loginViewModel.shopLocation = basicDetailsViewModel.shopLocation
+//      loginViewModel.deliveryEnabled = basicDetailsViewModel.deliveryEnabled
+//      loginViewModel.pickupEnabled = basicDetailsViewModel.pickupEnabled
     }
   }
 }

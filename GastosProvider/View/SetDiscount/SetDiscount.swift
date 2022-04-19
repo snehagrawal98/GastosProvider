@@ -102,8 +102,8 @@ struct SetDiscount: View {
               Spacer()
 
               Button(action: {
-                setDiscountViewModel.uploadDiscounts(uid: loginViewModel.uid)
-                loginViewModel.didSetDiscounts = setDiscountViewModel.didUploadDiscounts
+//                setDiscountViewModel.uploadDiscounts(uid: loginViewModel.uid)
+//                loginViewModel.didSetDiscounts = setDiscountViewModel.didUploadDiscounts
                   self.hideKeyboard()
               }, label: {
                 BasicScreensBottomRighttText(buttonText: "Next")

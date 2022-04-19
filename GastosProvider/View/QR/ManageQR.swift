@@ -98,7 +98,7 @@ struct ManageQR: View {
           .navigationBarHidden(true)
           .navigationBarBackButtonHidden(true)
           .onAppear(perform: {
-            manageQrViewModel.readPaymentInfo(uid: loginViewModel.uid)
+//            manageQrViewModel.readPaymentInfo(uid: loginViewModel.uid)
             let qrRange = 0..<manageQrViewModel.qrCodes.count
             for qrCode in qrRange {
               if manageQrViewModel.qrCodes[qrCode].isPrimary {

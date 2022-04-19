@@ -8,6 +8,8 @@
 import SwiftUI
 import Firebase
 
+//import FirebaseFirestoreSwift
+
 class LoginViewModel: ObservableObject {
   @Published var code = ""
 
@@ -39,7 +41,7 @@ class LoginViewModel: ObservableObject {
     // disable when you need to test with real device
     //Auth.auth().settings?.isAppVerificationDisabledForTesting = true
 
-    let number = "+91\(phoneNumber)"
+      let number = "+91\(auth.phone)"
     PhoneAuthProvider.provider().verifyPhoneNumber(number, uiDelegate: nil) { (CODE, err) in
 
       if let error = err {
@@ -72,8 +74,8 @@ class LoginViewModel: ObservableObject {
       // else user logged in successfully
       withAnimation{ self.status = true }
       // this code is for writing data to realtime database
-      self.uid = result?.user.uid ?? ""
-      self.registerMerchant()
+        self.auth.uid = result?.user.uid ?? ""
+     // self.registerMerchant()
     }
   }
 
@@ -90,10 +92,11 @@ class LoginViewModel: ObservableObject {
   private var db = Database.database()
 
   // Account Info
-  @AppStorage("uid") var uid = ""
+    @Published var auth = CurrentUser(uid: "", phone: "")
+ // @AppStorage("uid") var uid = ""
   @Published var pin = ""
   @Published var ownerName = ""
-  @Published var phoneNumber = ""
+ // @Published var auth.phone = ""
   @Published var emailAddress = ""
 
   // Shop Info
@@ -111,34 +114,34 @@ class LoginViewModel: ObservableObject {
   @Published var qrCodes = [QrCode]()
 
   // functions
-  func registerMerchant() {
-    let ref = db.reference().child("Merchant_data")
+//  func registerMerchant() {
+//    let ref = db.reference().child("Merchant_data")
+//
+//    ref.child("\(uid)/Account_Information/phoneNumber").setValue(phoneNumber)
+//  }
 
-    ref.child("\(uid)/Account_Information/phoneNumber").setValue(phoneNumber)
-  }
+//  func registerMerchantPin() {
+//    let ref = db.reference().child("Merchant_data").child("\(uid)/Account_Information")
+//
+//    ref.child("pin").setValue(pin)
+//    didSetPin = true
+//  }
 
-  func registerMerchantPin() {
-    let ref = db.reference().child("Merchant_data").child("\(uid)/Account_Information")
-
-    ref.child("pin").setValue(pin)
-    didSetPin = true
-  }
-
-  func registerMerchantPaymentInfo() {
-    let _ = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
-
-    let qrRange = 0..<qrCodes.count
-    for qrCode in qrRange {
-      let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
-
-//      ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
-      ref2.child("merchantId").setValue("")
-      ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
-      ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
-      ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
-    }
-    didSetPaymentInfo = true
-  }
+//  func registerMerchantPaymentInfo() {
+//    let _ = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
+//
+//    let qrRange = 0..<qrCodes.count
+//    for qrCode in qrRange {
+//      let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
+//
+////      ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
+//      ref2.child("merchantId").setValue("")
+//      ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
+//      ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
+//      ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
+//    }
+//    didSetPaymentInfo = true
+//  }
 
   // for reading current user from realtime database
 //  func readCurrentUser() {
@@ -161,13 +164,9 @@ class LoginViewModel: ObservableObject {
     
 }
 
-// class to store current user data
-class CurrentUser: ObservableObject {
-  @Published var uid = " "
-  @Published var dob = " "
-  @Published var email = " "
-  @Published var gender = " "
-  @Published var pin = " "
-  @Published var name = " "
-  @Published var phone = " "
+// store current user data
+struct CurrentUser: Codable{
+    
+   var uid : String
+   var phone : String
 }

@@ -119,7 +119,7 @@ struct ManageAccount: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true).onAppear(perform: {
-            accountViewModel.readShopInfo(uid: loginViewModel.uid)
+//            accountViewModel.readShopInfo(uid: loginViewModel.uid)
       })
       }
     }

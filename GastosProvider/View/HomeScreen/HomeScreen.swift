@@ -34,8 +34,8 @@ struct HomeScreen: View {
                            shopImagesUri3: imagesViewModel.imagesArray?[3] ?? "",
                            shopImagesUri4: imagesViewModel.imagesArray?[4] ?? "")
                     .onAppear {
-                        let uid = loginInfoViewModel.uid
-                        imagesViewModel.getImages(uid: uid)
+//                        let uid = loginInfoViewModel.uid
+//                        imagesViewModel.getImages(uid: uid)
                     }
                     .frame(width: 0.864 * UIScreen.screenWidth, height: 0.226 * UIScreen.screenHeight)
                     .cornerRadius(10)
@@ -51,8 +51,8 @@ struct HomeScreen: View {
               } //: HSTACK
             } //: VSTACK
             .onAppear {
-                let uid = loginInfoViewModel.uid
-                imagesViewModel.getImages(uid: uid)
+//                let uid = loginInfoViewModel.uid
+//                imagesViewModel.getImages(uid: uid)
             }
           } //: ZSTACK
           .frame(width: UIScreen.screenWidth, height: 0.407 * UIScreen.screenHeight)
@@ -203,7 +203,7 @@ struct HomeScreen: View {
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {
-            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+//            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
         })
       } //: NAV
     }
@@ -212,7 +212,7 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeScreen()
-        .environmentObject(LoginViewModel())
+        //.environmentObject(LoginViewModel())
     }
 }
 

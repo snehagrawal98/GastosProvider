@@ -117,7 +117,7 @@ struct ManageShop: View {
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true).onAppear(perform: {
-            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+//            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
           })
         .fullScreenCover(isPresented: $isShowingImagePicker, onDismiss: self.appendExtraImages) {
           ImagePicker(image: $image)
@@ -315,7 +315,7 @@ struct ShopDet: View{
 
             
         }.onAppear(perform: {
-            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
+//            homeScreenViewModel.readShopInfo(uid: loginViewModel.uid)
           })
     }
 }

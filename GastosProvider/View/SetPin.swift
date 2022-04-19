@@ -13,7 +13,7 @@ struct SetPin: View {
   @State var pin1 = ""
   @State var pin2 = ""
   @EnvironmentObject var loginViewModel: LoginViewModel
-  @EnvironmentObject var currentUser: CurrentUser
+  //@EnvironmentObject var currentUser: CurrentUser
   @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
 
@@ -73,7 +73,7 @@ struct SetPin: View {
 //                      }
 
                       Button(action: {
-                        self.didEnterProperPin()
+//                        self.didEnterProperPin()
                           self.hideKeyboard()
                       }, label: {
                             Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -92,21 +92,21 @@ struct SetPin: View {
         }
     }
 
-  func didEnterProperPin() {
-    if pin1 != "" && pin1 == pin2 {
-      loginViewModel.pin = pin1
-      currentUser.pin = loginViewModel.pin
-      currentUser.uid = loginViewModel.uid
-      loginViewModel.registerMerchantPin()
-    }
-  }
+//  func didEnterProperPin() {
+//    if pin1 != "" && pin1 == pin2 {
+//      loginViewModel.pin = pin1
+//      currentUser.pin = loginViewModel.pin
+//      currentUser.uid = loginViewModel.uid
+//      loginViewModel.registerMerchantPin()
+//    }
+ // }
 }
 
 struct SetPin_Previews: PreviewProvider {
     static var previews: some View {
       SetPin()
-        .environmentObject(LoginViewModel())
-        .environmentObject(CurrentUser())
+//        .environmentObject(LoginViewModel())
+//        .environmentObject(CurrentUser())
     }
 }
 

@@ -45,6 +45,7 @@
 		69FDEBD327E504AB00AAC395 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 69FDEBD227E504AB00AAC395 /* FirebaseStorage */; };
 		6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207427E3C27E00B8C80F /* ManageDesign.swift */; };
 		6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207527E3C27F00B8C80F /* RequestDesign.swift */; };
+		6E0A4C76280F314800C7C9D6 /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 6E0A4C75280F314800C7C9D6 /* FirebaseDatabaseSwift-Beta */; };
 		6E17080E28008269004CD6ED /* Failure_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E17080D28008269004CD6ED /* Failure_Response.swift */; };
 		6E42506327E6251000A01FC4 /* ProviderWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506227E6251000A01FC4 /* ProviderWallet.swift */; };
 		6E42506727E6252900A01FC4 /* AddMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506427E6252800A01FC4 /* AddMoney.swift */; };
@@ -130,6 +131,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0A4C76280F314800C7C9D6 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				69EF55C627E5074C008F38F7 /* CodeScanner in Frameworks */,
 				698F11FD27C343970097E85F /* FirebaseDatabase in Frameworks */,
 				698F11FB27C343970097E85F /* FirebaseAuth in Frameworks */,
@@ -359,6 +361,7 @@
 				698F11FC27C343970097E85F /* FirebaseDatabase */,
 				69FDEBD227E504AB00AAC395 /* FirebaseStorage */,
 				69EF55C527E5074C008F38F7 /* CodeScanner */,
+				6E0A4C75280F314800C7C9D6 /* FirebaseDatabaseSwift-Beta */,
 			);
 			productName = GastosProvider;
 			productReference = 3FCD8F00278EE7A2002836FC /* GastosProvider.app */;
@@ -721,6 +724,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 698F11F927C343970097E85F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		6E0A4C75280F314800C7C9D6 /* FirebaseDatabaseSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 698F11F927C343970097E85F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseDatabaseSwift-Beta";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

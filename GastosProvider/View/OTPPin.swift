@@ -10,7 +10,7 @@ import SwiftUI
 struct OTPPin: View {
   @State var nextPin = false
   @EnvironmentObject var loginViewModel: LoginViewModel
-  @EnvironmentObject var currentUser: CurrentUser
+ // @EnvironmentObject var currentUser: CurrentUser
  // @Environment(\.dismiss) var dismiss
     @Environment(\.presentationMode) var presentationMode
 
@@ -40,7 +40,7 @@ struct OTPPin: View {
           }
 
           Text("We have sent an OTP on your ").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium)
-          Text("number \(loginViewModel.phoneNumber)").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium).padding(.bottom, 100)
+          Text("number \(loginViewModel.auth.phone)").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium).padding(.bottom, 100)
 
           HStack{
             TextField("Enter OTP", text: $loginViewModel.code).textFieldStyle(MyTextFieldStyle()).onTapGesture {
@@ -108,8 +108,8 @@ struct OTPPin: View {
 struct OTPPin_Previews: PreviewProvider {
     static var previews: some View {
       OTPPin()
-        .environmentObject(LoginViewModel())
-        .environmentObject(CurrentUser())
+//        .environmentObject(LoginViewModel())
+//        .environmentObject(CurrentUser())
 
     }
 }
