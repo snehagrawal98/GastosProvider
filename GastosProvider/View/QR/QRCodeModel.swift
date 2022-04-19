@@ -13,4 +13,5 @@ struct QrCode: Hashable {
   var upiAdress: String
   //var merchantId: String
   var isPrimary: Bool
+  var rawString: String
 }

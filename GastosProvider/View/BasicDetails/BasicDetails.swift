@@ -208,20 +208,20 @@ struct BasicDetails: View {
           }
 
           // Services
-          VStack(spacing: 10) {
-            Toggle(isOn: $basicDetailsViewModel.deliveryEnabled.animation()) {
-                  Text("Delivery Service")
-                .font(.body.weight(.medium))
-              }
-
-            Toggle(isOn: $basicDetailsViewModel.pickupEnabled.animation()) {
-                  Text("Pickup Service")
-                .font(.body.weight(.medium))
-              }
-          } //: VSTACK
-          .padding(.horizontal, 24)
-          .padding(.vertical, 8)
-          .padding(.bottom, 0.15 * UIScreen.screenHeight)
+//          VStack(spacing: 10) {
+//            Toggle(isOn: $basicDetailsViewModel.deliveryEnabled.animation()) {
+//                  Text("Delivery Service")
+//                .font(.body.weight(.medium))
+//              }
+//
+//            Toggle(isOn: $basicDetailsViewModel.pickupEnabled.animation()) {
+//                  Text("Pickup Service")
+//                .font(.body.weight(.medium))
+//              }
+//          } //: VSTACK
+//          .padding(.horizontal, 24)
+//          .padding(.vertical, 8)
+//          .padding(.bottom, 0.15 * UIScreen.screenHeight)
         } //: SCROLL
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)

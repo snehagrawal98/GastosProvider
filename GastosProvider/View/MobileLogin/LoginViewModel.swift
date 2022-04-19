@@ -136,6 +136,7 @@ class LoginViewModel: ObservableObject {
       ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
       ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
       ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
+      ref2.child("rawString").setValue(qrCodes[qrCode].rawString)
     }
     didSetPaymentInfo = true
   }
