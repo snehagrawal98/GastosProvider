@@ -14,7 +14,7 @@ struct ScanQR: View {
   @State var qrName = ""
   @State var upiAdress = ""
   @State var merchantId = ""
-  @State var scannedCode = ""
+  @State var rawString = ""
   @State var isShowingScanner = false
 
   @EnvironmentObject var loginViewModel: LoginViewModel
@@ -66,10 +66,12 @@ struct ScanQR: View {
               .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
+              .disabled(true)
             TextField("UPI Address", text: $upiAdress)
               .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
+              .disabled(true)
 //            TextField("Merchant ID", text: $merchantId)
 //              .textFieldStyle(ScanQrTextFieldStyle()).onTapGesture {
 //                  self.hideKeyboard()
@@ -94,7 +96,7 @@ struct ScanQR: View {
   func didEnterAllData() {
     if !qrName.isEmpty && !upiAdress.isEmpty {
       //let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, merchantId: merchantId, isPrimary: false)
-      let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, isPrimary: false)
+      let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, isPrimary: false, rawString: rawString)
       loginViewModel.qrCodes.append(qrCode)
       dismiss()
     }
@@ -106,11 +108,11 @@ struct ScanQR: View {
 
     switch result {
     case .success(let result):
-      scannedCode = result.string // .components(separatedBy: "\n")
-      upiAdress = scannedCode.slice(from: "pa=", to: "&") ?? ""
-      let qrNameWith20 = scannedCode.slice(from: "pn=", to: "&") ?? ""
+      rawString = result.string // .components(separatedBy: "\n")
+      upiAdress = rawString.slice(from: "pa=", to: "&") ?? ""
+      let qrNameWith20 = rawString.slice(from: "pn=", to: "&") ?? ""
       qrName = qrNameWith20.strip20s
-      guard !scannedCode.isEmpty else { return }
+      guard !rawString.isEmpty else { return }
 
     case .failure(let error):
       print("Scanning failed: \(error.localizedDescription)")
