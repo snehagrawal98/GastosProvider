@@ -18,6 +18,17 @@ struct BasicDetails: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var basicDetailsViewModel = BasicDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode
+    
+    @StateObject var locationManager = LocationManager()
+       
+       var userLatitude: String {
+           return "\(locationManager.lastLocation?.coordinate.latitude ?? 0)"
+       }
+       
+       var userLongitude: String {
+           return "\(locationManager.lastLocation?.coordinate.longitude ?? 0)"
+       }
+       
 
     var body: some View {
       NavigationView {
@@ -353,3 +364,13 @@ struct BasicDetailsTextFieldStyle: TextFieldStyle {
       )
     }
 }
+
+
+
+/*
+ Text("location status: \(locationManager.statusString)")
+             HStack {
+                 Text("latitude: \(userLatitude)")
+                 Text("longitude: \(userLongitude)")
+             }
+ */

@@ -4,7 +4,7 @@
 //
 //  Created by Sneha Agrawal on 08/04/22.
 //
-
+//https://medium.com/firebase-developers/how-to-use-codable-in-firebase-realtime-database-60d6299369f1
 import SwiftUI
 
 struct Success_Response: View {
