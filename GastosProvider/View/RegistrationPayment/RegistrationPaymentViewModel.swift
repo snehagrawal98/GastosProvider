@@ -40,6 +40,7 @@ class RegistrationPaymentViewModel: ObservableObject {
   func uploadPaymentData(response: Response, uid: String) {
     let ref1 = db.reference().child("Merchant_data").child("\(uid)/Registration_Payment_Info")
 
+    ref1.child("bankname").setValue(response.BANKNAME?.optionalStripped)
     ref1.child("banktxnid").setValue(response.BANKTXNID?.optionalStripped)
     ref1.child("checksumhash").setValue(response.CHECKSUMHASH?.optionalStripped)
     ref1.child("currency").setValue(response.CURRENCY?.optionalStripped)
@@ -71,5 +72,5 @@ struct BDSale {
 }
 
 struct Response: Codable {
-  var ORDERID, MID, TXNID, TXNAMOUNT, PAYMENTMODE, CURRENCY, TXNDATE, STATUS, RESPCODE, RESPMSG, GATEWAYNAME, BANKTXNID, CHECKSUMHASH: String?
+  var BANKNAME, ORDERID, MID, TXNID, TXNAMOUNT, PAYMENTMODE, CURRENCY, TXNDATE, STATUS, RESPCODE, RESPMSG, GATEWAYNAME, BANKTXNID, CHECKSUMHASH: String?
 }
