@@ -18,6 +18,16 @@ struct BasicDetails: View {
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var basicDetailsViewModel = BasicDetailsViewModel()
     @Environment(\.presentationMode) var presentationMode
+
+  // to fetch districts
+  @State var states = States(states: [IndianState(state: "", districts: [""])])
+
+  @State var showingStates = false
+  @State var showingDistricts = false
+
+  @State var selectedState = ""
+  @State var selectedStateIndex = 0
+  @State var selectedDistrict = ""
     
     @StateObject var locationManager = LocationManager()
        
@@ -134,9 +144,24 @@ struct BasicDetails: View {
           VStack {
             // Shop City
             Group {
-              TextField("Enter Shop City", text: $basicDetailsViewModel.shopCity)
+              TextField("Select Shop State", text: $basicDetailsViewModel.shopState)
               .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
+              }
+              .disabled(true)
+              .onTapGesture {
+                showingStates.toggle()
+              }
+            }
+
+            Group {
+              TextField("Select Shop District", text: $basicDetailsViewModel.shopDistrict)
+              .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                  self.hideKeyboard()
+              }
+              .disabled(true)
+              .onTapGesture {
+                showingDistricts.toggle()
               }
             }
 
@@ -187,7 +212,8 @@ struct BasicDetails: View {
 
             // Shop Locaton
             HStack {
-              TextField("Shop Location", text: $basicDetailsViewModel.shopCity)
+              //TextField("Shop Location", text: $basicDetailsViewModel.shopCity)
+              Text("Shop Location")
                 .font(.headline.weight(.regular))
                 .foregroundColor(Color("basicDetailsText"))
                 .padding(.leading, 17)
@@ -217,6 +243,9 @@ struct BasicDetails: View {
                 .stroke(Color("textGreen").opacity(0.2), lineWidth: 2)
             )
           }
+
+          Spacer()
+            .frame(height: 0.2 * UIScreen.screenHeight)
 
           // Services
 //          VStack(spacing: 10) {
@@ -260,12 +289,35 @@ struct BasicDetails: View {
         .onAppear {
           basicDetailsViewModel.phoneNumber = loginViewModel.phoneNumber
           //loginViewModel.didEnterMerchantDetails = true
+
+          // to fetch districts
+          basicDetailsViewModel.fetchDistricts { (states) in
+            self.states = states
+            print(self.states)
+          }
+        }
+        .confirmationDialog("Select a State", isPresented: $showingStates, titleVisibility: .visible) {
+          ForEach(0 ... (states.states.count - 1), id: \.self) { index in
+            Button(states.states[index].state) {
+              basicDetailsViewModel.shopState = states.states[index].state
+              selectedStateIndex = index
+            }
+          }
+        }
+        .confirmationDialog("Select a District", isPresented: $showingDistricts, titleVisibility: .visible) {
+          if selectedState != "" {
+            ForEach(0 ... (states.states[selectedStateIndex].districts.count - 1), id: \.self) { index in
+              Button(states.states[selectedStateIndex].districts[index]) {
+                basicDetailsViewModel.shopDistrict = states.states[selectedStateIndex].districts[index]
+              }
+            }
+          }
         }
       }
     }
 
   func didEnterAllData() {
-    if (!basicDetailsViewModel.ownerName.isEmpty && !basicDetailsViewModel.emailAddress.isEmpty && !basicDetailsViewModel.shopName.isEmpty && !basicDetailsViewModel.shopAddress.isEmpty && !basicDetailsViewModel.shopCity.isEmpty) {
+    if (!basicDetailsViewModel.ownerName.isEmpty && !basicDetailsViewModel.emailAddress.isEmpty && !basicDetailsViewModel.shopName.isEmpty && !basicDetailsViewModel.shopAddress.isEmpty && !basicDetailsViewModel.shopDistrict.isEmpty) {
 
       basicDetailsViewModel.shopCategory = self.shopCategory
 
@@ -277,16 +329,16 @@ struct BasicDetails: View {
       loginViewModel.didEnterMerchantDetails = true
 
       // copying data from basic details view model to login view model
-      loginViewModel.ownerName = basicDetailsViewModel.ownerName
-      loginViewModel.phoneNumber = basicDetailsViewModel.phoneNumber
-      loginViewModel.emailAddress = basicDetailsViewModel.emailAddress
-      loginViewModel.shopName = basicDetailsViewModel.shopName
-      loginViewModel.shopAddress = basicDetailsViewModel.shopAddress
-      loginViewModel.shopCity = basicDetailsViewModel.shopCity
-      loginViewModel.shopCategory = basicDetailsViewModel.shopCategory
-      loginViewModel.shopLocation = basicDetailsViewModel.shopLocation
-      loginViewModel.deliveryEnabled = basicDetailsViewModel.deliveryEnabled
-      loginViewModel.pickupEnabled = basicDetailsViewModel.pickupEnabled
+//      loginViewModel.ownerName = basicDetailsViewModel.ownerName
+//      loginViewModel.phoneNumber = basicDetailsViewModel.phoneNumber
+//      loginViewModel.emailAddress = basicDetailsViewModel.emailAddress
+//      loginViewModel.shopName = basicDetailsViewModel.shopName
+//      loginViewModel.shopAddress = basicDetailsViewModel.shopAddress
+//      loginViewModel.shopCity = basicDetailsViewModel.shopCity
+//      loginViewModel.shopCategory = basicDetailsViewModel.shopCategory
+//      loginViewModel.shopLocation = basicDetailsViewModel.shopLocation
+//      loginViewModel.deliveryEnabled = basicDetailsViewModel.deliveryEnabled
+//      loginViewModel.pickupEnabled = basicDetailsViewModel.pickupEnabled
     }
   }
 }

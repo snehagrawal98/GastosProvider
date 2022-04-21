@@ -20,11 +20,15 @@ class BasicDetailsViewModel: ObservableObject {
   // Shop Info
   @Published var timestamp = "\(Date().millisecondsSince1970)"
   @Published var shopName = ""
-  @Published var shopAddress = ""
   @Published var deliveryEnabled = true
   @Published var pickupEnabled = true
-  @Published var shopCity = ""
-  @Published var shopLocation = ""
+
+  @Published var shopAddress = ""
+  @Published var shopAddressLatitude = ""
+  @Published var shopAddressLongitude = ""
+  @Published var shopArea = ""
+  @Published var shopDistrict = ""
+  @Published var shopState = ""
   @Published var shopCategory = ""
 
   var ref: DatabaseReference?
@@ -80,16 +84,43 @@ class BasicDetailsViewModel: ObservableObject {
     ref2.child("category").setValue(shopCategory)
     ref2.child("homeDelivery").setValue(deliveryEnabled)
     ref2.child("pickUp").setValue(pickupEnabled)
+
     ref2.child("shopAddress").setValue(shopAddress)
-    ref2.child("shopCity").setValue(shopCity)
+    ref2.child("shopAddressLatitude").setValue(shopAddressLatitude)
+    ref2.child("shopAddressLongitude").setValue(shopAddressLongitude)
+    ref2.child("shopArea").setValue(shopArea)
+    ref2.child("shopDistrict").setValue(shopDistrict)
+    ref2.child("shopState").setValue(shopState)
+
     ref2.child("shopName").setValue(shopName)
     didEnterMerchantDetails = true
   }
 
+  func fetchDistricts(completion: @escaping (States) -> ()) {
+    guard let url = URL(string: "https://raw.githubusercontent.com/zimmy9537/Indian-States-And-Districts/master/states-and-districts.json" ) else { return }
 
-    
+    URLSession.shared.dataTask(with: url) {(data, _, error) in
+      if error != nil {
+        print(error?.localizedDescription)
+        return
+      }
+
+      let states = try! JSONDecoder().decode(States.self, from: data!)
+
+      DispatchQueue.main.async {
+        completion(states)
+      }
+    }.resume()
+  }
 }
 
+struct States: Codable {
+  let states: [IndianState]
+}
+struct IndianState: Codable {
+  let state: String
+  let districts: [String]
+}
 
 
 extension Date {
