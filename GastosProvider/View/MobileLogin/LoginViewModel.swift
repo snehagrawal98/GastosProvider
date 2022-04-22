@@ -119,6 +119,8 @@ class LoginViewModel: ObservableObject {
     // account info
     ref.child("\(uid)/Account_Information/phoneNumber").setValue(phoneNumber)
 
+    ref.child("\(uid)/Account_Information/platform").setValue("iOS")
+
     ref.child("\(uid)/Account_Information/emailAddress").setValue("")
     ref.child("\(uid)/Account_Information/ownerName").setValue("")
     ref.child("\(uid)/Account_Information/pin").setValue("")

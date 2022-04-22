@@ -152,6 +152,15 @@ struct BasicDetails: View {
               .onTapGesture {
                 showingStates.toggle()
               }
+              .confirmationDialog("Select a State", isPresented: $showingStates, titleVisibility: .visible) {
+                ForEach(0 ... (states.states.count - 1), id: \.self) { index in
+                  Button(states.states[index].state) {
+                    basicDetailsViewModel.shopState = states.states[index].state
+                    selectedStateIndex = index
+                    selectedState = states.states[index].state
+                  }
+                }
+              }
             }
 
             Group {
@@ -163,6 +172,16 @@ struct BasicDetails: View {
               .onTapGesture {
                 showingDistricts.toggle()
               }
+              .confirmationDialog("Select a District", isPresented: $showingDistricts, titleVisibility: .visible) {
+                if selectedState != "" {
+                  ForEach(0 ... (states.states[selectedStateIndex].districts.count - 1), id: \.self) { index in
+                    Button(states.states[selectedStateIndex].districts[index]) {
+                      basicDetailsViewModel.shopDistrict = states.states[selectedStateIndex].districts[index]
+                    }
+                  }
+                }
+              }
+
             }
 
             // Shop Catergory
@@ -220,20 +239,36 @@ struct BasicDetails: View {
                 .padding(.vertical, 10).onTapGesture {
                     self.hideKeyboard()
                 }
-
+              Spacer()
               Button(action: {
-                // add location
+                basicDetailsViewModel.shopAddressLatitude = userLatitude
+                basicDetailsViewModel.shopAddressLongitude = userLongitude
               }, label: {
-                Text("Add")
-                  .foregroundColor(Color("textGreen"))
-                  .frame(width: 0.157 * UIScreen.screenWidth, height: 0.035 * UIScreen.screenHeight)
-                  .background(Color.green.opacity(0.3))
-                  .cornerRadius(10)
-                  .background(
-                    RoundedRectangle(cornerRadius: 10)
-                      .stroke(Color("textGreen").opacity(0.5), lineWidth: 1)
-                )
-                .padding(.trailing)
+                if ( basicDetailsViewModel.shopAddressLongitude != "" ) {
+                  Image(systemName: "checkmark.rectangle.fill")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 0.157 * UIScreen.screenWidth, height: 0.035 * UIScreen.screenHeight)
+                    .background(Color.green.opacity(0.3))
+                    .cornerRadius(10)
+                    .background(
+                      RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("textGreen").opacity(0.5), lineWidth: 1)
+                  )
+                  .padding(.trailing)
+
+                } else {
+                  Text("Add")
+                    .foregroundColor(Color("textGreen"))
+                    .frame(width: 0.157 * UIScreen.screenWidth, height: 0.035 * UIScreen.screenHeight)
+                    .background(Color.green.opacity(0.3))
+                    .cornerRadius(10)
+                    .background(
+                      RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color("textGreen").opacity(0.5), lineWidth: 1)
+                  )
+                  .padding(.trailing)
+                }
               })
             } //: HSTACK
             .frame(width: 0.885 * UIScreen.screenWidth, height: 0.053 * UIScreen.screenHeight, alignment: .leading)
@@ -294,23 +329,6 @@ struct BasicDetails: View {
           basicDetailsViewModel.fetchDistricts { (states) in
             self.states = states
             print(self.states)
-          }
-        }
-        .confirmationDialog("Select a State", isPresented: $showingStates, titleVisibility: .visible) {
-          ForEach(0 ... (states.states.count - 1), id: \.self) { index in
-            Button(states.states[index].state) {
-              basicDetailsViewModel.shopState = states.states[index].state
-              selectedStateIndex = index
-            }
-          }
-        }
-        .confirmationDialog("Select a District", isPresented: $showingDistricts, titleVisibility: .visible) {
-          if selectedState != "" {
-            ForEach(0 ... (states.states[selectedStateIndex].districts.count - 1), id: \.self) { index in
-              Button(states.states[selectedStateIndex].districts[index]) {
-                basicDetailsViewModel.shopDistrict = states.states[selectedStateIndex].districts[index]
-              }
-            }
           }
         }
       }
