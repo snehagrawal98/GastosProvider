@@ -23,15 +23,15 @@ struct OTPPin: View {
         VStack{
           // Navigation bar
           HStack {
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-              Image(systemName: "arrow.left")
-                .resizable()
-                .frame(width: 25, height: 15)
-                .foregroundColor(Color("deepGreen"))
-                .padding()
-            })
+//            Button(action: {
+//                presentationMode.wrappedValue.dismiss()
+//            }, label: {
+//              Image(systemName: "arrow.left")
+//                .resizable()
+//                .frame(width: 25, height: 15)
+//                .foregroundColor(Color("deepGreen"))
+//                .padding()
+//            })
 
             Spacer()
             Text("Verify").foregroundColor(Color("deepGreen")).font(.system(size: 25)).fontWeight(.medium).padding(.vertical, 30)

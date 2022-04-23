@@ -17,7 +17,6 @@ struct BasicDetails: View {
 
   @EnvironmentObject var loginViewModel: LoginViewModel
   @StateObject var basicDetailsViewModel = BasicDetailsViewModel()
-    @Environment(\.presentationMode) var presentationMode
 
   // to fetch districts
   @State var states = States(states: [IndianState(state: "", districts: [""])])
@@ -45,15 +44,6 @@ struct BasicDetails: View {
         ScrollView(.vertical) {
           // Navigation Bar
           HStack {
-            Button(action: {
-              // back
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-              Image(systemName: "arrow.left")
-                .resizable()
-                .frame(width: 20, height: 20, alignment: .leading)
-                .foregroundColor(.primary)
-            })
 
             Spacer()
 
@@ -184,6 +174,14 @@ struct BasicDetails: View {
 
             }
 
+              
+              TextField("Area", text: $basicDetailsViewModel.shopArea)
+                .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
+                    self.hideKeyboard()
+                }
+                
+              
+              
             // Shop Catergory
             VStack {
               Button(action: {

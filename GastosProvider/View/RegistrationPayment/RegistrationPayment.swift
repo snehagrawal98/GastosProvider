@@ -21,14 +21,13 @@ struct RegistrationPayment: View {
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "arrow.left")
-                    .padding(.leading)
-                    .padding(.trailing)
+                Spacer()
+               
 
                 Text("Registration Payment")
                     .fontWeight(.regular)
-                    .font(.custom("Futura", size: 25))
-                    .padding(.leading)
+                    .font(.custom("Futura", size: 22))
+                    .padding(.leading).padding(.vertical)
 
                 Spacer()
             }

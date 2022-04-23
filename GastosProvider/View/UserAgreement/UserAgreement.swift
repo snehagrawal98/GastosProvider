@@ -21,15 +21,6 @@ struct UserAgreement: View {
         VStack {
           // Navigation Bar
           HStack {
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-
-            }, label: {
-              Image(systemName: "arrow.left")
-                .resizable()
-                .frame(width: 14, height: 14, alignment: .leading)
-                .foregroundColor(.primary)
-            })
 
             Spacer()
             BasicScreensTitle(title: "User Agreement")

@@ -22,16 +22,7 @@ struct SetDiscount: View {
         VStack {
           // Navigation Bar
           HStack {
-            Button(action: {
-                presentationMode.wrappedValue.dismiss()
-            }, label: {
-              Image(systemName: "arrow.left")
-                .resizable()
-                .frame(width: 20, height: 20, alignment: .leading)
-                .foregroundColor(.primary)
-                .padding(.horizontal)
-            })
-
+            
             Spacer()
             BasicScreensTitle(title: "Discount")
             Spacer()
