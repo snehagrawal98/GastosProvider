@@ -9,10 +9,36 @@ import SwiftUI
 import Firebase
 
 class RegistrationPaymentViewModel: ObservableObject {
-  @Published var bDSales = [BDSale]()
+    @StateObject var login: LoginViewModel = LoginViewModel()
+    @Published var bDSales = [BDSale]()
 
   var ref: DatabaseReference?
   private var db = Database.database()
+    
+    func setSalesCode(id: String, salesCode: String) {
+        let ref = db.reference().child("Merchant_data/\(id)/Account_Information")
+        ref.updateChildValues(["salesCode": salesCode]) { error, ref in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("salesCode has been saved successfuly")
+            }
+        }
+
+    }
+    
+    func setBrandingPromotion(id: String, promotion: String, branding: String) {
+        let ref = db.reference().child("Merchant_data/\(id)/Account_Information")
+        ref.updateChildValues(["walletBranding": branding, "walletPromotion": promotion]) { error, ref in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("salesCode has been saved successfuly")
+            }
+        }
+
+    }
+
 
   func getBDSales() {
     let ref = db.reference().child("Merchant_data/BDSales")

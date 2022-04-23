@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ProviderWallet: View {
     @Environment(\.presentationMode) var presentationMode
+    @State var promotion: Int = 200
+    @State var branding: Int = 1000
+    @StateObject var registrationPaymentViewModel: RegistrationPaymentViewModel = RegistrationPaymentViewModel()
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()
+    
     var body: some View {
         
         NavigationView {
@@ -32,7 +37,10 @@ struct ProviderWallet: View {
                 } //: HSTACK
                 .padding(.vertical)
                 
-                WalletBrand(promotion: 200, branding: 1000)
+                WalletBrand(promotion: promotion, branding: branding)
+                    .onAppear {
+                        registrationPaymentViewModel.setBrandingPromotion(id: loginViewModel.uid, promotion: "\(promotion)", branding: "\(branding)")
+                    }
                 
                 AddAlert()
                 

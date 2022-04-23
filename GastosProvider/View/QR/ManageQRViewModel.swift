@@ -11,7 +11,8 @@ import Firebase
 class ManageQRViewModel: ObservableObject {
   // Payment Info
   @Published var qrCodes = [QrCode]()
-
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()
+    
   var ref: DatabaseReference?
   private var db = Database.database()
 
@@ -39,4 +40,14 @@ class ManageQRViewModel: ObservableObject {
       }
 
   }
+    
+    func getRawString() -> String {
+        var rawString: String = ""
+        for qrCode in loginViewModel.qrCodes {
+            if qrCode.isPrimary == true {
+                rawString = qrCode.rawString
+            }
+        }
+        return rawString
+    }
 }
