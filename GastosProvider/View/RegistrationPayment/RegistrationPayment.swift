@@ -42,7 +42,7 @@ struct RegistrationPayment: View {
 
             Spacer()
 
-            CodePromotion(promotionCode: $promotionCode, promoCodeApplied: $promoCodeApplied)
+            CodePromotion(promotionCode: $promotionCode, uid: loginViewModel.uid, promoCodeApplied: $promoCodeApplied)
 
             Spacer()
 
@@ -59,6 +59,7 @@ struct RegistrationPayment: View {
 
 struct CodePromotion: View {
     @Binding var promotionCode: String
+    var uid: String
     @EnvironmentObject var registrationPaymentViewModel: RegistrationPaymentViewModel
   @Binding var promoCodeApplied: Bool
     var body : some View {
@@ -93,6 +94,7 @@ struct CodePromotion: View {
                     promotionCode = registrationPaymentViewModel.verifyPromoCode(promoCode: promotionCode)
                     if promotionCode != "Incorrect PromoCode" {
                       promoCodeApplied = true
+                        registrationPaymentViewModel.setSalesCode(id: uid, salesCode: promotionCode)
                     }
                   }, label: {
                     if promoCodeApplied {

@@ -10,9 +10,11 @@ import CoreImage.CIFilterBuiltins
 
 struct LiveQrGeneration: View {
     
+    @StateObject var manageQRViewModel = ManageQRViewModel()
+    
     @State private var qrCodeUrl: String = ""
     var qrImage = QrCodeImage()
-    let paymentUrl: String = "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ=="
+//    let paymentUrl: String = "upi://pay?pa=paytmqr281005050101mm617cyacrl1@paytm&pn=Paytm Merchant&mc=5499&mode=02&orgid=000000&paytmqr=281005050101MM617CYACRL1&sign=MEQCID0NFi3MYLXf8Yqjqwp7AqyIM7K0nlnQNBmke8X6Ou0fAiBErCzcP25K2wUYvXyt8nJG2OOqoDEAYyVkFKVjhloZYQ=="
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
@@ -34,7 +36,7 @@ struct LiveQrGeneration: View {
             }
             Spacer()
             
-            Image(uiImage: qrImage.generateQrCode(from: "\(paymentUrl)&am=" + qrCodeUrl))
+            Image(uiImage: qrImage.generateQrCode(from: "\(manageQRViewModel.getRawString())&am=" + qrCodeUrl))
                 .resizable()
                 .frame(width: (UIScreen.screenHeight / 4), height: (UIScreen.screenHeight / 4), alignment: .center)
             
