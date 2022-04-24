@@ -13,9 +13,10 @@ struct EnterPin: View {
   var body: some View {
     NavigationView{
       ZStack{
-        Image("Layer3").offset(x: 100.0, y: -350.0)
+        Image("Group").offset(x: 100.0, y: -350.0)
         VStack{
           HStack{
+              Spacer()
             Text("Enter Your 4-Digit Pin").foregroundColor(Color("5")).font(.system(size: 25)).fontWeight(.medium).padding(.leading)
             Spacer()
           }
@@ -24,7 +25,7 @@ struct EnterPin: View {
             TextField("Pin", text: $name1).frame(width: 350, height: 65, alignment: .center)
               .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).onTapGesture {
                   self.hideKeyboard()
-              }
+              }.keyboardType(.numberPad)
             Spacer()
           }
 

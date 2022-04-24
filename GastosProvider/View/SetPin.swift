@@ -14,52 +14,42 @@ struct SetPin: View {
   @State var pin2 = ""
   @EnvironmentObject var loginViewModel: LoginViewModel
   @EnvironmentObject var currentUser: CurrentUser
-  @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
+ // @Environment(\.dismiss) var dismiss
+   // @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         NavigationView{
             ZStack{
-                Image("Layer3").offset(x: 100.0, y: -350.0)
+                Image("Group").offset(x: 100.0, y: -350.0)
                 VStack{
                   // Navigation bar
                   HStack {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-
-                    }, label: {
-                      Image(systemName: "arrow.left")
-                        .resizable()
-                        .frame(width: 25, height: 15)
-                        .foregroundColor(Color("deepGreen"))
-                        .padding()
-                    })
-
+                    
                     Spacer()
                     Text("Set Login Pin").foregroundColor(Color("deepGreen")).font(.title2).fontWeight(.semibold).padding(.vertical, 30)
                     Spacer()
-                    Spacer()
+                  //  Spacer()
                   }
 
                     Text("Create your 4 Digit Login Pin")
                     .font(.title3.weight(.medium))
                     .foregroundColor(Color("deepGreen"))
                     HStack{
-                    TextField("New Pin", text: $pin1).frame(width: 350, height: 65, alignment: .center)
+                        TextField("New Pin", text: $pin1.max(4)).frame(width: 350, height: 65, alignment: .center)
                             .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad).onTapGesture {
                                 self.hideKeyboard()
-                            }
+                            }.keyboardType(.numberPad)
                         Spacer()
-                    }
+                    }.padding(.horizontal,10)
 
                     HStack{
-                    TextField("Re-enter Pin", text: $pin2)
+                        TextField("Re-enter Pin", text: $pin2.max(4))
                         .frame(width: 350, height: 65, alignment: .center)
                         .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).keyboardType(.decimalPad).onTapGesture {
                             self.hideKeyboard()
-                        }
+                        }.keyboardType(.numberPad)
                         Spacer()
-                    }
+                    }.padding(.horizontal,10)
 
 
                     Spacer()
@@ -110,6 +100,17 @@ struct SetPin_Previews: PreviewProvider {
     }
 }
 
+
+extension Binding where Value == String {
+    func max(_ limit: Int) -> Self {
+        if self.wrappedValue.count > limit {
+            DispatchQueue.main.async {
+                self.wrappedValue = String(self.wrappedValue.dropLast())
+            }
+        }
+        return self
+    }
+}
 
 struct MyTextFieldStyle: TextFieldStyle {
     func _body(configuration: TextField<Self._Label>) -> some View {

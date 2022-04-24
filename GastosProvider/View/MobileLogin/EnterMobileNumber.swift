@@ -17,7 +17,7 @@ struct EnterMobileNumber: View {
   var body: some View {
     NavigationView {
       ZStack{
-          Image("Layer").offset(x: 100.0, y: -250.0)
+          Image("Vector-2").offset(x: 100.0, y: -290.0)
           VStack{
             HStack{
               Text("Welcome to").fontWeight(.semibold).font(.system(size: 25)).foregroundColor(Color("5"))
@@ -40,9 +40,9 @@ struct EnterMobileNumber: View {
               TextField("+91", text: $countryCode).frame(width: 60, height: 60, alignment: .center).textFieldStyle(MyTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
               }
-              TextField("Mobile Number", text: $loginViewModel.phoneNumber).textFieldStyle(MyTextFieldStyle()).onTapGesture {
+                TextField("Mobile Number", text: $loginViewModel.phoneNumber.max(10)).textFieldStyle(MyTextFieldStyle()).onTapGesture {
                   self.hideKeyboard()
-              }
+              }.keyboardType(.numberPad)
 
             }.padding(.horizontal)
 

@@ -19,7 +19,7 @@ struct OTPPin: View {
   var body: some View {
     NavigationView {
       ZStack{
-        Image("Layer3").offset(x: 95.0, y: -300.0)
+        Image("Group").offset(x: 95.0, y: -300.0)
         VStack{
           // Navigation bar
           HStack {
@@ -43,9 +43,9 @@ struct OTPPin: View {
           Text("number \(loginViewModel.phoneNumber)").foregroundColor(Color("deepGreen")).font(.system(size: 18)).fontWeight(.medium).padding(.bottom, 100)
 
           HStack{
-            TextField("Enter OTP", text: $loginViewModel.code).textFieldStyle(MyTextFieldStyle()).onTapGesture {
+              TextField("Enter OTP", text: $loginViewModel.code.max(6)).textFieldStyle(MyTextFieldStyle()).onTapGesture {
                 self.hideKeyboard()
-            }
+            }.keyboardType(.numberPad)
 
 //            TextField("", text: $otp[0]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
 //            TextField("", text:$otp[1]).frame(width: 30, height: 30, alignment: .center).underlineTextField().keyboardType(.decimalPad)
