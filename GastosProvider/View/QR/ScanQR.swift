@@ -98,6 +98,10 @@ struct ScanQR: View {
       //let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, merchantId: merchantId, isPrimary: false)
       let qrCode = QrCode(qrName: qrName, upiAdress: upiAdress, isPrimary: false, rawString: rawString)
       loginViewModel.qrCodes.append(qrCode)
+
+      if loginViewModel.qrCodes.count == 1 {
+        loginViewModel.qrCodes[0].isPrimary = true
+      }
       dismiss()
     }
   }

@@ -18,9 +18,7 @@ struct AddQRs: View {
       return Array(repeating: GridItem(.flexible(), spacing: 10), count: 3)
     }
     @EnvironmentObject var loginViewModel: LoginViewModel
-   // @Environment(\.dismiss) var dismiss
-    @Environment(\.presentationMode) var presentationMode
-
+    @Environment(\.dismiss) var dismiss
 
     var body: some View {
       NavigationView {
@@ -28,7 +26,7 @@ struct AddQRs: View {
           // Navigation bar 
           HStack {
             Button(action: {
-                presentationMode.wrappedValue.dismiss()
+                dismiss()
             }, label: {
               Image(systemName: "arrow.left")
                 .resizable()
