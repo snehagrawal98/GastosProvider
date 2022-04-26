@@ -175,7 +175,7 @@ struct BasicDetails: View {
             }
 
               
-              TextField("Area", text: $basicDetailsViewModel.shopArea)
+              TextField("Shop Area", text: $basicDetailsViewModel.shopArea)
                 .textFieldStyle(BasicDetailsTextFieldStyle()).onTapGesture {
                     self.hideKeyboard()
                 }
@@ -333,7 +333,7 @@ struct BasicDetails: View {
     }
 
   func didEnterAllData() {
-    if (!basicDetailsViewModel.ownerName.isEmpty && !basicDetailsViewModel.emailAddress.isEmpty && !basicDetailsViewModel.shopName.isEmpty && !basicDetailsViewModel.shopAddress.isEmpty && !basicDetailsViewModel.shopDistrict.isEmpty) {
+    if (!basicDetailsViewModel.ownerName.isEmpty && !basicDetailsViewModel.emailAddress.isEmpty && !basicDetailsViewModel.shopName.isEmpty && !basicDetailsViewModel.shopAddress.isEmpty && !basicDetailsViewModel.shopDistrict.isEmpty && !basicDetailsViewModel.shopArea.isEmpty && !basicDetailsViewModel.shopAddressLongitude.isEmpty && !self.shopCategory.isEmpty) {
 
       basicDetailsViewModel.shopCategory = self.shopCategory
 

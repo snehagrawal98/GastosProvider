@@ -28,5 +28,5 @@ class SetDiscountViewModel: ObservableObject {
 
 struct Discount {
   var discountPercentage: Double
-  var minBillAmount: String
+  var minBillAmount: Double
 }

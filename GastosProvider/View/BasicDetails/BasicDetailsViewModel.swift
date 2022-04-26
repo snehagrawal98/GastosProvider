@@ -79,9 +79,9 @@ class BasicDetailsViewModel: ObservableObject {
     ref1.child("emailAddress").setValue(emailAddress)
     ref1.child("ownerName").setValue(ownerName)
       
-      
-    ref2.child("creationTimestamp").setValue(timestamp)
     ref2.child("category").setValue(shopCategory)
+    ref2.child("creationTimestamp").setValue(timestamp)
+    
     ref2.child("homeDelivery").setValue(deliveryEnabled)
     ref2.child("pickUp").setValue(pickupEnabled)
 

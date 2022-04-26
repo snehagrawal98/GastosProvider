@@ -121,71 +121,71 @@ class LoginViewModel: ObservableObject {
 
     ref.child("\(uid)/Account_Information/platform").setValue("iOS")
 
-    ref.child("\(uid)/Account_Information/emailAddress").setValue("")
-    ref.child("\(uid)/Account_Information/ownerName").setValue("")
-    ref.child("\(uid)/Account_Information/pin").setValue("")
-    ref.child("\(uid)/Account_Information/registrationPayment").setValue(0)
-    ref.child("\(uid)/Account_Information/registrationPaymentDone").setValue(false)
+//    ref.child("\(uid)/Account_Information/emailAddress").setValue("")
+//    ref.child("\(uid)/Account_Information/ownerName").setValue("")
+//    ref.child("\(uid)/Account_Information/pin").setValue("")
+//    ref.child("\(uid)/Account_Information/registrationPayment").setValue(0)
+//    ref.child("\(uid)/Account_Information/registrationPaymentDone").setValue(false)
     ref.child("\(uid)/Account_Information/registrationTime").setValue(timeStamp)
-    ref.child("\(uid)/Account_Information/salesCode").setValue("")
-    ref.child("\(uid)/Account_Information/walletBranding").setValue("")
-    ref.child("\(uid)/Account_Information/walletPromotion").setValue("")
+//    ref.child("\(uid)/Account_Information/salesCode").setValue("")
+//    ref.child("\(uid)/Account_Information/walletBranding").setValue("")
+//    ref.child("\(uid)/Account_Information/walletPromotion").setValue("")
 
     // payment info
-    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(0)")
-    //let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(0)")
-    ref1.child("merchantId").setValue("")
-    ref1.child("primary").setValue(false)
-    ref1.child("upiId").setValue("")
-    ref1.child("upiName").setValue("")
-    ref1.child("rawString").setValue("")
+//    let ref1 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(0)")
+//    //let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(0)")
+//    ref1.child("merchantId").setValue("")
+//    ref1.child("primary").setValue(false)
+//    ref1.child("upiId").setValue("")
+//    ref1.child("upiName").setValue("")
+//    ref1.child("rawString").setValue("")
 
     // registration payment info
-    let ref3 = db.reference().child("Merchant_data").child("\(uid)/Registration_Payment_Info")
-
-    ref3.child("bankname").setValue("")
-    ref3.child("banktxnid").setValue("")
-    ref3.child("checksumhash").setValue("")
-    ref3.child("currency").setValue("")
-    ref3.child("gatewayname").setValue("")
-    ref3.child("mid").setValue("")
-    ref3.child("orderid").setValue("")
-    ref3.child("paymentmode").setValue("")
-    ref3.child("respcode").setValue("")
-    ref3.child("respmsg").setValue("")
-    ref3.child("status").setValue("")
-    ref3.child("txnamount").setValue("")
-    ref3.child("txndate").setValue("")
-    ref3.child("txnid").setValue("")
+//    let ref3 = db.reference().child("Merchant_data").child("\(uid)/Registration_Payment_Info")
+//
+//    ref3.child("bankname").setValue("")
+//    ref3.child("banktxnid").setValue("")
+//    ref3.child("checksumhash").setValue("")
+//    ref3.child("currency").setValue("")
+//    ref3.child("gatewayname").setValue("")
+//    ref3.child("mid").setValue("")
+//    ref3.child("orderid").setValue("")
+//    ref3.child("paymentmode").setValue("")
+//    ref3.child("respcode").setValue("")
+//    ref3.child("respmsg").setValue("")
+//    ref3.child("status").setValue("")
+//    ref3.child("txnamount").setValue("")
+//    ref3.child("txndate").setValue("")
+//    ref3.child("txnid").setValue("")
 
     // shop info
-    let ref4 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
+//    let ref4 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information")
+//
+//    ref4.child("category").setValue("")
+//    ref4.child("creationTimestamp").setValue(0)
 
-    ref4.child("category").setValue("")
-    ref4.child("creationTimestamp").setValue(0)
-
-    // discounts
-    let ref5 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information/discounts/\(0)")
-
-    ref5.child("discountPercentage").setValue(0)
-    ref5.child("minBillAmount").setValue(0)
-
-    ref4.child("homeDelivery").setValue(true)
-    ref4.child("pickUp").setValue(true)
-    ref4.child("shopAddress").setValue("")
-    ref4.child("shopAddressLatitude").setValue("")
-    ref4.child("shopAddressLongitude").setValue("")
-    ref4.child("shopArea").setValue("")
-    ref4.child("shopDistrict").setValue("")
-
-    ref4.child("shopImageUri").setValue("")
-    ref4.child("shopImageUri1").setValue("")
-    ref4.child("shopImageUri2").setValue("")
-    ref4.child("shopImageUri3").setValue("")
-    ref4.child("shopImageUri4").setValue("")
-
-    ref4.child("shopName").setValue("")
-    ref4.child("shopState").setValue("")
+//    // discounts
+//    let ref5 = db.reference().child("Merchant_data").child("\(uid)/Shop_Information/discounts/\(0)")
+//
+//    ref5.child("discountPercentage").setValue(0)
+//    ref5.child("minBillAmount").setValue(0)
+//
+//    ref4.child("homeDelivery").setValue(true)
+//    ref4.child("pickUp").setValue(true)
+//    ref4.child("shopAddress").setValue("")
+//    ref4.child("shopAddressLatitude").setValue("")
+//    ref4.child("shopAddressLongitude").setValue("")
+//    ref4.child("shopArea").setValue("")
+//    ref4.child("shopDistrict").setValue("")
+//
+//    ref4.child("shopImageUri").setValue("")
+//    ref4.child("shopImageUri1").setValue("")
+//    ref4.child("shopImageUri2").setValue("")
+//    ref4.child("shopImageUri3").setValue("")
+//    ref4.child("shopImageUri4").setValue("")
+//
+//    ref4.child("shopName").setValue("")
+//    ref4.child("shopState").setValue("")
 
   }
 

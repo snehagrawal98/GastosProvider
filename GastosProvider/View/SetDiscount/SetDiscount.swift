@@ -115,7 +115,7 @@ struct SetDiscount: View {
     }
 
   func appendDiscounts() {
-    setDiscountViewModel.discounts.append(Discount(discountPercentage: 20.0, minBillAmount: ""))
+    setDiscountViewModel.discounts.append(Discount(discountPercentage: 20.0, minBillAmount: 400.0))
   }
 
   func calculateDiscountRange() {
@@ -160,7 +160,7 @@ struct SetYourDiscount: View {
   var body: some View {
     VStack(spacing: 1) {
       HStack {
-        TextField("Min Billed Amount", text: $setDiscountViewModel.discounts[indexOfDiscount].minBillAmount).onTapGesture {
+        TextField("Min Billed Amount", value: $setDiscountViewModel.discounts[indexOfDiscount].minBillAmount, format: .number).onTapGesture {
             self.hideKeyboard()
         }
           .padding()
