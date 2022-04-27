@@ -63,7 +63,7 @@ struct PaymentView: View {
         //let response = returnResponseToPaymentView()
         if paymentResponse.STATUS == "TXN_SUCCESS" {
             showGreenPage = true
-          registrationPaymentViewModel.uploadPaymentData(response: paymentResponse, uid: "ub3Cb1sdBaaTKww6kDSzh1QDPjc2")//loginViewModel.uid)
+          registrationPaymentViewModel.uploadPaymentData(response: paymentResponse, uid: loginViewModel.uid)
         } else if paymentResponse.STATUS == "TXN_FAILURE" {
             showGreenPage = false
         }
