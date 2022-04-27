@@ -114,7 +114,9 @@ class LoginViewModel: ObservableObject {
   func registerMerchant() {
     let ref = db.reference().child("Merchant_data")
 
-    let timeStamp = "\(Date())"//.millisecondsSince1970)"
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy.mm.dd.HH.mm.ss"
+    var timeStamp = formatter.string(from: Date())
 
     // account info
     ref.child("\(uid)/Account_Information/phoneNumber").setValue(phoneNumber)
