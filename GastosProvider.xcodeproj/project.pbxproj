@@ -52,6 +52,7 @@
 		6E42506927E6252900A01FC4 /* RegistrationPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506627E6252900A01FC4 /* RegistrationPayment.swift */; };
 		6E46FD9327E114BA0003E8F0 /* ReferAndEarn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */; };
 		6E46FD9527E11FC20003E8F0 /* ManageAdvt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */; };
+		6E4A9A7528252CA8005BB1CB /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4A9A7428252CA7005BB1CB /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6E4C53E0280016A1003BE970 /* Success_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4C53DF280016A1003BE970 /* Success_Response.swift */; };
 		6E4CA4CD27D9D92B006AC87D /* QRCodeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */; };
 		6E70A5762801F54400F36213 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E70A5752801F54300F36213 /* AccountViewModel.swift */; };
@@ -112,6 +113,7 @@
 		6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAndEarn.swift; sourceTree = "<group>"; };
 		6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageAdvt.swift; sourceTree = "<group>"; };
 		6E494AD7280A09FF00683BAD /* GastosProvider.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GastosProvider.entitlements; sourceTree = "<group>"; };
+		6E4A9A7428252CA7005BB1CB /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		6E4C53DF280016A1003BE970 /* Success_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Success_Response.swift; sourceTree = "<group>"; };
 		6E4CA4CC27D9D92A006AC87D /* QRCodeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeModel.swift; sourceTree = "<group>"; };
 		6E70A5752801F54300F36213 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E4A9A7528252CA8005BB1CB /* AppTrackingTransparency.framework in Frameworks */,
 				69EF55C627E5074C008F38F7 /* CodeScanner in Frameworks */,
 				698F11FD27C343970097E85F /* FirebaseDatabase in Frameworks */,
 				698F11FB27C343970097E85F /* FirebaseAuth in Frameworks */,
@@ -273,6 +276,7 @@
 		69FDEBD127E504AB00AAC395 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E4A9A7428252CA7005BB1CB /* AppTrackingTransparency.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
