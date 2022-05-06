@@ -16,20 +16,22 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-          if  status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree && loginViewModel.madeRegistrationPayment {
+//          if  status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree && loginViewModel.madeRegistrationPayment {
+//            HomeScreen()
+//          }
+//          else
+//          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree {
+//            RegistrationPayment()
+//          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts {
+//            UserAgreement()
+//          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo {
+//            SetDiscount()
+//          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
+//            AddQRs()
+//          } else
+          if status && loginViewModel.didSetPin {
+            //BasicDetails()
             HomeScreen()
-          }
-          else
-          if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts && loginViewModel.didAgree {
-            RegistrationPayment()
-          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo && loginViewModel.didSetDiscounts {
-            UserAgreement()
-          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails && loginViewModel.didSetPaymentInfo {
-            SetDiscount()
-          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
-            AddQRs()
-          } else if status && loginViewModel.didSetPin {
-            BasicDetails()
           } else if status {
             SetPin()
           } else {
