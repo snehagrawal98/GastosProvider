@@ -233,6 +233,18 @@ class LoginViewModel: ObservableObject {
 //    //}
 //  }
 
+  func didCompleteRegistartionPayment() {
+    let ref = db.reference().child("Merchant_data/\(uid)/Account_Information")
+    ref.observe(DataEventType.value) { snapshot in
+      if snapshot.hasChild("registrationPaymentDone") {
+        let value = snapshot.value as? NSDictionary
+        let status = value?["registrationPaymentDone"] as? String ?? ""
+        if status == "true" {
+          self.madeRegistrationPayment = true
+        }
+      }
+    }
+  }
 
 }
 
