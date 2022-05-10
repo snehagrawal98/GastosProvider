@@ -33,12 +33,13 @@ struct LiveQrGeneration: View {
               SettingsTitleView(title: "Generate QR")
 
               Spacer()
-            }
+            }.padding(.horizontal)
             Spacer()
             
-            Image(uiImage: qrImage.generateQrCode(from: "\(manageQRViewModel.getRawString())&am=" + qrCodeUrl))
-                .resizable()
-                .frame(width: (UIScreen.screenHeight / 4), height: (UIScreen.screenHeight / 4), alignment: .center)
+            Image(uiImage: qrImage.generateQRCode(from: "\(manageQRViewModel.getRawString())&am=" + qrCodeUrl))
+                .resizable().interpolation(.none)
+                .frame(width: 200, height: 200, alignment: .center)
+                
             
             Spacer()
             
@@ -64,29 +65,56 @@ struct LiveQrGeneration: View {
             
         }
     }
+//    func generateQRCode(from string: String) -> UIImage {
+//        filter.message = Data(string.utf8)
+//
+//        if let outputImage = filter.outputImage {
+//            if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+//                return UIImage(cgImage: cgimg)
+//            }
+//        }
+//
+//        return UIImage(systemName: "xmark.circle") ?? UIImage()
+//    }
     
 }
 
 struct QrCodeImage {
-    
     let context = CIContext()
+    let filter = CIFilter.qrCodeGenerator()
     
-    func generateQrCode(from text: String) -> UIImage {
-        var qrImage = UIImage(systemName: "xmark.circle") ?? UIImage()
-        let data = Data(text.utf8)
-        let filter = CIFilter.qrCodeGenerator()
-        filter.setValue(data, forKey: "inputMessage")
-        
-        if let outputImage = filter.outputImage {
-            if let image = context.createCGImage(outputImage,
-                                                 from: outputImage.extent) {
-                qrImage = UIImage(cgImage: image)
-            }
+
+   // let context = CIContext()
+
+func generateQRCode(from string: String) -> UIImage {
+    filter.message = Data(string.utf8)
+
+    if let outputImage = filter.outputImage {
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            return UIImage(cgImage: cgimg)
         }
-        return qrImage
     }
-    
+
+    return UIImage(systemName: "xmark.circle") ?? UIImage()
 }
+}
+//
+//    func generateQrCode(from text: String) -> UIImage {
+//        var qrImage = UIImage(systemName: "xmark.circle") ?? UIImage()
+//        let data = Data(text.utf8)
+//        let filter = CIFilter.qrCodeGenerator()
+//        filter.setValue(data, forKey: "inputMessage")
+//
+//        if let outputImage = filter.outputImage {
+//            if let image = context.createCGImage(outputImage,
+//                                                 from: outputImage.extent) {
+//                qrImage = UIImage(cgImage: image)
+//            }
+//        }
+//        return qrImage
+//    }
+//
+//}
 
 struct BrandImages: View {
     var body: some View {
