@@ -88,30 +88,30 @@ struct AddQRs: View {
 
           Spacer()
         } //: VSTACK
-        .overlay(
-          ZStack {
-            BasicScreensBottomBackground()
-            HStack {
-              if numberOfQrs == 0 {
-                BasicScreensBottomLeftText(firstLine: "", secondLine: "Add QR")
-                  .padding(.leading)
-              } else {
-                BasicScreensBottomLeftText(firstLine: "Primary QR", secondLine: primaryQrName)
-                  .padding(.leading)
-              }
-              Spacer()
-              Button(action: {
-           //     loginViewModel.registerMerchantPaymentInfo()
-                isShowingSetDiscount.toggle()
-                  self.hideKeyboard()
-              }, label: {
-                BasicScreensBottomRighttText(buttonText: "Next")
-              })
-                .disabled(loginViewModel.qrCodes.isEmpty)
-            }
-          }
-        .frame(height: UIScreen.screenHeight, alignment: .bottom)
-        ) //: OVERLAY
+//        .overlay(
+//          ZStack {
+//            BasicScreensBottomBackground()
+//            HStack {
+//              if numberOfQrs == 0 {
+//                BasicScreensBottomLeftText(firstLine: "", secondLine: "Add QR")
+//                  .padding(.leading)
+//              } else {
+//                BasicScreensBottomLeftText(firstLine: "Primary QR", secondLine: primaryQrName)
+//                  .padding(.leading)
+//              }
+//              Spacer()
+//              Button(action: {
+//           //     loginViewModel.registerMerchantPaymentInfo()
+//                isShowingSetDiscount.toggle()
+//                  self.hideKeyboard()
+//              }, label: {
+//                //BasicScreensBottomRighttText(buttonText: "Next")
+//              })
+//                .disabled(loginViewModel.qrCodes.isEmpty)
+//            }
+//          }
+//        .frame(height: UIScreen.screenHeight, alignment: .bottom)
+//        ) //: OVERLAY
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .onAppear(perform: {

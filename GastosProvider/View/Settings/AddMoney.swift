@@ -73,7 +73,9 @@ struct AddMoney: View {
         }
         .edgesIgnoringSafeArea(.bottom)
         .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarBackButtonHidden(true).onTapGesture {
+            self.hideKeyboard()
+        }
     }
     
 }
@@ -82,6 +84,7 @@ struct AddMoney: View {
 struct AddMoneyBottom: View {
     
     var cost: Int
+    @State private var showingPopover = false
     
     var body : some View {
         
@@ -108,6 +111,7 @@ struct AddMoneyBottom: View {
                 Spacer()
                 
                 Button(action: {
+                    self.showingPopover = true
                   // Pay
                 }, label: {
                   Text("Add")
@@ -122,7 +126,9 @@ struct AddMoneyBottom: View {
 
             }
             
-            
+            if showingPopover {
+              Alert1(show: $showingPopover)
+            }
         }
     }
 }

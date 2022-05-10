@@ -46,6 +46,7 @@
 		6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207427E3C27E00B8C80F /* ManageDesign.swift */; };
 		6E05207727E3C28000B8C80F /* RequestDesign.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E05207527E3C27F00B8C80F /* RequestDesign.swift */; };
 		6E17080E28008269004CD6ED /* Failure_Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E17080D28008269004CD6ED /* Failure_Response.swift */; };
+		6E2A541B282AE93D00218B06 /* Alert1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A541A282AE93C00218B06 /* Alert1.swift */; };
 		6E42506327E6251000A01FC4 /* ProviderWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506227E6251000A01FC4 /* ProviderWallet.swift */; };
 		6E42506727E6252900A01FC4 /* AddMoney.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506427E6252800A01FC4 /* AddMoney.swift */; };
 		6E42506827E6252900A01FC4 /* PromotionWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E42506527E6252900A01FC4 /* PromotionWallet.swift */; };
@@ -106,6 +107,7 @@
 		6E05207427E3C27E00B8C80F /* ManageDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManageDesign.swift; sourceTree = "<group>"; };
 		6E05207527E3C27F00B8C80F /* RequestDesign.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDesign.swift; sourceTree = "<group>"; };
 		6E17080D28008269004CD6ED /* Failure_Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Failure_Response.swift; sourceTree = "<group>"; };
+		6E2A541A282AE93C00218B06 /* Alert1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert1.swift; sourceTree = "<group>"; };
 		6E42506227E6251000A01FC4 /* ProviderWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderWallet.swift; sourceTree = "<group>"; };
 		6E42506427E6252800A01FC4 /* AddMoney.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddMoney.swift; sourceTree = "<group>"; };
 		6E42506527E6252900A01FC4 /* PromotionWallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionWallet.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				6E46FD9227E114B90003E8F0 /* ReferAndEarn.swift */,
 				6E46FD9427E11FC20003E8F0 /* ManageAdvt.swift */,
 				6EE4B62627E3205A00C87CEB /* PostAdvt.swift */,
+				6E2A541A282AE93C00218B06 /* Alert1.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				69C237C1279C476C00A9627A /* SetDiscount.swift in Sources */,
 				6E70A5762801F54400F36213 /* AccountViewModel.swift in Sources */,
 				693D6C432799AF1700DF62C4 /* EnterPin.swift in Sources */,
+				6E2A541B282AE93D00218B06 /* Alert1.swift in Sources */,
 				6E05207627E3C28000B8C80F /* ManageDesign.swift in Sources */,
 				69E36AFA28032957004458F4 /* ManageQRViewModel.swift in Sources */,
 				6977D302280C671C00C1005D /* LogoutAlert.swift in Sources */,

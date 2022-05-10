@@ -23,6 +23,7 @@ struct RequestDesign: View {
 
 
     var body: some View {
+        ZStack{
             VStack(alignment: .leading){
             HStack {
               Button(action: {
@@ -158,7 +159,7 @@ struct RequestDesign: View {
                     Spacer()
 
                     Button(action: { //self.didEnterAllData()
-                        showingPopover.toggle()
+                        self.showingPopover = true
                         self.hideKeyboard()
                         
                     }, label: {
@@ -170,9 +171,10 @@ struct RequestDesign: View {
         )
             
             if showingPopover{
+                Alert1(show: $showingPopover)
               //  popUp1(dismiss: $showingPopover)
             }
-        
+        }
     }
 }
 

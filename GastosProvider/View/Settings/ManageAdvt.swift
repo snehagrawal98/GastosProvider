@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ManageAdvt: View {
     @Environment(\.presentationMode) var presentationMode
+    @State private var showingPopover = false
+
     var body: some View {
+      //  ZStack{
         VStack{
         HStack {
           Button(action: {
@@ -30,6 +33,7 @@ struct ManageAdvt: View {
             Image("manage")
            Spacer()
         }.padding()
+    //    }
     }
 }
 

@@ -10,8 +10,11 @@ import SwiftUI
 struct PostAdvt: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingPopover = false
+  //  @State var isShowingLogoutAlert = false
+
 
     var body: some View {
+        ZStack{
         VStack{
         HStack {
           Button(action: {
@@ -48,16 +51,22 @@ struct PostAdvt: View {
                 Spacer()
 
                 Button(action: { //self.didEnterAllData()
+                    self.showingPopover = true
                     self.hideKeyboard()
                 }, label: {
                   BasicScreensBottomRighttText(buttonText: "Next")
-                }).popover(isPresented: $showingPopover) {
-                    popUp()
-                }
+                })
+                  
               }
             }.padding()
                 .frame(height: UIScreen.screenHeight, alignment: .bottom).offset(y:25)
           ) //: OVERLAY
+            
+            if showingPopover {
+              Alert1(show: $showingPopover)
+            }
+            
+        }
     }
 }
 
