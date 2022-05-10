@@ -23,6 +23,7 @@ class LoginViewModel: ObservableObject {
   // user logged status
   @AppStorage("log_Status") var status = false
   @AppStorage("didSetPin") var didSetPin = false
+  @AppStorage("didEnterPin1") var didEnterPin1 = false
   @AppStorage("didEnterMerchantDetails") var didEnterMerchantDetails = false
   @AppStorage("didSetPaymentInfo") var didSetPaymentInfo = false
   @AppStorage("didAgree") var didAgree = false
@@ -73,7 +74,7 @@ class LoginViewModel: ObservableObject {
       withAnimation{ self.status = true }
       // this code is for writing data to realtime database
       self.uid = result?.user.uid ?? ""
-      self.registerMerchant()
+     // self.registerMerchant()
     }
   }
 
@@ -121,14 +122,14 @@ class LoginViewModel: ObservableObject {
     // account info
     ref.child("\(uid)/Account_Information/phoneNumber").setValue(phoneNumber)
 
-    ref.child("\(uid)/Account_Information/platform").setValue("iOS")
+   // ref.child("\(uid)/Account_Information/platform").setValue("iOS")
 
 //    ref.child("\(uid)/Account_Information/emailAddress").setValue("")
 //    ref.child("\(uid)/Account_Information/ownerName").setValue("")
 //    ref.child("\(uid)/Account_Information/pin").setValue("")
 //    ref.child("\(uid)/Account_Information/registrationPayment").setValue(0)
 //    ref.child("\(uid)/Account_Information/registrationPaymentDone").setValue(false)
-    ref.child("\(uid)/Account_Information/registrationTime").setValue(timeStamp)
+   // ref.child("\(uid)/Account_Information/registrationTime").setValue(timeStamp)
 //    ref.child("\(uid)/Account_Information/salesCode").setValue("")
 //    ref.child("\(uid)/Account_Information/walletBranding").setValue("")
 //    ref.child("\(uid)/Account_Information/walletPromotion").setValue("")
@@ -198,22 +199,22 @@ class LoginViewModel: ObservableObject {
     didSetPin = true
   }
 
-  func registerMerchantPaymentInfo() {
-    let _ = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
-
-    let qrRange = 0..<qrCodes.count
-    for qrCode in qrRange {
-      let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
-
-//      ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
-      ref2.child("merchantId").setValue("")
-      ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
-      ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
-      ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
-      ref2.child("rawString").setValue(qrCodes[qrCode].rawString)
-    }
-    didSetPaymentInfo = true
-  }
+//  func registerMerchantPaymentInfo() {
+//    let _ = db.reference().child("Merchant_data").child("\(uid)/Payment_Information")
+//
+//    let qrRange = 0..<qrCodes.count
+//    for qrCode in qrRange {
+//      let ref2 = db.reference().child("Merchant_data").child("\(uid)/Payment_Information/\(qrCode)")
+//
+////      ref2.child("merchantId").setValue(qrCodes[qrCode].merchantId)
+//      ref2.child("merchantId").setValue("")
+//      ref2.child("primary").setValue(qrCodes[qrCode].isPrimary)
+//      ref2.child("upiId").setValue(qrCodes[qrCode].upiAdress)
+//      ref2.child("upiName").setValue(qrCodes[qrCode].qrName)
+//      ref2.child("rawString").setValue(qrCodes[qrCode].rawString)
+//    }
+//    didSetPaymentInfo = true
+//  }
 
   // for reading current user from realtime database
 //  func readCurrentUser() {
@@ -233,13 +234,28 @@ class LoginViewModel: ObservableObject {
 //    //}
 //  }
 
+    
+    func didEnterPin() {
+      let ref = db.reference().child("Merchant_data/\(uid)/Account_Information")
+      ref.observe(DataEventType.value) { snapshot in
+        if snapshot.hasChild("pin") {
+          let value = snapshot.value as? NSDictionary
+          let status = value?["pin"] as? String ?? ""
+          if status != ""  {
+            self.didEnterPin1 = true
+          }
+        }
+      }
+    }
+    
+    
   func didCompleteRegistartionPayment() {
     let ref = db.reference().child("Merchant_data/\(uid)/Account_Information")
     ref.observe(DataEventType.value) { snapshot in
       if snapshot.hasChild("registrationPaymentDone") {
         let value = snapshot.value as? NSDictionary
-        let status = value?["registrationPaymentDone"] as? String ?? ""
-        if status == "true" {
+        let status = value?["registrationPaymentDone"] as? Bool ?? false
+        if status == true {
           self.madeRegistrationPayment = true
         }
       }

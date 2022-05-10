@@ -10,6 +10,8 @@ import SwiftUI
 struct EnterPin: View {
   @State private var name1 = ""
   @State var resetPin = false
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @EnvironmentObject var currentUser: CurrentUser
   var body: some View {
     NavigationView{
       ZStack{
@@ -22,7 +24,7 @@ struct EnterPin: View {
           }
 
           HStack{
-            TextField("Pin", text: $name1).frame(width: 350, height: 65, alignment: .center)
+            TextField("Pin", text: $name1.max(4)).frame(width: 350, height: 65, alignment: .center)
               .textFieldStyle(MyTextFieldStyle()).padding(.leading, 3).onTapGesture {
                   self.hideKeyboard()
               }.keyboardType(.numberPad)
@@ -55,14 +57,26 @@ struct EnterPin: View {
           HStack{
 
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {
+                self.didEnterProperPin1()
+            }, label: {
               Image(systemName: "chevron.right").font(.system(size: 25)).foregroundColor(.white).frame(width: 50, height: 50, alignment: .center)
             }).padding(3).background(Color("textGreen")).clipShape(Circle()).padding()
           }
         }
-      }.navigationBarItems(leading: Image(systemName: "arrow.backward")).foregroundColor(Color("5"))
+      }
     }
+      
   }
+    
+    func didEnterProperPin1() {
+      if name1 != "" {
+        loginViewModel.pin = name1
+        currentUser.pin = loginViewModel.pin
+        currentUser.uid = loginViewModel.uid
+        loginViewModel.registerMerchantPin()
+      }
+    }
 }
 
 struct EnterPin_Previews: PreviewProvider {

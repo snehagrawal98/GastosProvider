@@ -29,14 +29,15 @@ struct ContentView: View {
 //          } else if status && loginViewModel.didSetPin && loginViewModel.didEnterMerchantDetails {
 //            AddQRs()
 //          }
-          if status && loginViewModel.didSetPin && loginViewModel.madeRegistrationPayment {
+            if status && loginViewModel.didSetPin && loginViewModel.madeRegistrationPayment && loginViewModel.didEnterPin1 {
             HomeScreen()
           }
-          else if status && loginViewModel.didSetPin {
-            ProgressView("Waiting For Registration Payment Confirmation...")
+          else if status && loginViewModel.didSetPin && loginViewModel.madeRegistrationPayment {
+              HomeScreen()
+            //ProgressView("Waiting For Registration Payment Confirmation...")
             //BasicDetails()
           } else if status {
-            SetPin()
+            EnterPin()
           } else {
             EnterMobileNumber()
           }
@@ -46,7 +47,7 @@ struct ContentView: View {
         .onAppear {
           timer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
             loginViewModel.didCompleteRegistartionPayment()
-            if loginViewModel.madeRegistrationPayment {
+              if loginViewModel.madeRegistrationPayment && loginViewModel.didEnterPin1 {
               timer?.invalidate()
             }
           }
